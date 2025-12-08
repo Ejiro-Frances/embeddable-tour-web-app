@@ -1,26 +1,181 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Custom theme configuration for Tailwind v4 */
+@theme {
+  /* Color system */
+  --color-background: oklch(0 0 0);
+  --color-foreground: oklch(0.96 0.01 90);
+  --color-card: oklch(0.02 0 0);
+  --color-card-foreground: oklch(0.96 0.01 90);
+  --color-primary: oklch(0.8 0.2 70);
+  --color-primary-foreground: oklch(0 0 0);
+  --color-secondary: oklch(0.15 0 0);
+  --color-secondary-foreground: oklch(0.96 0.01 90);
+  --color-muted: oklch(0.15 0 0);
+  --color-muted-foreground: oklch(0.5 0 0);
+  --color-accent: oklch(0.8 0.2 70);
+  --color-accent-foreground: oklch(0 0 0);
+  --color-border: oklch(0.2 0 0);
+  --color-input: oklch(0.2 0 0);
+  --color-ring: oklch(0.8 0.2 70);
+  
+  /* Border radius */
+  --radius: 0.5rem;
+  
+  /* Fonts */
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  
+  /* Custom animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-gradient: gradient 8s ease infinite;
+  --animate-shimmer: shimmer 2s infinite;
+  --animate-border-beam: border-beam calc(var(--duration)*1s) infinite linear;
+  --animate-spin-slow: spin 3s linear infinite;
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes gradient {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  @keyframes border-beam {
+    0% {
+      offset-distance: 0%;
+    }
+    100% {
+      offset-distance: 100%;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Base styles */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image: 
+      radial-gradient(circle at 50% 0%, oklch(0.8 0.2 70 / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, oklch(0.8 0.2 70 / 0.05) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-ivory {
+    color: oklch(0.96 0.01 90);
+  }
+  
+  .gradient-text {
+    background-image: linear-gradient(to right, oklch(0.8 0.2 70), oklch(0.85 0.18 75), oklch(0.8 0.2 70));
+    background-clip: text;
+    color: transparent;
+    background-size: 200% 200%;
+  }
+  
+  .gradient-border {
+    position: relative;
+    border: double 2px transparent;
+    background-image: 
+      linear-gradient(var(--color-background), var(--color-background)),
+      linear-gradient(90deg, oklch(0.8 0.2 70), oklch(0.75 0.15 65), oklch(0.9 0.18 80));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(12px);
+    background-color: oklch(0 0 0 / 0.5);
+    border: 1px solid oklch(1 0 0 / 0.1);
+  }
+  
+  .grid-pattern {
+    background-image: 
+      linear-gradient(to right, oklch(0.8 0.2 70 / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.8 0.2 70 / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(0.8 0.2 70);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.85 0.18 75);
+}
+
+/* Animation keyframes for fade-in-up */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+/* Fix for Tailwind v4 gradient animation */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.animate-gradient-rotate {
+  animation: gradient-rotate 3s linear infinite;
+}
+
+@keyframes gradient-rotate {
+  to {
+    --gradient-angle: 360deg;
+  }
 }
