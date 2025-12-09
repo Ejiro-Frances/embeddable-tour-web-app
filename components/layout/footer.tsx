@@ -10,14 +10,14 @@ export function Footer() {
   return (
     <footer className="relative border-t border-gray-500/20">
       {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent" />
 
       <div className="container mx-auto px-4 py-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-lg bg-gradient-to-br from-amber-500 to-amber-600">
+              <div className="p-2 rounded-lg bg-linear-to-br from-amber-500 to-amber-600">
                 <Sparkles className="h-6 w-6 text-black" />
               </div>
               <span className="text-2xl font-bold gradient-text">Tourify</span>

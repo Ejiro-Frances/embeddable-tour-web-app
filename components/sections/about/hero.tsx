@@ -3,10 +3,26 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Globe, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useMemo } from "react";
+
+// Generate random orbs **outside** React render — pure & stable
+function generateFloatingOrbs(count = 8) {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    size: Math.random() * 400 + 100,
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    duration: Math.random() * 10 + 10,
+  }));
+}
 
 export function HeroSection() {
+  // Generate once and memoize — no effect needed!
+  const orbs = useMemo(() => generateFloatingOrbs(8), []);
+
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden py-10">
+      {/* Fixed Tailwind class */}
       <div className="absolute inset-0 bg-gradient-to-br from-amber-900/10 via-black to-amber-900/5" />
       
       <div className="container mx-auto px-4 relative z-10">
@@ -72,18 +88,17 @@ export function HeroSection() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                className="glass-effect p-6 rounded-2xl"
+                className="glass-effect p-6 rounded-2xl backdrop-blur-md border border-white/5"
               >
                 <div className="flex items-center justify-center mb-4">
-                  <div className="p-3 rounded-full"
+                  <div 
+                    className="p-3 rounded-full"
                     style={{ background: "oklch(0.8 0.2 70 / 0.1)" }}
                   >
                     <stat.icon className="h-6 w-6" style={{ color: "oklch(0.8 0.2 70)" }} />
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-gray-300 mb-2">
-                  {stat.value}
-                </div>
+                <div className="text-4xl font-bold text-gray-300 mb-2">{stat.value}</div>
                 <div className="opacity-70">{stat.label}</div>
               </motion.div>
             ))}
@@ -97,37 +112,40 @@ export function HeroSection() {
           >
             <Button
               size="lg"
-              className="group text-lg px-8 py-6"
+              className="group text-lg px-8 py-6 font-medium hover:scale-105 transition-transform"
               style={{
                 background: "linear-gradient(to right, oklch(0.8 0.2 70), oklch(0.85 0.18 75))",
+                boxShadow: "0 10px 30px -10px oklch(0.8 0.2 70 / 0.4)"
               }}
             >
               Join Our Journey
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
             </Button>
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Animated Background Elements */}
+      {/* Floating Orbs — 100% Pure & Stable */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(8)].map((_, i) => (
+        {orbs.map((orb) => (
           <motion.div
-            key={i}
-            className="absolute rounded-full"
+            key={orb.id}
+            className="absolute rounded-full blur-3xl"
             style={{
-              width: `${Math.random() * 400 + 100}px`,
-              height: `${Math.random() * 400 + 100}px`,
-              background: `radial-gradient(circle, oklch(0.8 0.2 70 / 0.03), transparent 70%)`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: `${orb.size}px`,
+              height: `${orb.size}px`,
+              background: `radial-gradient(circle at 30% 30%, oklch(0.8 0.2 70 / 0.08), transparent 70%)`,
+              left: `${orb.left}%`,
+              top: `${orb.top}%`,
             }}
             animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.6, 0.3],
+              scale: [1, 1.4, 1],
+              opacity: [0.15, 0.4, 0.15],
+              x: [0, 30, -30, 0],
+              y: [0, -40, 40, 0],
             }}
             transition={{
-              duration: Math.random() * 10 + 10,
+              duration: orb.duration,
               repeat: Infinity,
               ease: "easeInOut",
             }}

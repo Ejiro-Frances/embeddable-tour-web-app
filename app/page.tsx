@@ -5,7 +5,6 @@ import { DemoSection } from "@/components/sections/demo";
 import { DocumentationSection } from "@/components/sections/documentation";
 import { PricingSection } from "@/components/sections/pricing";
 import { ContactSection } from "@/components/sections/contact";
-import { Footer } from "@/components/layout/footer";
 
 export default function Home() {
   return (
