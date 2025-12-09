@@ -43,7 +43,7 @@ export async function PATCH(
         const tour = await updateTour(
             params.id,
             { name, description },
-            steps ? steps.map((step: any, index: number) => ({
+            steps ? steps.map((step: { order: number, title: string, description: string }, index: number) => ({
                 order_number: step.order || index + 1,
                 title: step.title,
                 description: step.description,

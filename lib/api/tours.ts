@@ -1,5 +1,5 @@
 import { createServerSupabaseClient as createClient } from '@/lib/supabase/server'
-import { TourWithSteps, TourInsert, StepInsert, Tour, Step } from '@/types/database'
+import { TourWithSteps, TourInsert, StepInsert } from '@/types/database'
 
 /**
  * Get all tours for the current user

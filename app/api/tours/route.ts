@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
 
         const tour = await createTour(
             { name, description },
-            steps.map((step: any, index: number) => ({
+            steps.map((step: { order: number, title: string, description: string }, index: number) => ({
                 order_number: step.order || index + 1,
                 title: step.title,
                 description: step.description,

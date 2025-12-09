@@ -44,7 +44,7 @@ export default function LoginPageContent() {
         router.push('/dashboard')
         router.refresh()
       }
-    } catch (err) {
+    } catch {
       setError('An unexpected error occurred. Please try again.')
       setLoading(false)
     }
@@ -129,7 +129,7 @@ export default function LoginPageContent() {
       {/* Footer */}
       <div className="text-center text-sm">
         <span className="text-muted-foreground">
-          Don't have an account?{' '}
+          Don&apos;t have an account?{' '}
         </span>
         <Link
           href="/signup"
