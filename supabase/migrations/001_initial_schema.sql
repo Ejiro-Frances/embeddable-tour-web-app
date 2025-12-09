@@ -99,7 +99,9 @@ CREATE POLICY "Users can view analytics for their tours"
 
 CREATE POLICY "Anyone can insert analytics" -- For public embeds
   ON tour_analytics FOR INSERT
-  WITH CHECK (true);
+  WITH CHECK (EXISTS (
+    SELECT 1 FROM tours WHERE tours.id = tour_analytics.tour_id
+  ));
 
 -- Function to update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()
