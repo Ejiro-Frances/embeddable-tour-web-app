@@ -1,5 +1,8 @@
+"use client"
+
 import { Card } from '@/components/ui/card'
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 interface AuthCardProps {
   children: React.ReactNode
@@ -7,10 +10,25 @@ interface AuthCardProps {
   subtitle: string
 }
 
+
 export function AuthCard({ children, title, subtitle }: AuthCardProps) {
-  const isDesktop =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(min-width: 1024px)').matches
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  useEffect(() => {
+    const checkIsDesktop = () => {
+      setIsDesktop(window.matchMedia('(min-width: 1024px)').matches)
+    }
+
+    // Initial check
+    checkIsDesktop()
+
+    // Add listener for resize/changes
+    const mediaQuery = window.matchMedia('(min-width: 1024px)')
+    const handleChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
 
   const variantsMobile = {
     hidden: { opacity: 0, y: 30 },
