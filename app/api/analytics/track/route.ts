@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { trackAnalyticsEvent } from '@/lib/api/analytics'
+import { isUUID } from '@/lib/utils'
 
 /**
  * POST /api/analytics/track - Track an analytics event
@@ -16,6 +17,15 @@ export async function POST(request: NextRequest) {
                 { status: 400 }
             )
         }
+
+        // confirm both are uuids
+        if (!isUUID(tourId) || !isUUID(stepId)) {
+            return NextResponse.json(
+                { error: 'Invalid tourId or stepId, must be a UUID' },
+                { status: 400 }
+            )
+        }
+
 
         const validEventTypes = ['started', 'completed', 'abandoned', 'step_completed', 'step_skipped']
         if (!validEventTypes.includes(eventType)) {

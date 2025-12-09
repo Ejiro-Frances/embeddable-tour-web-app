@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getTourById, updateTour, deleteTour } from '@/lib/api/tours'
+import { isUUID } from '@/lib/utils'
 
 /**
  * GET /api/tours/[id] - Get a specific tour
@@ -34,14 +35,30 @@ export async function GET(
  */
 export async function PATCH(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
+    const { id } = await params
+    
     try {
         const body = await request.json()
         const { name, description, steps } = body
+        
+        if (!isUUID(id)) {
+            return NextResponse.json(
+                { error: 'Invalid tourId, must be a UUID' },
+                { status: 400 }
+            )
+        }
+
+        if (!name || !steps || steps.length < 5) {
+            return NextResponse.json(
+                { error: 'Invalid tour data. Name and at least 5 steps are required.' },
+                { status: 400 }
+            )
+        }
 
         const tour = await updateTour(
-            params.id,
+            id,
             { name, description },
             steps ? steps.map((step: { order: number, title: string, description: string }, index: number) => ({
                 order_number: step.order || index + 1,
@@ -65,10 +82,12 @@ export async function PATCH(
  */
 export async function DELETE(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    { params }: { params: Promise<{ id: string }> }
 ) {
+    const { id } = await params
+    
     try {
-        const success = await deleteTour(params.id)
+        const success = await deleteTour(id)
 
         if (!success) {
             return NextResponse.json(

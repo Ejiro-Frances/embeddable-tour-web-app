@@ -123,7 +123,7 @@ export interface TourStats {
   totalToursCompleted: number
   completionRate: number
   stepsSkipped: number
-  averageDuration: number // in minutes
+  averageDurationInMinutes: number // in minutes
   activeToursToday: number
   abandonRate: number
 }

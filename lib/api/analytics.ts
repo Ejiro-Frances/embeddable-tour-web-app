@@ -27,7 +27,7 @@ export async function getTourStats(): Promise<TourStats> {
             totalToursCompleted: 0,
             completionRate: 0,
             stepsSkipped: 0,
-            averageDuration: 0,
+            averageDurationInMinutes: 0,
             activeToursToday: 0,
             abandonRate: 0,
         }
@@ -79,7 +79,7 @@ export async function getTourStats(): Promise<TourStats> {
     // type cast
     const completedTours = allCompletedTours as { duration_seconds: number }[]
 
-    const averageDuration = completedTours && completedTours.length > 0
+    const averageDurationInMinutes = completedTours && completedTours.length > 0
         ? Math.round(
             completedTours.reduce((sum: number, t) => sum + (t.duration_seconds || 0), 0) /
             completedTours.length / 60
@@ -116,7 +116,7 @@ export async function getTourStats(): Promise<TourStats> {
         totalToursCompleted,
         completionRate,
         stepsSkipped,
-        averageDuration,
+        averageDurationInMinutes,
         activeToursToday,
         abandonRate,
     }
@@ -215,29 +215,46 @@ export async function getStepAnalytics(tourId?: string): Promise<StepAnalytics[]
         return []
     }
 
-    // Get analytics for each step
-    const stepAnalytics: StepAnalytics[] = []
+    // Get analytics for all steps in a single query
+    const stepIds = (steps as { id: string }[]).map(s => s.id)
+    const { data: allAnalyticsData, error: analyticsError } = await supabase
+        .from('tour_analytics')
+        .select('step_id, event_type')
+        .in('step_id', stepIds)
+        .in('event_type', ['step_completed', 'step_skipped'])
 
-    for (const step of steps as { id: string, title: string, tour_id: string }[]) {
-        const { count: completedCount } = await supabase
-            .from('tour_analytics')
-            .select('*', { count: 'exact', head: true })
-            .eq('step_id', step.id)
-            .eq('event_type', 'step_completed')
-
-        const { count: skippedCount } = await supabase
-            .from('tour_analytics')
-            .select('*', { count: 'exact', head: true })
-            .eq('step_id', step.id)
-            .eq('event_type', 'step_skipped')
-
-        stepAnalytics.push({
-            step: step.title,
-            stepId: step.id,
-            completed: completedCount || 0,
-            skipped: skippedCount || 0,
-        })
+    if (analyticsError) {
+        console.error('Error fetching step analytics:', analyticsError)
+        return []
     }
+
+    // Build a lookup: { [step_id]: { completed: number, skipped: number } }
+    // Group and count the data manually in JavaScript
+    const analyticsMap: Record<string, { completed: number, skipped: number }> = {}
+
+    const analyticsData = allAnalyticsData as { step_id: string, event_type: string }[]
+    for (const row of analyticsData || []) {
+        const stepId = row.step_id
+        const eventType = row.event_type
+
+        if (!stepId) continue
+
+        if (!analyticsMap[stepId]) {
+            analyticsMap[stepId] = { completed: 0, skipped: 0 }
+        }
+
+        if (eventType === 'step_completed') {
+            analyticsMap[stepId].completed += 1
+        } else if (eventType === 'step_skipped') {
+            analyticsMap[stepId].skipped += 1
+        }
+    }
+    const stepAnalytics: StepAnalytics[] = (steps as { id: string, title: string, tour_id: string }[]).map(step => ({
+        step: step.title,
+        stepId: step.id,
+        completed: analyticsMap[step.id]?.completed || 0,
+        skipped: analyticsMap[step.id]?.skipped || 0,
+    }))
 
     return stepAnalytics
 }
