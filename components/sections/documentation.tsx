@@ -122,8 +122,8 @@ export function DocumentationSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4">
-            <span className="text-sm font-medium text-amber-500">
+          <div className="inline-block px-4 py-2 rounded-full accent-bg/10 border border-amber-300/20 mb-4">
+            <span className="text-sm font-medium accent-text">
               Documentation
             </span>
           </div>
@@ -147,8 +147,8 @@ export function DocumentationSection() {
                 onClick={() => setActiveTab(index)}
                 className={`rounded-full px-6 py-3 ${
                   activeTab === index
-                    ? "bg-linear-to-r amber-500 to-amber-600 text-black"
-                    : "border-amber-500/30 text-amber-500 hover:bg-amber-500/10"
+                    ? "bg-linear-to-r amber-500 to-amber-400 text-black"
+                    : "border-amber-300/30 accent-text hover:accent-bg/10"
                 }`}
               >
                 <FileCode className="h-4 w-4 mr-2" />
@@ -167,10 +167,10 @@ export function DocumentationSection() {
               transition={{ duration: 0.3 }}
               className="relative"
             >
-              <Card className="bg-gray-900/50 border border-amber-500/20 overflow-hidden">
-                <div className="flex items-center justify-between px-6 py-4 border-b border-amber-500/20">
+              <Card className="bg-gray-900/50 border border-amber-300/20 overflow-hidden">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-amber-300/20">
                   <div className="flex items-center gap-3">
-                    <Terminal className="h-5 w-5 text-amber-500" />
+                    <Terminal className="h-5 w-5 accent-text" />
                     <div>
                       <h3 className="font-semibold text-ivory">
                         {codeSnippets[activeTab].title}
@@ -186,7 +186,7 @@ export function DocumentationSection() {
                     onClick={() =>
                       copyToClipboard(codeSnippets[activeTab].code)
                     }
-                    className="text-amber-500 hover:text-amber-400 hover:bg-amber-500/10"
+                    className="accent-text hover:text-amber-400 hover:accent-bg/10"
                   >
                     {copied ? (
                       <Check className="h-4 w-4" />
@@ -242,7 +242,7 @@ export function DocumentationSection() {
                 className="glass-effect p-6 rounded-2xl"
               >
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="p-3 rounded-lg bg-amber-500/10">
+                  <div className="p-3 rounded-lg accent-bg/10">
                     {feature.icon}
                   </div>
                   <h3 className="text-lg font-semibold text-ivory">

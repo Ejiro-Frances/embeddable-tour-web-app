@@ -6,11 +6,14 @@ interface AnimatedGradientTextProps {
   className?: string;
 }
 
-export function AnimatedGradientText({ text, className = "" }: AnimatedGradientTextProps) {
+export function AnimatedGradientText({
+  text,
+  className = "",
+}: AnimatedGradientTextProps) {
   return (
     <div className="relative inline-block">
       <motion.span
-        className={`bg-gradient-to-r from-amber-400 via-amber-300 to-amber-600 bg-clip-text text-transparent ${className}`}
+        className={`bg-gradient-to-r to-[#eabe7b] via-[#dd9222] from-[#c7841f] bg-clip-text text-transparent ${className}`}
         initial={{ backgroundPosition: "0% 50%" }}
         animate={{ backgroundPosition: "100% 50%" }}
         transition={{

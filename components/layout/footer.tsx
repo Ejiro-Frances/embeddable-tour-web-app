@@ -17,7 +17,7 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-2 rounded-lg bg-linear-to-br from-amber-500 to-amber-600">
+              <div className="p-2 rounded-lg bg-linear-to-br from-[#eabe7b] to-[#dd9222]">
                 <Sparkles className="h-6 w-6 text-black" />
               </div>
               <span className="text-2xl font-bold gradient-text">Tourify</span>
@@ -42,7 +42,7 @@ export function Footer() {
                 <li key={item}>
                   <Link
                     href={`#${item.toLowerCase()}`}
-                    className="text-ivory/70 hover:text-amber-500 transition-colors"
+                    className="text-ivory/70 hover:accent-text transition-colors"
                   >
                     {item}
                   </Link>
@@ -55,18 +55,16 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-ivory">Company</h3>
             <ul className="space-y-3">
-              {["Docs","About", "Contact", "Privacy", "Terms"].map(
-                (item) => (
-                  <li key={item}>
-                    <Link
-                      href={`/${item.toLowerCase()}`}
-                      className="text-ivory/70 hover:text-amber-500 transition-colors"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                )
-              )}
+              {["Docs", "About", "Contact", "Privacy", "Terms"].map((item) => (
+                <li key={item}>
+                  <Link
+                    href={`/${item.toLowerCase()}`}
+                    className="text-ivory/70 hover:accent-text transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -84,21 +82,21 @@ export function Footer() {
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
               href="https://twitter.com"
-              className="text-ivory/70 hover:text-amber-500 transition-colors"
+              className="text-ivory/70 hover:[#eabe7b] transition-colors"
             >
               <Twitter className="h-5 w-5" />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
               href="https://github.com"
-              className="text-ivory/70 hover:text-amber-500 transition-colors"
+              className="text-ivory/70 hover:[#eabe7b] transition-colors"
             >
               <Github className="h-5 w-5" />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
               href="https://linkedin.com"
-              className="text-ivory/70 hover:text-amber-500 transition-colors"
+              className="text-ivory/70 hover:[#eabe7b] transition-colors"
             >
               <Linkedin className="h-5 w-5" />
             </motion.a>
@@ -106,7 +104,7 @@ export function Footer() {
 
           <div className="flex items-center gap-2 text-sm text-ivory/60">
             Made with
-            <Heart className="h-4 w-4 text-amber-500 fill-amber-500" />
+            <Heart className="h-4 w-4 accent-text fill-[#dd9222]" />
             by Team Tourify
           </div>
         </div>

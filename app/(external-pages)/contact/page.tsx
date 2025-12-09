@@ -7,7 +7,7 @@ export default function ContactPage() {
     <main className="relative pt-20">
       <ContactHero />
       <ContactForm />
-      <LocationsSection />
+      {/* <LocationsSection /> */}
     </main>
   );
 }

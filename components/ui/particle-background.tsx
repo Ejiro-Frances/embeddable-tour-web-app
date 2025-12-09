@@ -8,26 +8,33 @@ interface ParticleBackgroundProps {
   className?: string;
 }
 
-export function ParticleBackground({ count = 30, className = "" }: ParticleBackgroundProps) {
+export function ParticleBackground({
+  count = 30,
+  className = "",
+}: ParticleBackgroundProps) {
   // Generate particles using useMemo to avoid hydration issues
-  const particles = useMemo(() => 
-    Array.from({ length: count }).map((_, i) => ({
-      id: i,
-      x: (i * 37) % 100, // Deterministic positioning
-      y: (i * 23) % 100,
-      size: (i % 3) + 1,
-      duration: 15 + (i % 10),
-      delay: i % 5,
-      xAnimation: (i % 5) - 2,
-    }))
-  , [count]);
+  const particles = useMemo(
+    () =>
+      Array.from({ length: count }).map((_, i) => ({
+        id: i,
+        x: (i * 37) % 100, // Deterministic positioning
+        y: (i * 23) % 100,
+        size: (i % 3) + 1,
+        duration: 15 + (i % 10),
+        delay: i % 5,
+        xAnimation: (i % 5) - 2,
+      })),
+    [count]
+  );
 
   return (
-    <div className={`fixed inset-0 z-0 overflow-hidden pointer-events-none ${className}`}>
+    <div
+      className={`fixed inset-0 z-0 overflow-hidden pointer-events-none ${className}`}
+    >
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-gradient-to-br from-amber-400/20 to-amber-600/10"
+          className="absolute rounded-full bg-gradient-to-br to-amber-400/20 to-amber-400/10"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,

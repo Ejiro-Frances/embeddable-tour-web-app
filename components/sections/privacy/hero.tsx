@@ -54,17 +54,18 @@ export function PrivacyHero() {
               <span>Last updated: December 8, 2025</span>
             </div>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
-            className="mt-12 p-4 rounded-lg max-w-2xl mx-auto bg-amber-500/10 border border-amber-500/20"
+            className="mt-12 p-4 rounded-lg max-w-2xl mx-auto accent-bg/10 border border-amber-300/20"
           >
             <div className="flex items-center gap-3">
-              <CheckCircle className="h-5 w-5 shrink-0 text-amber-500" />
+              <CheckCircle className="h-5 w-5 shrink-0 accent-text" />
               <p className="text-sm text-gray-300">
-                Your data is protected with enterprise-grade security and transparent policies.
+                Your data is protected with enterprise-grade security and
+                transparent policies.
               </p>
             </div>
           </motion.div>

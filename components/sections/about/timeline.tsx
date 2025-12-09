@@ -9,19 +9,21 @@ const timelineEvents = [
     title: "The Spark",
     description: "Founded by a team frustrated with clunky onboarding tools",
     icon: <Zap className="h-6 w-6" />,
-    color: "oklch(0.8 0.2 70)",
+    color: "#eabe7b",
   },
   {
     year: "2024",
     title: "First Launch",
-    description: "Released MVP to 100 early adopters with overwhelming positive feedback",
+    description:
+      "Released MVP to 100 early adopters with overwhelming positive feedback",
     icon: <Rocket className="h-6 w-6" />,
     color: "oklch(0.85 0.18 75)",
   },
   {
     year: "2024",
     title: "Growth",
-    description: "Reached 1,000+ customers and expanded team to 15 amazing people",
+    description:
+      "Reached 1,000+ customers and expanded team to 15 amazing people",
     icon: <Users className="h-6 w-6" />,
     color: "oklch(0.9 0.18 80)",
   },
@@ -35,7 +37,8 @@ const timelineEvents = [
   {
     year: "2025",
     title: "Global",
-    description: "Serving customers in 50+ countries with localized experiences",
+    description:
+      "Serving customers in 50+ countries with localized experiences",
     icon: <Globe className="h-6 w-6" />,
     color: "oklch(0.85 0.15 90)",
   },
@@ -52,14 +55,15 @@ export function TimelineSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-4"
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-4"
             style={{
               background: "oklch(0.8 0.2 70 / 0.1)",
-              borderColor: "oklch(0.8 0.2 70 / 0.2)"
+              borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >
-            <Calendar className="h-4 w-4" style={{ color: "oklch(0.8 0.2 70)" }} />
-            <span className="text-sm font-medium" style={{ color: "oklch(0.8 0.2 70)" }}>
+            <Calendar className="h-4 w-4" style={{ color: "#eabe7b" }} />
+            <span className="text-sm font-medium" style={{ color: "#eabe7b" }}>
               Our Journey
             </span>
           </div>
@@ -74,9 +78,11 @@ export function TimelineSection() {
         <div className="max-w-6xl mx-auto">
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 hidden md:block"
+            <div
+              className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 hidden md:block"
               style={{
-                background: "linear-gradient(to bottom, transparent, oklch(0.8 0.2 70), transparent)",
+                background:
+                  "linear-gradient(to bottom, transparent, #eabe7b, transparent)",
               }}
             />
 
@@ -92,9 +98,13 @@ export function TimelineSection() {
                 }`}
               >
                 {/* Year badge */}
-                <div className={`absolute ${
-                  index % 2 === 0 ? "md:right-1/2 md:left-auto" : "md:left-1/2 md:right-auto"
-                } top-0 transform md:translate-x-1/2 z-10`}>
+                <div
+                  className={`absolute ${
+                    index % 2 === 0
+                      ? "md:right-1/2 md:left-auto"
+                      : "md:left-1/2 md:right-auto"
+                  } top-0 transform md:translate-x-1/2 z-10`}
+                >
                   <motion.div
                     whileHover={{ scale: 1.1 }}
                     className="flex items-center justify-center w-16 h-16 rounded-full border-2 mb-4"
@@ -103,32 +113,35 @@ export function TimelineSection() {
                       borderColor: event.color,
                     }}
                   >
-                    <span className="font-bold text-lg" style={{ color: event.color }}>
+                    <span
+                      className="font-bold text-lg"
+                      style={{ color: event.color }}
+                    >
                       {event.year}
                     </span>
                   </motion.div>
                 </div>
 
                 {/* Content card */}
-                <div className={`glass-effect p-6 rounded-2xl md:max-w-md ${
-                  index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"
-                }`}>
+                <div
+                  className={`glass-effect p-6 rounded-2xl md:max-w-md ${
+                    index % 2 === 0 ? "md:ml-auto" : "md:mr-auto"
+                  }`}
+                >
                   <div className="flex items-start gap-4 mb-4">
                     <motion.div
                       whileHover={{ rotate: 15 }}
                       className="shrink-0 p-3 rounded-lg"
                       style={{ background: `${event.color}20` }}
                     >
-                      <div style={{ color: event.color }}>
-                        {event.icon}
-                      </div>
+                      <div style={{ color: event.color }}>{event.icon}</div>
                     </motion.div>
                     <div>
                       <h3 className="text-xl font-bold mb-2">{event.title}</h3>
                       <p className="opacity-80">{event.description}</p>
                     </div>
                   </div>
-                  
+
                   {/* Animated highlight */}
                   <motion.div
                     className="h-1 rounded-full"

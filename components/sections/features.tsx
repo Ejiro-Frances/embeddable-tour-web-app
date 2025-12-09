@@ -1,53 +1,60 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  Code2, 
-  Palette, 
-  Zap, 
-  BarChart3, 
-  Users, 
+import {
+  Code2,
+  Palette,
+  Zap,
+  BarChart3,
+  Users,
   Globe,
   Lock,
-  Smartphone
+  Smartphone,
 } from "lucide-react";
 import { GlowingCard } from "@/components/ui/glowing-card";
+import { AnimatedGradientText } from "../ui/animated-gradient-text";
 
 const features = [
   {
     icon: <Code2 className="h-10 w-10" />,
     title: "No-Code Builder",
-    description: "Drag-and-drop interface to create tours without writing a single line of code.",
+    description:
+      "Drag-and-drop interface to create tours without writing a single line of code.",
     size: "large", // spans 2 cols + taller
   },
   {
     icon: <Palette className="h-8 w-8" />,
     title: "Customizable Themes",
-    description: "Match your brand with complete control over colors, fonts, and animations.",
+    description:
+      "Match your brand with complete control over colors, fonts, and animations.",
     size: "medium",
   },
   {
     icon: <Zap className="h-9 w-9" />,
     title: "Lightning Fast",
-    description: "Optimized widget loads in under 50ms without affecting your site performance.",
+    description:
+      "Optimized widget loads in under 50ms without affecting your site performance.",
     size: "medium",
   },
   {
     icon: <BarChart3 className="h-9 w-9" />,
     title: "Advanced Analytics",
-    description: "Track user engagement, drop-off points, and tour completion rates.",
+    description:
+      "Track user engagement, drop-off points, and tour completion rates.",
     size: "large",
   },
   {
     icon: <Users className="h-8 w-8" />,
     title: "Team Collaboration",
-    description: "Work together with your team to create and manage onboarding experiences.",
+    description:
+      "Work together with your team to create and manage onboarding experiences.",
     size: "small",
   },
   {
     icon: <Globe className="h-8 w-8" />,
     title: "Multi-language",
-    description: "Support for 50+ languages with automatic translation capabilities.",
+    description:
+      "Support for 50+ languages with automatic translation capabilities.",
     size: "small",
   },
   {
@@ -59,7 +66,8 @@ const features = [
   {
     icon: <Smartphone className="h-10 w-10" />,
     title: "Mobile First",
-    description: "Perfect experience on all devices with responsive tour design.",
+    description:
+      "Perfect experience on all devices with responsive tour design.",
     size: "large",
   },
 ];
@@ -76,15 +84,17 @@ export function FeaturesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4">
-            <span className="text-sm font-medium text-amber-500">Features</span>
+          <div className="inline-block px-4 py-2 rounded-full accent-bg/10 border border-amber-300/20 mb-4">
+            <span className="text-sm font-medium accent-text">Features</span>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-white to-amber-200">
             Everything You Need For <br />
-            <span className="text-amber-400">Perfect Onboarding</span>
+                        <AnimatedGradientText text="Perfect Onboarding" />
+            
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto mt-6">
-            Packed with powerful features to create, manage, and optimize your user onboarding experience.
+            Packed with powerful features to create, manage, and optimize your
+            user onboarding experience.
           </p>
         </motion.div>
 
@@ -100,11 +110,15 @@ export function FeaturesSection() {
           >
             <GlowingCard className="h-full p-8 flex flex-col justify-between">
               <div>
-                <div className="p-5 rounded-2xl bg-linear-to-br from-amber-500/20 to-orange-600/10 w-fit mb-6 border border-amber-500/20">
+                <div className="p-5 rounded-2xl bg-linear-to-br from-amber-300/20 to-orange-600/10 w-fit mb-6 border border-amber-300/20">
                   {features[0].icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">{features[0].title}</h3>
-                <p className="text-gray-300 text-lg leading-relaxed">{features[0].description}</p>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  {features[0].title}
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  {features[0].description}
+                </p>
               </div>
             </GlowingCard>
           </motion.div>
@@ -118,10 +132,12 @@ export function FeaturesSection() {
             className="col-span-2 md:col-span-2 lg:col-span-3"
           >
             <GlowingCard className="h-full p-6 flex flex-col justify-center">
-              <div className="p-4 rounded-2xl bg-amber-500/10 w-fit mb-5">
+              <div className="p-4 rounded-2xl accent-bg/10 w-fit mb-5">
                 {features[1].icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{features[1].title}</h3>
+              <h3 className="text-xl font-bold text-white mb-3">
+                {features[1].title}
+              </h3>
               <p className="text-gray-400">{features[1].description}</p>
             </GlowingCard>
           </motion.div>
@@ -135,10 +151,12 @@ export function FeaturesSection() {
             className="col-span-2 md:col-span-2 lg:col-span-3"
           >
             <GlowingCard className="h-full p-6 flex flex-col justify-center">
-              <div className="p-4 rounded-2xl bg-amber-500/10 w-fit mb-5">
+              <div className="p-4 rounded-2xl accent-bg/10 w-fit mb-5">
                 {features[2].icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{features[2].title}</h3>
+              <h3 className="text-xl font-bold text-white mb-3">
+                {features[2].title}
+              </h3>
               <p className="text-gray-400">{features[2].description}</p>
             </GlowingCard>
           </motion.div>
@@ -156,8 +174,12 @@ export function FeaturesSection() {
                 <div className="p-5 rounded-2xl bg-linear-to-br from-emerald-500/20 to-teal-600/10 w-fit mb-6 border border-emerald-500/20">
                   {features[3].icon}
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">{features[3].title}</h3>
-                <p className="text-gray-300 text-lg leading-relaxed">{features[3].description}</p>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  {features[3].title}
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  {features[3].description}
+                </p>
               </div>
             </GlowingCard>
           </motion.div>
@@ -171,10 +193,12 @@ export function FeaturesSection() {
             className="col-span-2 md:col-span-2 lg:col-span-3"
           >
             <GlowingCard className="h-full p-6 flex flex-col justify-center">
-              <div className="p-4 rounded-2xl bg-amber-500/10 w-fit mb-5">
+              <div className="p-4 rounded-2xl accent-bg/10 w-fit mb-5">
                 {features[4].icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{features[4].title}</h3>
+              <h3 className="text-xl font-bold text-white mb-3">
+                {features[4].title}
+              </h3>
               <p className="text-gray-400 text-sm">{features[4].description}</p>
             </GlowingCard>
           </motion.div>
@@ -187,10 +211,12 @@ export function FeaturesSection() {
             className="col-span-2 md:col-span-2 lg:col-span-3"
           >
             <GlowingCard className="h-full p-6 flex flex-col justify-center">
-              <div className="p-4 rounded-2xl bg-amber-500/10 w-fit mb-5">
+              <div className="p-4 rounded-2xl accent-bg/10 w-fit mb-5">
                 {features[5].icon}
               </div>
-              <h3 className="text-xl font-bold text-white mb-3">{features[5].title}</h3>
+              <h3 className="text-xl font-bold text-white mb-3">
+                {features[5].title}
+              </h3>
               <p className="text-gray-400 text-sm">{features[5].description}</p>
             </GlowingCard>
           </motion.div>
@@ -224,18 +250,22 @@ export function FeaturesSection() {
             viewport={{ once: true }}
             className="col-span-2 md:col-span-4 lg:col-span-12"
           >
-            <GlowingCard className="h-full p-10 border border-amber-500/20">
+            <GlowingCard className="h-full p-10 border border-amber-300/20">
               <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="flex-1 text-center lg:text-left">
-                  <div className="p-5 rounded-2xl bg-linear-to-br from-amber-500/20 to-orange-600/10 w-fit mb-6 border border-amber-500/20">
+                  <div className="p-5 rounded-2xl bg-linear-to-br from-amber-300/20 to-orange-600/10 w-fit mb-6 border border-amber-300/20">
                     {features[7].icon}
                   </div>
-                  <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">{features[7].title}</h3>
-                  <p className="text-md text-gray-300 max-w-2xl">{features[7].description}</p>
+                  <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">
+                    {features[7].title}
+                  </h3>
+                  <p className="text-md text-gray-300 max-w-2xl">
+                    {features[7].description}
+                  </p>
                 </div>
                 <div className="hidden lg:block">
-                  <div className="bg-gray-900/50 backdrop-blur-sm border border-amber-500/20 rounded-3xl p-8 shadow-2xl">
-                    <Smartphone className="h-32 w-32 text-amber-400 mx-auto" />
+                  <div className="bg-gray-900/50 backdrop-blur-sm border border-amber-300/20 rounded-3xl p-8 shadow-2xl">
+                    <Smartphone className="h-32 w-32 text-accent mx-auto" />
                   </div>
                 </div>
               </div>

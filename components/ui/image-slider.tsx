@@ -10,7 +10,11 @@ interface ImageSliderProps {
   className?: string;
 }
 
-export function ImageSlider({ images, interval = 5000, className }: ImageSliderProps) {
+export function ImageSlider({
+  images,
+  interval = 5000,
+  className,
+}: ImageSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -22,7 +26,12 @@ export function ImageSlider({ images, interval = 5000, className }: ImageSliderP
   }, [images.length, interval]);
 
   return (
-    <div className={cn("relative w-full h-96 md:h-[500px] overflow-hidden rounded-2xl", className)}>
+    <div
+      className={cn(
+        "relative w-full h-96 md:h-[500px] overflow-hidden rounded-2xl",
+        className
+      )}
+    >
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -50,8 +59,8 @@ export function ImageSlider({ images, interval = 5000, className }: ImageSliderP
             onClick={() => setCurrentIndex(index)}
             className={cn(
               "w-2 h-2 rounded-full transition-all",
-              currentIndex === index 
-                ? "bg-amber-500 w-8" 
+              currentIndex === index
+                ? "accent-bg w-8"
                 : "bg-white/30 hover:bg-white/50"
             )}
           />

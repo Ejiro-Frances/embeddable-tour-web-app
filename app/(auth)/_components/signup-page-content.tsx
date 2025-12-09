@@ -1,66 +1,64 @@
+"use client";
 
-'use client'
-
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { signUp } from '@/lib/supabase/auth'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Alert, AlertDescription } from '@/components/ui/alert'
-import { EyeIcon, EyeOffIcon, Loader2 } from 'lucide-react'
-import { AuthCard } from './auth-card'
-import { FocusPointerWrapper } from '@/components/ui/focus-pointer-wrapper'
-
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { signUp } from "@/lib/supabase/auth";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { EyeIcon, EyeOffIcon, Loader2 } from "lucide-react";
+import { AuthCard } from "./auth-card";
+import { FocusPointerWrapper } from "@/components/ui/focus-pointer-wrapper";
 
 export default function SignupPageContent() {
-  const router = useRouter()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  const [success, setSuccess] = useState(false)
-  const [showPassword, setShowPassword] = useState(false)
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError(null)
+    e.preventDefault();
+    setError(null);
 
     // Validation
     if (password !== confirmPassword) {
-      setError('Passwords do not match')
-      return
+      setError("Passwords do not match");
+      return;
     }
 
     if (password.length < 6) {
-      setError('Password must be at least 6 characters')
-      return
+      setError("Password must be at least 6 characters");
+      return;
     }
 
-    setLoading(true)
+    setLoading(true);
 
     try {
-      const { data, error } = await signUp(email, password)
+      const { data, error } = await signUp(email, password);
 
       if (error) {
-        setError(error.message)
-        setLoading(false)
-        return
+        setError(error.message);
+        setLoading(false);
+        return;
       }
 
       if (data.user) {
-        setSuccess(true)
+        setSuccess(true);
         setTimeout(() => {
-          router.push('/login')
-        }, 2000)
+          router.push("/login");
+        }, 2000);
       }
     } catch (err) {
-      setError('An unexpected error occurred. Please try again.')
-      setLoading(false)
+      setError("An unexpected error occurred. Please try again.");
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <AuthCard
@@ -109,7 +107,7 @@ export default function SignupPageContent() {
           <FocusPointerWrapper>
             <Input
               id="password"
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -117,7 +115,8 @@ export default function SignupPageContent() {
               disabled={loading || success}
               className="h-11"
             />
-            <button type="button"
+            <button
+              type="button"
               className="absolute right-2 top-1/2 -translate-y-1/2"
               onClick={() => setShowPassword(!showPassword)}
               aria-label={showPassword ? "Hide password" : "Show password"}
@@ -136,7 +135,7 @@ export default function SignupPageContent() {
           <FocusPointerWrapper>
             <Input
               id="confirm-password"
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               placeholder="••••••••"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
@@ -149,7 +148,7 @@ export default function SignupPageContent() {
 
         <Button
           type="submit"
-          className="w-full h-11 bg-amber-400 hover:bg-amber-500 text-black font-medium"
+          className="w-full h-11 bg-amber-400 hover:accent-bg text-black font-medium"
           disabled={loading || success}
         >
           {loading ? (
@@ -158,16 +157,14 @@ export default function SignupPageContent() {
               Creating account...
             </>
           ) : (
-            'Submit'
+            "Submit"
           )}
         </Button>
       </form>
 
       {/* Footer */}
       <div className="text-center text-sm">
-        <span className="text-muted-foreground">
-          Already have an account?{' '}
-        </span>
+        <span className="text-muted-foreground">Already have an account? </span>
         <Link
           href="/login"
           className="font-medium text-amber-600 hover:text-amber-700"
@@ -176,5 +173,5 @@ export default function SignupPageContent() {
         </Link>
       </div>
     </AuthCard>
-  )
+  );
 }

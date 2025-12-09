@@ -11,14 +11,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
-import { 
-  Send, 
-  CheckCircle, 
+import {
+  Send,
+  CheckCircle,
   AlertCircle,
   Mail,
   User,
   Building,
-  Phone
+  Phone,
 } from "lucide-react";
 
 const formSchema = z.object({
@@ -48,7 +48,8 @@ const categories: Array<{
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState<CategoryType>("sales");
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryType>("sales");
 
   const {
     register,
@@ -71,14 +72,14 @@ export function ContactForm() {
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    
+
     // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     console.log("Form submitted:", data);
     setIsSuccess(true);
     setIsSubmitting(false);
-    
+
     // Reset form after 3 seconds
     setTimeout(() => {
       reset();
@@ -90,7 +91,7 @@ export function ContactForm() {
   return (
     <section className="py-24 relative">
       <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -99,9 +100,9 @@ export function ContactForm() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <Badge 
-            variant="outline" 
-            className="mb-4 px-4 py-1.5 text-sm font-medium border-amber-500/20 bg-amber-500/10 text-amber-500"
+          <Badge
+            variant="outline"
+            className="mb-4 px-4 py-1.5 text-sm font-medium border-amber-300/20 accent-bg/10 accent-text"
           >
             <Send className="h-3 w-3 mr-2" />
             Get in Touch
@@ -110,7 +111,8 @@ export function ContactForm() {
             Send Us a <span className="gradient-text">Message</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Fill out the form below and we&apos;ll get back to you within 2 hours
+            Fill out the form below and we&apos;ll get back to you within 2
+            hours
           </p>
         </motion.div>
 
@@ -123,17 +125,20 @@ export function ContactForm() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12"
                 >
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 bg-amber-500/10">
-                    <CheckCircle className="h-10 w-10 text-amber-500" />
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 accent-bg/10">
+                    <CheckCircle className="h-10 w-10 accent-text" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-white">Message Sent Successfully!</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-white">
+                    Message Sent Successfully!
+                  </h3>
                   <p className="text-gray-400 mb-6">
-                    Thank you for contacting us. We&apos;ll get back to you within 2 hours.
+                    Thank you for contacting us. We&apos;ll get back to you
+                    within 2 hours.
                   </p>
                   <Button
                     onClick={() => setIsSuccess(false)}
                     variant="outline"
-                    className="border-amber-500/30 text-amber-500 hover:bg-amber-500/10"
+                    className="border-amber-300/30 accent-text hover:accent-bg/10"
                   >
                     Send Another Message
                   </Button>
@@ -174,7 +179,10 @@ export function ContactForm() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-4">
                       <div>
-                        <Label htmlFor="name" className="flex items-center gap-2 mb-2 text-gray-300">
+                        <Label
+                          htmlFor="name"
+                          className="flex items-center gap-2 mb-2 text-gray-300"
+                        >
                           <User className="h-4 w-4" />
                           Full Name *
                         </Label>
@@ -194,12 +202,17 @@ export function ContactForm() {
                           )}
                         </div>
                         {errors.name && (
-                          <p className="text-sm text-red-400 mt-2">{errors.name.message}</p>
+                          <p className="text-sm text-red-400 mt-2">
+                            {errors.name.message}
+                          </p>
                         )}
                       </div>
 
                       <div>
-                        <Label htmlFor="company" className="flex items-center gap-2 mb-2 text-gray-300">
+                        <Label
+                          htmlFor="company"
+                          className="flex items-center gap-2 mb-2 text-gray-300"
+                        >
                           <Building className="h-4 w-4" />
                           Company
                         </Label>
@@ -214,7 +227,10 @@ export function ContactForm() {
 
                     <div className="space-y-4">
                       <div>
-                        <Label htmlFor="email" className="flex items-center gap-2 mb-2 text-gray-300">
+                        <Label
+                          htmlFor="email"
+                          className="flex items-center gap-2 mb-2 text-gray-300"
+                        >
                           <Mail className="h-4 w-4" />
                           Email Address *
                         </Label>
@@ -235,12 +251,17 @@ export function ContactForm() {
                           )}
                         </div>
                         {errors.email && (
-                          <p className="text-sm text-red-400 mt-2">{errors.email.message}</p>
+                          <p className="text-sm text-red-400 mt-2">
+                            {errors.email.message}
+                          </p>
                         )}
                       </div>
 
                       <div>
-                        <Label htmlFor="phone" className="flex items-center gap-2 mb-2 text-gray-300">
+                        <Label
+                          htmlFor="phone"
+                          className="flex items-center gap-2 mb-2 text-gray-300"
+                        >
                           <Phone className="h-4 w-4" />
                           Phone Number
                         </Label>
@@ -256,7 +277,10 @@ export function ContactForm() {
 
                   {/* Subject */}
                   <div>
-                    <Label htmlFor="subject" className="mb-2 block text-gray-300">
+                    <Label
+                      htmlFor="subject"
+                      className="mb-2 block text-gray-300"
+                    >
                       Subject *
                     </Label>
                     <div className="relative">
@@ -264,7 +288,9 @@ export function ContactForm() {
                         id="subject"
                         placeholder="How can we help you?"
                         {...register("subject")}
-                        className={`h-12 bg-white/5 border-white/10 ${errors.subject ? "border-red-500/50" : ""}`}
+                        className={`h-12 bg-white/5 border-white/10 ${
+                          errors.subject ? "border-red-500/50" : ""
+                        }`}
                       />
                       {errors.subject && (
                         <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
@@ -273,13 +299,18 @@ export function ContactForm() {
                       )}
                     </div>
                     {errors.subject && (
-                      <p className="text-sm text-red-400 mt-2">{errors.subject.message}</p>
+                      <p className="text-sm text-red-400 mt-2">
+                        {errors.subject.message}
+                      </p>
                     )}
                   </div>
 
                   {/* Message */}
                   <div>
-                    <Label htmlFor="message" className="mb-2 block text-gray-300">
+                    <Label
+                      htmlFor="message"
+                      className="mb-2 block text-gray-300"
+                    >
                       Message *
                     </Label>
                     <div className="relative">
@@ -288,7 +319,9 @@ export function ContactForm() {
                         placeholder="Tell us about your project or question..."
                         rows={5}
                         {...register("message")}
-                        className={`resize-none bg-white/5 border-white/10 ${errors.message ? "border-red-500/50" : ""}`}
+                        className={`resize-none bg-white/5 border-white/10 ${
+                          errors.message ? "border-red-500/50" : ""
+                        }`}
                       />
                       {errors.message && (
                         <div className="absolute right-3 top-3">
@@ -297,7 +330,9 @@ export function ContactForm() {
                       )}
                     </div>
                     {errors.message && (
-                      <p className="text-sm text-red-400 mt-2">{errors.message.message}</p>
+                      <p className="text-sm text-red-400 mt-2">
+                        {errors.message.message}
+                      </p>
                     )}
                   </div>
 
@@ -306,7 +341,7 @@ export function ContactForm() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full h-14 text-lg font-medium group relative overflow-hidden bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black"
+                      className="w-full h-14 text-lg font-medium group relative overflow-hidden bg-gradient-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black"
                     >
                       {isSubmitting ? (
                         <>
@@ -319,11 +354,11 @@ export function ContactForm() {
                           <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                         </>
                       )}
-                      
+
                       {/* Shimmer effect */}
                       <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:animate-shimmer" />
                     </Button>
-                    
+
                     <p className="text-center text-sm text-gray-500 mt-4">
                       By submitting, you agree to our Privacy Policy
                     </p>

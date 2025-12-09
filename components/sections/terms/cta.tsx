@@ -9,39 +9,17 @@ export function TermsCTA() {
     <section className="py-24 relative">
       <div className="absolute inset-0">
         {/* Animated grid */}
-        <div className="absolute inset-0 opacity-5"
+        <div
+          className="absolute inset-0 opacity-5"
           style={{
-            backgroundImage: `linear-gradient(90deg, oklch(0.8 0.2 70) 1px, transparent 1px),
-                             linear-gradient(0deg, oklch(0.8 0.2 70) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
+            backgroundImage: `linear-gradient(90deg, #eabe7b 1px, transparent 1px),
+                             linear-gradient(0deg, #eabe7b 1px, transparent 1px)`,
+            backgroundSize: "50px 50px",
           }}
         />
-        {/* Floating elements */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            style={{
-              width: `${Math.random() * 80 + 20}px`,
-              height: `${Math.random() * 80 + 20}px`,
-              background: `linear-gradient(135deg, oklch(0.8 0.2 70 / 0.1), transparent)`,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              borderRadius: '20%',
-            }}
-            animate={{
-              rotate: [0, 180, 360],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+        
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -59,37 +37,50 @@ export function TermsCTA() {
             style={{ borderColor: "oklch(0.8 0.2 70 / 0.2)" }}
           >
             <div className="flex items-center justify-center gap-3 mb-6">
-              <Scale className="h-8 w-8" style={{ color: "oklch(0.8 0.2 70)" }} />
+              <Scale className="h-8 w-8" style={{ color: "#eabe7b" }} />
               <h2 className="text-3xl font-bold">Need Legal Assistance?</h2>
             </div>
-            
+
             <p className="text-lg opacity-80 mb-8">
-              Our legal team is available to answer questions about our Terms of Service and other legal matters.
+              Our legal team is available to answer questions about our Terms of
+              Service and other legal matters.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              <div className="p-4 rounded-xl text-center"
+              <div
+                className="p-4 rounded-xl text-center"
                 style={{
                   background: "oklch(0.1 0 0)",
-                  border: "1px solid oklch(1 0 0 / 0.1)"
+                  border: "1px solid oklch(1 0 0 / 0.1)",
                 }}
               >
-                <Mail className="h-6 w-6 mx-auto mb-3" style={{ color: "oklch(0.8 0.2 70)" }} />
+                <Mail
+                  className="h-6 w-6 mx-auto mb-3"
+                  style={{ color: "#eabe7b" }}
+                />
                 <h3 className="font-semibold mb-2">Legal Inquiries</h3>
                 <p className="text-sm opacity-70">legal@tourify.com</p>
-                <p className="text-xs opacity-50 mt-2">For formal legal matters</p>
+                <p className="text-xs opacity-50 mt-2">
+                  For formal legal matters
+                </p>
               </div>
 
-              <div className="p-4 rounded-xl text-center"
+              <div
+                className="p-4 rounded-xl text-center"
                 style={{
                   background: "oklch(0.1 0 0)",
-                  border: "1px solid oklch(1 0 0 / 0.1)"
+                  border: "1px solid oklch(1 0 0 / 0.1)",
                 }}
               >
-                <HelpCircle className="h-6 w-6 mx-auto mb-3" style={{ color: "oklch(0.8 0.2 70)" }} />
+                <HelpCircle
+                  className="h-6 w-6 mx-auto mb-3"
+                  style={{ color: "#eabe7b" }}
+                />
                 <h3 className="font-semibold mb-2">General Questions</h3>
                 <p className="text-sm opacity-70">support@tourify.com</p>
-                <p className="text-xs opacity-50 mt-2">For service-related questions</p>
+                <p className="text-xs opacity-50 mt-2">
+                  For service-related questions
+                </p>
               </div>
             </div>
 
@@ -97,19 +88,20 @@ export function TermsCTA() {
               <Button
                 className="gap-2"
                 style={{
-                  background: "linear-gradient(to right, oklch(0.8 0.2 70), oklch(0.85 0.18 75))",
+                  background:
+                    "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
                 }}
               >
                 <Mail className="h-4 w-4" />
                 Contact Legal Team
               </Button>
-              
+
               <Button
                 variant="outline"
-                className="gap-2"
+                className="gap-2 hover:bg-accent/20"
                 style={{
                   borderColor: "oklch(0.8 0.2 70 / 0.3)",
-                  color: "oklch(0.8 0.2 70)",
+                  color: "#eabe7b",
                 }}
               >
                 <FileText className="h-4 w-4" />
@@ -124,7 +116,8 @@ export function TermsCTA() {
               className="mt-8 pt-6 border-t border-white/10"
             >
               <p className="text-sm opacity-60">
-                For formal legal notices, please send correspondence to our registered office address listed in Section 12.
+                For formal legal notices, please send correspondence to our
+                registered office address listed in Section 12.
               </p>
             </motion.div>
           </motion.div>

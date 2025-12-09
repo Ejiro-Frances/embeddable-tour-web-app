@@ -17,7 +17,7 @@ dQw4w9WgXcQ"
             title="Tourify Demo"
             width="800"
             height="450"
-            className="rounded-2xl shadow-lg border border-amber-500/20"
+            className="rounded-2xl shadow-lg border border-amber-300/20"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>

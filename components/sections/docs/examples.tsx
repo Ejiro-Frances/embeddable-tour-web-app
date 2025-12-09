@@ -5,15 +5,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { 
-  Copy, 
-  Check, 
-  ExternalLink, 
+import {
+  Copy,
+  Check,
+  ExternalLink,
   Play,
   Code2,
   Smartphone,
   Globe,
-  Zap
+  Zap,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -23,7 +23,7 @@ const examples = [
     title: "E-commerce Onboarding",
     description: "Guide users through your store with product discovery tours",
     icon: <Globe className="h-5 w-5" />,
-    color: "oklch(0.8 0.2 70)",
+    color: "#eabe7b",
     code: `// E-commerce product tour
 const tour = new Tourify({
   steps: [
@@ -61,7 +61,7 @@ const tour = new Tourify({
     backgroundColor: '#1a1a1a'
   }
 });`,
-    image: "/examples/ecommerce.png"
+    image: "/examples/ecommerce.png",
   },
   {
     id: "saas",
@@ -107,7 +107,7 @@ const saasTour = {
   ],
   onComplete: () => trackTourCompletion('saas-onboarding')
 };`,
-    image: "/examples/saas.png"
+    image: "/examples/saas.png",
   },
   {
     id: "mobile",
@@ -150,8 +150,8 @@ const mobileTour = {
     borderRadius: '16px'
   }
 };`,
-    image: "/examples/mobile.png"
-  }
+    image: "/examples/mobile.png",
+  },
 ];
 
 const frameworks = [
@@ -170,7 +170,7 @@ function App() {
       <button onClick={start}>Start Tour</button>
     </TourProvider>
   );
-}`
+}`,
   },
   {
     name: "Vue",
@@ -186,7 +186,7 @@ function App() {
 <script setup>
 import { useTour } from '@tourify/vue';
 const { startTour } = useTour();
-</script>`
+</script>`,
   },
   {
     name: "Angular",
@@ -205,12 +205,12 @@ export class AppComponent {
   startTour() {
     this.tourService.start(steps);
   }
-}`
+}`,
   },
   {
     name: "Vanilla JS",
     icon: "⚡",
-    color: "oklch(0.8 0.2 70)",
+    color: "#eabe7b",
     description: "Plain JavaScript for any framework",
     code: `// Simple vanilla JS integration
 const tour = new Tourify({
@@ -221,8 +221,8 @@ const tour = new Tourify({
 });
 
 // Start tour automatically
-tour.start();`
-  }
+tour.start();`,
+  },
 ];
 
 export function ExamplesSection() {
@@ -246,13 +246,13 @@ export function ExamplesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <Badge 
-            variant="outline" 
+          <Badge
+            variant="outline"
             className="mb-4 px-4 py-1.5 text-sm font-medium"
             style={{
               background: "oklch(0.8 0.2 70 / 0.1)",
               borderColor: "oklch(0.8 0.2 70 / 0.2)",
-              color: "oklch(0.8 0.2 70)"
+              color: "#eabe7b",
             }}
           >
             <Play className="h-3 w-3 mr-2" />
@@ -284,7 +284,7 @@ export function ExamplesSection() {
                     <div className="p-6 border-b border-white/10">
                       <div className="flex items-start justify-between">
                         <div className="flex items-center gap-3">
-                          <div 
+                          <div
                             className="p-2 rounded-lg"
                             style={{ background: `${example.color}20` }}
                           >
@@ -293,11 +293,15 @@ export function ExamplesSection() {
                             </div>
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold">{example.title}</h3>
-                            <p className="text-sm opacity-60">{example.description}</p>
+                            <h3 className="text-lg font-semibold">
+                              {example.title}
+                            </h3>
+                            <p className="text-sm opacity-60">
+                              {example.description}
+                            </p>
                           </div>
                         </div>
-                        <Badge 
+                        <Badge
                           variant="secondary"
                           className="text-xs"
                           style={{ background: `${example.color}15` }}
@@ -314,8 +318,10 @@ export function ExamplesSection() {
                           <Button
                             size="sm"
                             variant="ghost"
-                            className="h-8 w-8 p-0 opacity-70 hover:opacity-100"
-                            onClick={() => copyToClipboard(example.code, example.id)}
+                            className="h-8 w-8 p-0 opacity-70 hover:bg-accent/20"
+                            onClick={() =>
+                              copyToClipboard(example.code, example.id)
+                            }
                             style={{ color: example.color }}
                           >
                             {copiedExample === example.id ? (
@@ -325,13 +331,14 @@ export function ExamplesSection() {
                             )}
                           </Button>
                         </div>
-                        
+
                         <div className="relative">
-                          <div className="absolute -inset-0.5 bg-linear-to-r from-amber-500/20 to-amber-600/20 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-300" />
-                          <pre className="relative p-4 rounded-lg overflow-x-auto text-sm leading-relaxed"
+                          <div className="absolute -inset-0.5 bg-linear-to-r from-amber-300/20 to-amber-400/20 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-300" />
+                          <pre
+                            className="relative p-4 rounded-lg overflow-x-auto text-sm leading-relaxed"
                             style={{
                               background: "oklch(0.08 0 0)",
-                              color: "oklch(0.9 0.05 100)"
+                              color: "oklch(0.9 0.05 100)",
                             }}
                           >
                             <code>{example.code}</code>
@@ -344,10 +351,10 @@ export function ExamplesSection() {
                     <div className="p-6 pt-0">
                       <Button
                         variant="outline"
-                        className="w-full group/btn"
+                        className="w-full group/btn hover:bg-accent/20"
                         style={{
                           borderColor: `${example.color}40`,
-                          color: example.color
+                          color: example.color,
                         }}
                       >
                         <span>View Live Demo</span>
@@ -376,10 +383,15 @@ export function ExamplesSection() {
             </p>
           </div>
 
-          <Tabs value={frameworks[activeFramework].name.toLowerCase()} onValueChange={(v) => {
-            const index = frameworks.findIndex(f => f.name.toLowerCase() === v);
-            setActiveFramework(index);
-          }}>
+          <Tabs
+            value={frameworks[activeFramework].name.toLowerCase()}
+            onValueChange={(v) => {
+              const index = frameworks.findIndex(
+                (f) => f.name.toLowerCase() === v
+              );
+              setActiveFramework(index);
+            }}
+          >
             <TabsList className="glass-effect mb-8 justify-start overflow-x-auto">
               {frameworks.map((framework, index) => (
                 <TabsTrigger
@@ -402,23 +414,32 @@ export function ExamplesSection() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.2 }}
               >
-                <TabsContent value={frameworks[activeFramework].name.toLowerCase()} className="mt-0">
+                <TabsContent
+                  value={frameworks[activeFramework].name.toLowerCase()}
+                  className="mt-0"
+                >
                   <Card className="border-0 bg-linear-to-br from-white/5 to-white/2 backdrop-blur-sm">
                     <CardContent className="p-8">
                       <div className="flex items-start justify-between mb-6">
                         <div>
                           <div className="flex items-center gap-3 mb-2">
-                            <span className="text-2xl">{frameworks[activeFramework].icon}</span>
-                            <h4 className="text-2xl font-bold">{frameworks[activeFramework].name}</h4>
+                            <span className="text-2xl">
+                              {frameworks[activeFramework].icon}
+                            </span>
+                            <h4 className="text-2xl font-bold">
+                              {frameworks[activeFramework].name}
+                            </h4>
                           </div>
-                          <p className="opacity-80">{frameworks[activeFramework].description}</p>
+                          <p className="opacity-80">
+                            {frameworks[activeFramework].description}
+                          </p>
                         </div>
-                        <Badge 
+                        <Badge
                           variant="secondary"
                           className="text-sm"
-                          style={{ 
+                          style={{
                             background: `${frameworks[activeFramework].color}15`,
-                            color: frameworks[activeFramework].color
+                            color: frameworks[activeFramework].color,
                           }}
                         >
                           Official Package
@@ -427,38 +448,68 @@ export function ExamplesSection() {
 
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div className="relative">
-                          <div className="absolute -inset-0.5 bg-linear-to-r from-amber-500/20 to-amber-600/20 rounded-lg blur opacity-50" />
-                          <pre className="relative p-6 rounded-lg overflow-x-auto text-sm"
+                          <div className="absolute -inset-0.5 bg-linear-to-r from-amber-300/20 to-amber-400/20 rounded-lg blur opacity-50" />
+                          <pre
+                            className="relative p-6 rounded-lg overflow-x-auto text-sm"
                             style={{
                               background: "oklch(0.08 0 0)",
-                              color: "oklch(0.9 0.05 100)"
+                              color: "oklch(0.9 0.05 100)",
                             }}
                           >
                             <code>{frameworks[activeFramework].code}</code>
                           </pre>
                         </div>
-                        
+
                         <div className="space-y-4">
                           <div className="p-4 rounded-lg border border-white/10">
                             <div className="flex items-center gap-2 mb-2">
-                              <Zap className="h-4 w-4" style={{ color: frameworks[activeFramework].color }} />
+                              <Zap
+                                className="h-4 w-4"
+                                style={{
+                                  color: frameworks[activeFramework].color,
+                                }}
+                              />
                               <span className="font-semibold">Features</span>
                             </div>
                             <ul className="space-y-2 text-sm opacity-80">
                               <li className="flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full" style={{ background: frameworks[activeFramework].color }} />
+                                <div
+                                  className="w-1.5 h-1.5 rounded-full"
+                                  style={{
+                                    background:
+                                      frameworks[activeFramework].color,
+                                  }}
+                                />
                                 TypeScript support
                               </li>
                               <li className="flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full" style={{ background: frameworks[activeFramework].color }} />
+                                <div
+                                  className="w-1.5 h-1.5 rounded-full"
+                                  style={{
+                                    background:
+                                      frameworks[activeFramework].color,
+                                  }}
+                                />
                                 Tree-shakeable
                               </li>
                               <li className="flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full" style={{ background: frameworks[activeFramework].color }} />
+                                <div
+                                  className="w-1.5 h-1.5 rounded-full"
+                                  style={{
+                                    background:
+                                      frameworks[activeFramework].color,
+                                  }}
+                                />
                                 SSR compatible
                               </li>
                               <li className="flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full" style={{ background: frameworks[activeFramework].color }} />
+                                <div
+                                  className="w-1.5 h-1.5 rounded-full"
+                                  style={{
+                                    background:
+                                      frameworks[activeFramework].color,
+                                  }}
+                                />
                                 Zero dependencies
                               </li>
                             </ul>
@@ -466,16 +517,25 @@ export function ExamplesSection() {
 
                           <div className="p-4 rounded-lg border border-white/10">
                             <div className="flex items-center gap-2 mb-2">
-                              <Code2 className="h-4 w-4" style={{ color: frameworks[activeFramework].color }} />
-                              <span className="font-semibold">Installation</span>
+                              <Code2
+                                className="h-4 w-4"
+                                style={{
+                                  color: frameworks[activeFramework].color,
+                                }}
+                              />
+                              <span className="font-semibold">
+                                Installation
+                              </span>
                             </div>
-                            <code className="block p-3 rounded text-sm"
+                            <code
+                              className="block p-3 rounded text-sm"
                               style={{
                                 background: "oklch(0.08 0 0)",
-                                color: frameworks[activeFramework].color
+                                color: frameworks[activeFramework].color,
                               }}
                             >
-                              npm install @tourify/{frameworks[activeFramework].name.toLowerCase()}
+                              npm install @tourify/
+                              {frameworks[activeFramework].name.toLowerCase()}
                             </code>
                           </div>
                         </div>

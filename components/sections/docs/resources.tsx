@@ -3,44 +3,44 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { 
-  BookOpen, 
+import {
+  BookOpen,
   FileText,
   Download,
   Github,
   Globe,
   Users,
-  TrendingUp
+  TrendingUp,
 } from "lucide-react";
 
 const resources = [
   {
     category: "Guides",
     icon: <BookOpen className="h-5 w-5" />,
-    color: "oklch(0.8 0.2 70)",
+    color: "#eabe7b",
     items: [
       {
         title: "Getting Started Guide",
         description: "Complete step-by-step guide to implement Tourify",
         link: "#",
         type: "Guide",
-        length: "15 min read"
+        length: "15 min read",
       },
       {
         title: "Best Practices for Onboarding",
         description: "Learn how top companies onboard users effectively",
         link: "#",
         type: "Article",
-        length: "8 min read"
+        length: "8 min read",
       },
       {
         title: "A/B Testing Your Tours",
         description: "How to test and optimize tour performance",
         link: "#",
         type: "Tutorial",
-        length: "12 min read"
-      }
-    ]
+        length: "12 min read",
+      },
+    ],
   },
   {
     category: "Templates",
@@ -52,23 +52,23 @@ const resources = [
         description: "Complete template for onboarding SaaS users",
         link: "#",
         type: "Template",
-        downloads: "2.4k"
+        downloads: "2.4k",
       },
       {
         title: "E-commerce Store Tour",
         description: "Guide customers through your online store",
         link: "#",
         type: "Template",
-        downloads: "1.8k"
+        downloads: "1.8k",
       },
       {
         title: "Mobile App Walkthrough",
         description: "Optimized for mobile web applications",
         link: "#",
         type: "Template",
-        downloads: "1.2k"
-      }
-    ]
+        downloads: "1.2k",
+      },
+    ],
   },
   {
     category: "Community",
@@ -80,23 +80,23 @@ const resources = [
         description: "Ask questions and share experiences",
         link: "#",
         type: "Community",
-        members: "5.2k"
+        members: "5.2k",
       },
       {
         title: "Case Studies",
         description: "Real success stories from our customers",
         link: "#",
         type: "Case Study",
-        companies: "24"
+        companies: "24",
       },
       {
         title: "Monthly Webinars",
         description: "Live sessions with onboarding experts",
         link: "#",
         type: "Event",
-        upcoming: "3"
-      }
-    ]
+        upcoming: "3",
+      },
+    ],
   },
   {
     category: "Tools",
@@ -108,24 +108,24 @@ const resources = [
         description: "Design system and components for Figma",
         link: "#",
         type: "Design Kit",
-        version: "2.0"
+        version: "2.0",
       },
       {
         title: "CLI Tool",
         description: "Command line interface for developers",
         link: "#",
         type: "Tool",
-        stars: "⭐ 324"
+        stars: "⭐ 324",
       },
       {
         title: "Chrome Extension",
         description: "Quick tour builder for any website",
         link: "#",
         type: "Extension",
-        users: "1.5k"
-      }
-    ]
-  }
+        users: "1.5k",
+      },
+    ],
+  },
 ];
 
 export function ResourcesSection() {
@@ -139,23 +139,25 @@ export function ResourcesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <Badge 
-            variant="outline" 
+          <Badge
+            variant="outline"
             className="mb-4 px-4 py-1.5 text-sm font-medium"
             style={{
               background: "oklch(0.8 0.2 70 / 0.1)",
               borderColor: "oklch(0.8 0.2 70 / 0.2)",
-              color: "oklch(0.8 0.2 70)"
+              color: "#eabe7b",
             }}
           >
             <Globe className="h-3 w-3 mr-2" />
             Resources & Tools
           </Badge>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Everything You Need to <span className="gradient-text">Succeed</span>
+            Everything You Need to{" "}
+            <span className="gradient-text">Succeed</span>
           </h2>
           <p className="text-xl opacity-80 max-w-3xl mx-auto">
-            Templates, guides, and tools to help you build amazing onboarding experiences
+            Templates, guides, and tools to help you build amazing onboarding
+            experiences
           </p>
         </motion.div>
 
@@ -174,7 +176,7 @@ export function ResourcesSection() {
                     {/* Category Header */}
                     <div className="p-6 border-b border-white/10">
                       <div className="flex items-center gap-3">
-                        <div 
+                        <div
                           className="p-2 rounded-lg"
                           style={{ background: `${category.color}20` }}
                         >
@@ -183,7 +185,9 @@ export function ResourcesSection() {
                           </div>
                         </div>
                         <div>
-                          <h3 className="text-xl font-semibold">{category.category}</h3>
+                          <h3 className="text-xl font-semibold">
+                            {category.category}
+                          </h3>
                           <p className="text-sm opacity-60">
                             {category.items.length} resources available
                           </p>
@@ -199,7 +203,10 @@ export function ResourcesSection() {
                           href={item.link}
                           initial={{ opacity: 0, x: -20 }}
                           whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.3, delay: itemIndex * 0.05 }}
+                          transition={{
+                            duration: 0.3,
+                            delay: itemIndex * 0.05,
+                          }}
                           viewport={{ once: true }}
                           whileHover={{ x: 5 }}
                           className="block p-4 rounded-lg hover:bg-white/5 transition-colors group"
@@ -210,40 +217,42 @@ export function ResourcesSection() {
                                 <h4 className="font-semibold group-hover:text-amber-400 transition-colors">
                                   {item.title}
                                 </h4>
-                                <Badge 
-                                  variant="secondary" 
+                                <Badge
+                                  variant="secondary"
                                   className="text-xs font-normal"
-                                  style={{ 
+                                  style={{
                                     background: `${category.color}15`,
-                                    color: category.color
+                                    color: category.color,
                                   }}
                                 >
                                   {item.type}
                                 </Badge>
                               </div>
-                              <p className="text-sm opacity-70 mb-3">{item.description}</p>
-                              
+                              <p className="text-sm opacity-70 mb-3">
+                                {item.description}
+                              </p>
+
                               {/* Stats */}
                               <div className="flex items-center gap-4 text-xs opacity-60">
-                                {'length' in item && (
+                                {"length" in item && (
                                   <span className="flex items-center gap-1">
                                     <BookOpen className="h-3 w-3" />
                                     {item.length}
                                   </span>
                                 )}
-                                {'downloads' in item && (
+                                {"downloads" in item && (
                                   <span className="flex items-center gap-1">
                                     <Download className="h-3 w-3" />
                                     {item.downloads} downloads
                                   </span>
                                 )}
-                                {'members' in item && (
+                                {"members" in item && (
                                   <span className="flex items-center gap-1">
                                     <Users className="h-3 w-3" />
                                     {item.members} members
                                   </span>
                                 )}
-                                {'stars' in item && (
+                                {"stars" in item && (
                                   <span className="flex items-center gap-1">
                                     <Github className="h-3 w-3" />
                                     {item.stars}
@@ -251,16 +260,26 @@ export function ResourcesSection() {
                                 )}
                               </div>
                             </div>
-                            
+
                             {/* Arrow indicator */}
                             <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                              <div className="w-6 h-6 rounded-full flex items-center justify-center"
+                              <div
+                                className="w-6 h-6 rounded-full flex items-center justify-center"
                                 style={{ background: `${category.color}20` }}
                               >
-                                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                <svg
+                                  className="w-3 h-3"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
                                   style={{ color: category.color }}
                                 >
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                                  />
                                 </svg>
                               </div>
                             </div>
@@ -282,30 +301,37 @@ export function ResourcesSection() {
             viewport={{ once: true }}
             className="mt-16"
           >
-            <div className="glass-effect p-8 rounded-2xl text-center"
+            <div
+              className="glass-effect p-8 rounded-2xl text-center"
               style={{ borderColor: "oklch(0.8 0.2 70 / 0.2)" }}
             >
               <div className="flex items-center justify-center gap-3 mb-4">
-                <Github className="h-8 w-8" style={{ color: "oklch(0.8 0.2 70)" }} />
-                <h3 className="text-2xl font-bold">Open Source Contributions</h3>
+                <Github className="h-8 w-8" style={{ color: "#eabe7b" }} />
+                <h3 className="text-2xl font-bold">
+                  Open Source Contributions
+                </h3>
               </div>
               <p className="opacity-80 mb-6 max-w-2xl mx-auto">
-                Tourify is built with open source technologies. Contribute to our projects or use our open source tools.
+                Tourify is built with open source technologies. Contribute to
+                our projects or use our open source tools.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-all hover:scale-105"
+                <button
+                  className="px-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-all hover:scale-105"
                   style={{
-                    background: "linear-gradient(to right, oklch(0.8 0.2 70), oklch(0.85 0.18 75))",
-                    color: "oklch(0 0 0)"
+                    background:
+                      "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
+                    color: "oklch(0 0 0)",
                   }}
                 >
                   <Github className="h-5 w-5" />
                   View GitHub
                 </button>
-                <button className="px-6 py-3 rounded-lg font-medium border flex items-center justify-center gap-2 transition-all hover:bg-white/5"
+                <button
+                  className="px-6 py-3 rounded-lg font-medium border flex items-center justify-center gap-2 transition-all hover:bg-white/5"
                   style={{
                     borderColor: "oklch(0.8 0.2 70 / 0.3)",
-                    color: "oklch(0.8 0.2 70)"
+                    color: "#eabe7b",
                   }}
                 >
                   <TrendingUp className="h-5 w-5" />

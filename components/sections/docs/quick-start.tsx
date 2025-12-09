@@ -4,6 +4,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Copy, Check, Terminal, Package, Settings, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const steps = [
   {
@@ -83,14 +85,15 @@ export function QuickStartSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-4"
+          <div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-4"
             style={{
               background: "oklch(0.8 0.2 70 / 0.1)",
-              borderColor: "oklch(0.8 0.2 70 / 0.2)"
+              borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >
-            <Terminal className="h-4 w-4" style={{ color: "oklch(0.8 0.2 70)" }} />
-            <span className="text-sm font-medium" style={{ color: "oklch(0.8 0.2 70)" }}>
+            <Terminal className="h-4 w-4" style={{ color: "#eabe7b" }} />
+            <span className="text-sm font-medium" style={{ color: "#eabe7b" }}>
               Quick Start
             </span>
           </div>
@@ -114,9 +117,10 @@ export function QuickStartSection() {
                 className="relative"
               >
                 {/* Step number */}
-                <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
+                <div
+                  className="absolute -top-4 -left-4 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
                   style={{
-                    background: "oklch(0.8 0.2 70)",
+                    background: "#eabe7b",
                     color: "oklch(0 0 0)",
                   }}
                 >
@@ -125,12 +129,11 @@ export function QuickStartSection() {
 
                 <div className="glass-effect p-6 rounded-2xl h-full">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 rounded-lg"
+                    <div
+                      className="p-3 rounded-lg"
                       style={{ background: "oklch(0.8 0.2 70 / 0.1)" }}
                     >
-                      <div style={{ color: "oklch(0.8 0.2 70)" }}>
-                        {step.icon}
-                      </div>
+                      <div style={{ color: "#eabe7b" }}>{step.icon}</div>
                     </div>
                     <div>
                       <h3 className="text-xl font-bold">{step.title}</h3>
@@ -140,13 +143,13 @@ export function QuickStartSection() {
 
                   {/* Code block */}
                   <div className="relative mt-4">
-                    <div className="absolute top-3 right-3">
+                    <div className="absolute -top-4 right-3">
                       <Button
                         size="sm"
                         variant="ghost"
                         onClick={() => copyToClipboard(step.code, index)}
-                        className="opacity-70 hover:opacity-100"
-                        style={{ color: "oklch(0.8 0.2 70)" }}
+                        className="hover:bg-accent/20"
+                        style={{ color: "#eabe7b" }}
                       >
                         {copiedStep === index ? (
                           <Check className="h-4 w-4" />
@@ -155,17 +158,32 @@ export function QuickStartSection() {
                         )}
                       </Button>
                     </div>
-                    
-                    <pre className="p-4 rounded-lg overflow-auto text-sm"
+
+                    <SyntaxHighlighter
+                      language={step.language}
+                      style={vscDarkPlus}
+                      customStyle={{
+                        margin: 0,
+                        padding: "1.5rem",
+                        background: "transparent",
+                        fontSize: "0.875rem",
+                      }}
+                      showLineNumbers
+                    >
+                      {step.code}
+                    </SyntaxHighlighter>
+                    {/* <pre
+                      className="p-4 rounded-lg overflow-auto text-sm"
                       style={{
                         background: "oklch(0.05 0 0 / 0.5)",
-                        color: step.language === "bash" 
-                          ? "oklch(0.85 0.18 75)" 
-                          : "oklch(0.9 0.15 95)",
+                        color:
+                          step.language === "bash"
+                            ? "oklch(0.85 0.18 75)"
+                            : "oklch(0.9 0.15 95)",
                       }}
                     >
                       <code>{step.code}</code>
-                    </pre>
+                    </pre> */}
                   </div>
                 </div>
               </motion.div>
@@ -180,26 +198,30 @@ export function QuickStartSection() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <div className="glass-effect p-8 rounded-2xl max-w-2xl mx-auto"
+            <div
+              className="glass-effect p-8 rounded-2xl max-w-2xl mx-auto"
               style={{ borderColor: "oklch(0.8 0.2 70 / 0.2)" }}
             >
               <h3 className="text-2xl font-bold mb-4">Need Help?</h3>
               <p className="opacity-80 mb-6">
-                Our team is here to help you get started. Join our community or contact support.
+                Our team is here to help you get started. Join our community or
+                contact support.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   style={{
-                    background: "linear-gradient(to right, oklch(0.8 0.2 70), oklch(0.85 0.18 75))",
+                    background:
+                      "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
                   }}
                 >
                   Join Discord Community
                 </Button>
                 <Button
                   variant="outline"
+                  className="hover:bg-accent/10"
                   style={{
                     borderColor: "oklch(0.8 0.2 70 / 0.3)",
-                    color: "oklch(0.8 0.2 70)",
+                    color: "#eabe7b",
                   }}
                 >
                   Contact Support

@@ -19,28 +19,33 @@ interface StandardHeroProps {
   className?: string;
 }
 
-export function StandardHero({ 
-  title, 
-  subtitle, 
-  badgeText, 
-  badgeIcon, 
+export function StandardHero({
+  title,
+  subtitle,
+  badgeText,
+  badgeIcon,
   highlights,
   additionalInfo,
-  className 
+  className,
 }: StandardHeroProps) {
   const colors = [
-    "text-amber-500",
+    "accent-text",
     "text-amber-400",
     "text-amber-300",
     "text-amber-600",
   ];
 
   return (
-    <section className={cn("relative min-h-[60vh] flex items-center justify-center overflow-hidden py-20", className)}>
+    <section
+      className={cn(
+        "relative min-h-[60vh] flex items-center justify-center overflow-hidden py-20",
+        className
+      )}
+    >
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black" />
+      <div className="absolute bg-gradient-to-br from-black via-gray-900 to-black" />
       <ParticleBackground count={15} />
-      
+
       {/* Animated gradient lines */}
       <div className="absolute inset-0">
         {[...Array(3)].map((_, i) => (
@@ -63,7 +68,7 @@ export function StandardHero({
           />
         ))}
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -77,10 +82,10 @@ export function StandardHero({
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/20 bg-amber-500/10 mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-300/20 accent-bg/10 mb-8"
             >
               {badgeIcon}
-              <span className="text-sm font-medium text-amber-500">
+              <span className="text-sm font-medium accent-text">
                 {badgeText}
               </span>
             </motion.div>
@@ -123,18 +128,27 @@ export function StandardHero({
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                   whileHover={{ y: -5 }}
-                  className="p-4 rounded-xl text-center bg-white/5 border border-white/10 hover:border-amber-500/30 transition-colors"
+                  className="p-4 rounded-xl text-center bg-white/5 border border-white/10 hover:border-amber-300/30 transition-colors"
                 >
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="inline-flex p-3 rounded-lg mb-3 bg-amber-500/10"
+                    className="inline-flex p-3 rounded-lg mb-3 accent-bg/10"
                   >
-                    <div className={cn("text-amber-500", colors[index % colors.length])}>
+                    <div
+                      className={cn(
+                        "accent-text",
+                        colors[index % colors.length]
+                      )}
+                    >
                       {highlight.icon}
                     </div>
                   </motion.div>
-                  <h3 className="font-semibold mb-1 text-white">{highlight.title}</h3>
-                  <p className="text-sm text-gray-400">{highlight.description}</p>
+                  <h3 className="font-semibold mb-1 text-white">
+                    {highlight.title}
+                  </h3>
+                  <p className="text-sm text-gray-400">
+                    {highlight.description}
+                  </p>
                 </motion.div>
               ))}
             </motion.div>

@@ -13,7 +13,7 @@ export function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       <ParticleBackground />
       <FloatingElements />
-      
+
       <div className="container mx-auto p-8 py-20 relative z-10">
         <div className="max-w-6xl mx-auto text-center py-10">
           {/* Badge */}
@@ -21,10 +21,10 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-500/10 to-amber-600/10 border border-amber-500/20 mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8"
           >
-            <Sparkles className="h-4 w-4 text-amber-500" />
-            <span className="text-sm font-medium text-amber-500">
+            <Sparkles className="h-4 w-4 accent-text" />
+            <span className="text-sm font-medium accent-text">
               Voted #1 Onboarding Platform 2025
             </span>
           </motion.div>
@@ -43,7 +43,7 @@ export function HeroSection() {
             <span className="relative">
               <span className="gradient-text">Smart Tours</span>
               <motion.div
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-linear-to-r from-amber-500 via-amber-400 to-amber-600"
+                className="absolute -bottom-2 left-0 right-0 h-1 bg-linear-to-r from-amber-300 via-amber-400 to-amber-400"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 1 }}
@@ -71,17 +71,17 @@ export function HeroSection() {
           >
             <Button
               size="lg"
-              className="group bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-bold text-lg px-8 py-6"
+              className="group bg-linear-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black font-bold text-lg px-8 py-6"
             >
               <Link href="/signup" className="flex items-center">
-              Start Free Trial
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                Start Free Trial
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="cursor-pointer border-amber-500 text-amber-500 hover:bg-amber-500/10 hover:text-amber-600 font-bold text-lg px-8 py-6"
+              className="cursor-pointer border-amber-300 accent-text hover:accent-bg/10 hover:text-amber-600 font-bold text-lg px-8 py-6"
             >
               <Zap className="mr-2 h-5 w-5" />
               Watch Demo
@@ -108,8 +108,8 @@ export function HeroSection() {
                 className="glass-effect p-6 rounded-2xl"
               >
                 <div className="flex items-center justify-center mb-4">
-                  <div className="p-3 rounded-full bg-amber-500/10">
-                    <stat.icon className="h-6 w-6 text-amber-500" />
+                  <div className="p-3 rounded-full accent-bg/10">
+                    <stat.icon className="h-6 w-6 accent-text" />
                   </div>
                 </div>
                 <div className="text-4xl font-bold text-gray-300 mb-2">
@@ -135,8 +135,8 @@ export function HeroSection() {
           className="flex flex-col items-center"
         >
           <div className="text-ivory/50 text-sm mb-2">Scroll to explore</div>
-          <div className="w-6 h-10 border-2 border-amber-500/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-amber-500 rounded-full mt-2" />
+          <div className="w-6 h-10 border-2 border-amber-300/50 rounded-full flex justify-center">
+            <div className="w-1 h-3 accent-bg rounded-full mt-2" />
           </div>
         </motion.div>
       </motion.div>

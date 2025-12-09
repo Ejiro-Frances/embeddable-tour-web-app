@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Scale, FileText, CheckCircle, Shield, Users, Clock } from "lucide-react";
+import {
+  Scale,
+  FileText,
+  CheckCircle,
+  Shield,
+  Users,
+  Clock,
+} from "lucide-react";
 
 export function TermsHero() {
   const highlights = [
@@ -9,25 +16,25 @@ export function TermsHero() {
       icon: <Scale className="h-5 w-5" />,
       title: "Clear Terms",
       description: "Simple, understandable language",
-      color: "oklch(0.8 0.2 70)",
+      color: "#eabe7b",
     },
     {
       icon: <Users className="h-5 w-5" />,
       title: "Fair Use",
       description: "Reasonable terms for everyone",
-      color: "oklch(0.85 0.18 75)",
+      color: "#eabe7b",
     },
     {
       icon: <Shield className="h-5 w-5" />,
       title: "Protection",
       description: "Your rights protected",
-      color: "oklch(0.9 0.18 80)",
+      color: "#eabe7b",
     },
     {
       icon: <Clock className="h-5 w-5" />,
       title: "Always Updated",
       description: "Regular policy reviews",
-      color: "oklch(0.8 0.15 85)",
+      color: "#eabe7b",
     },
   ];
 
@@ -57,7 +64,7 @@ export function TermsHero() {
           />
         ))}
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -73,11 +80,11 @@ export function TermsHero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-8"
             style={{
               background: "oklch(0.8 0.2 70 / 0.1)",
-              borderColor: "oklch(0.8 0.2 70 / 0.2)"
+              borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >
-            <FileText className="h-4 w-4" style={{ color: "oklch(0.8 0.2 70)" }} />
-            <span className="text-sm font-medium" style={{ color: "oklch(0.8 0.2 70)" }}>
+            <FileText className="h-4 w-4" style={{ color: "#eabe7b" }} />
+            <span className="text-sm font-medium" style={{ color: "#eabe7b" }}>
               Terms of Service
             </span>
           </motion.div>
@@ -101,7 +108,8 @@ export function TermsHero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl opacity-80 mb-12 max-w-3xl mx-auto"
           >
-            Understand our agreement for using Tourify&#39;s services and building better user experiences together.
+            Understand our agreement for using Tourify&#39;s services and
+            building better user experiences together.
           </motion.p>
 
           {/* Last Updated */}
@@ -112,7 +120,7 @@ export function TermsHero() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-lg mb-8"
             style={{
               background: "oklch(0.1 0 0)",
-              border: "1px solid oklch(1 0 0 / 0.1)"
+              border: "1px solid oklch(1 0 0 / 0.1)",
             }}
           >
             <Clock className="h-4 w-4 opacity-60" />
@@ -136,7 +144,7 @@ export function TermsHero() {
                 className="p-4 rounded-xl text-center"
                 style={{
                   background: "oklch(0.1 0 0)",
-                  border: "1px solid oklch(1 0 0 / 0.1)"
+                  border: "1px solid oklch(1 0 0 / 0.1)",
                 }}
               >
                 <motion.div
@@ -144,9 +152,7 @@ export function TermsHero() {
                   className="inline-flex p-3 rounded-lg mb-3"
                   style={{ background: `${highlight.color}20` }}
                 >
-                  <div style={{ color: highlight.color }}>
-                    {highlight.icon}
-                  </div>
+                  <div style={{ color: highlight.color }}>{highlight.icon}</div>
                 </motion.div>
                 <h3 className="font-semibold mb-1">{highlight.title}</h3>
                 <p className="text-sm opacity-70">{highlight.description}</p>
@@ -162,13 +168,17 @@ export function TermsHero() {
             className="mt-12 p-4 rounded-lg max-w-2xl mx-auto"
             style={{
               background: "oklch(0.8 0.2 70 / 0.1)",
-              border: "1px solid oklch(0.8 0.2 70 / 0.2)"
+              border: "1px solid oklch(0.8 0.2 70 / 0.2)",
             }}
           >
             <div className="flex items-center gap-3">
-              <CheckCircle className="h-5 w-5 shrink-0" style={{ color: "oklch(0.8 0.2 70)" }} />
+              <CheckCircle
+                className="h-5 w-5 shrink-0"
+                style={{ color: "#eabe7b" }}
+              />
               <p className="text-sm">
-                By using Tourify, you agree to these terms. We recommend reviewing them carefully.
+                By using Tourify, you agree to these terms. We recommend
+                reviewing them carefully.
               </p>
             </div>
           </motion.div>

@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 export function CTA() {
   return (
     <section className="py-24 relative overflow-hidden">
-       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -31,21 +30,18 @@ export function CTA() {
                 borderColor: "oklch(0.8 0.2 70 / 0.2)",
               }}
             >
-              <Users
-                className="h-4 w-4"
-                style={{ color: "oklch(0.8 0.2 70)" }}
-              />
+              <Users className="h-4 w-4" style={{ color: "#eabe7b" }} />
               <span
                 className="text-sm font-medium"
-                style={{ color: "oklch(0.8 0.2 70)" }}
+                style={{ color: "#eabe7b" }}
               >
                 Join Our Mission
               </span>
             </div>
 
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Ready to Create{" "}
-              <span className="gradient-text">Magical</span> Experiences?
+              Ready to Create <span className="gradient-text">Magical</span>{" "}
+              Experiences?
             </h2>
 
             <p className="text-xl opacity-80 mb-8 max-w-2xl mx-auto">
@@ -59,7 +55,7 @@ export function CTA() {
                 className="group text-lg px-8 py-6"
                 style={{
                   background:
-                    "linear-gradient(to right, oklch(0.8 0.2 70), oklch(0.85 0.18 75))",
+                    "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
                 }}
               >
                 Start Free Trial
@@ -71,7 +67,7 @@ export function CTA() {
                 variant="outline"
                 className="text-lg px-8 py-6 text-accent hover:text-accent-foreground transition-transform"
                 style={{
-                  borderColor: "oklch(0.8 0.2 70 / 0.3)"
+                  borderColor: "oklch(0.8 0.2 70 / 0.3)",
                 }}
               >
                 <Rocket className="mr-2 h-5 w-5" />

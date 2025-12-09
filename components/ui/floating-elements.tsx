@@ -45,8 +45,8 @@ export function FloatingElements() {
             ease: "easeInOut",
           }}
         >
-          <div className="p-4 rounded-2xl glass-effect border border-amber-500/20">
-            <div className="text-amber-500">{element.icon}</div>
+          <div className="p-4 rounded-2xl glass-effect border border-amber-300/20">
+            <div className="accent-text">{element.icon}</div>
           </div>
         </motion.div>
       ))}

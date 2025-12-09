@@ -9,23 +9,24 @@
   --color-foreground: oklch(0.96 0.01 90);
   --color-card: oklch(0.02 0 0);
   --color-card-foreground: oklch(0.96 0.01 90);
-  --color-primary:  #eabe7b;
+  --color-primary: #eabe7b;
   --color-primary-foreground: oklch(0 0 0);
   --color-secondary: oklch(0.15 0 0);
   --color-secondary-foreground: oklch(0.96 0.01 90);
   --color-muted: oklch(0.15 0 0);
   --color-muted-foreground: oklch(0.5 0 0);
-  --color-accent:  #eabe7b;
+  --color-accent: #eabe7b;
   --color-accent-foreground: oklch(0 0 0);
   --color-border: oklch(0.2 0 0);
   --color-input: oklch(0.2 0 0);
-  --color-ring:  #eabe7b;
+  --color-ring: #eabe7b;
 
   /* Border radius */
   --radius: 0.5rem;
 
   /* Fonts */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Custom animations */
@@ -36,7 +37,8 @@
   --animate-spin-slow: spin 3s linear infinite;
 
   @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {
@@ -45,7 +47,8 @@
   }
 
   @keyframes gradient {
-    0%, 100% {
+    0%,
+    100% {
       background-position: 0% 50%;
     }
     50% {
@@ -79,7 +82,7 @@
     overflow-x: hidden;
     scroll-behavior: smooth;
   }
-  
+
   /* Smooth scroll for whole site */
   html {
     scroll-behavior: smooth;
@@ -102,7 +105,15 @@
   .accent-text {
     color: var(--color-accent);
   }
-  
+
+  .accent-bg {
+    background-color: var(--color-accent);
+  }
+
+  .accent-border {
+    border: 2px solid var(--color-accent);
+  }
+
   .glass-effect {
     backdrop-filter: blur(12px);
     background-color: oklch(0 0 0 / 0.7);
@@ -110,14 +121,20 @@
   }
 
   .bg-grid-pattern {
-    background-image: 
-      linear-gradient(to right, oklch(0.8 0.2 70 / 0.03) 1px, transparent 1px),
+    background-image: linear-gradient(
+        to right,
+        oklch(0.8 0.2 70 / 0.03) 1px,
+        transparent 1px
+      ),
       linear-gradient(to bottom, oklch(0.8 0.2 70 / 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
   }
-  
+
   .bg-gradient-radial {
-    background-image: radial-gradient(circle at center, var(--tw-gradient-stops));
+    background-image: radial-gradient(
+      circle at center,
+      var(--tw-gradient-stops)
+    );
   }
 }
 

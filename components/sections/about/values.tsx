@@ -8,37 +8,38 @@ const values = [
     icon: <Heart className="h-8 w-8" />,
     title: "User-Centric",
     description: "We obsess over user delight in every decision we make",
-    color: "oklch(0.8 0.2 70)",
+    color: "#eabe7b",
   },
   {
     icon: <Zap className="h-8 w-8" />,
     title: "Simplicity",
     description: "We believe powerful tools should be simple to use",
-    color: "oklch(0.85 0.18 75)",
+    color: "#eabe7b",
   },
   {
     icon: <Sparkles className="h-8 w-8" />,
     title: "Innovation",
     description: "We constantly push boundaries to create magical experiences",
-    color: "oklch(0.9 0.18 80)",
+    color: "#eabe7b",
   },
   {
     icon: <Shield className="h-8 w-8" />,
     title: "Trust",
-    description: "We build products you can trust with your most important users",
-    color: "oklch(0.8 0.15 85)",
+    description:
+      "We build products you can trust with your most important users",
+    color: "#eabe7b",
   },
   {
     icon: <Users className="h-8 w-8" />,
     title: "Collaboration",
     description: "We grow stronger together with our customers and team",
-    color: "oklch(0.85 0.15 90)",
+    color: "#eabe7b",
   },
   {
     icon: <Target className="h-8 w-8" />,
     title: "Impact",
     description: "We measure success by the positive impact we create",
-    color: "oklch(0.9 0.15 95)",
+    color: "#eabe7b",
   },
 ];
 
@@ -53,13 +54,14 @@ export function ValuesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-2 rounded-full border mb-4"
+          <div
+            className="inline-block px-4 py-2 rounded-full border mb-4"
             style={{
               background: "oklch(0.8 0.2 70 / 0.1)",
-              borderColor: "oklch(0.8 0.2 70 / 0.2)"
+              borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >
-            <span className="text-sm font-medium" style={{ color: "oklch(0.8 0.2 70)" }}>
+            <span className="text-sm font-medium" style={{ color: "#eabe7b" }}>
               Our Values
             </span>
           </div>
@@ -90,7 +92,7 @@ export function ValuesSection() {
                 animate={{ scale: [0.9, 1.1, 0.9] }}
                 transition={{ duration: 3, repeat: Infinity }}
               />
-              
+
               <div className="relative glass-effect p-8 rounded-2xl h-full">
                 <motion.div
                   whileHover={{ scale: 1.2, rotate: 360 }}
@@ -98,11 +100,9 @@ export function ValuesSection() {
                   className="inline-flex p-4 rounded-xl mb-6"
                   style={{ background: `${value.color}20` }}
                 >
-                  <div style={{ color: value.color }}>
-                    {value.icon}
-                  </div>
+                  <div style={{ color: value.color }}>{value.icon}</div>
                 </motion.div>
-                
+
                 <h3 className="text-2xl font-bold mb-4">{value.title}</h3>
                 <p className="opacity-80">{value.description}</p>
               </div>

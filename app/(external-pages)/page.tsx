@@ -29,14 +29,14 @@ export default function Home() {
       <section className="py-20 relative">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
+            {/* <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
                 See Tourify in Action
               </h2>
               <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                 Watch how top companies use Tourify to transform their user onboarding experience
               </p>
-            </div>
+            </div> */}
             <ImageSlider images={demoImages} />
           </div>
         </div>

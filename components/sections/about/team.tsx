@@ -2,13 +2,14 @@
 
 import { motion } from "framer-motion";
 import { Linkedin, Twitter, Mail, Github } from "lucide-react";
+import { github } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 const teamMembers = [
   {
     name: "Frances Ejiro",
     role: "Frontend Engineer",
     bio: "Former UX lead at Google with 10+ years in product design",
-    imageColor: "oklch(0.8 0.2 70)",
+    imageColor: "oklch(0.75 0.18 80)",
     social: {
       linkedin: "#",
       twitter: "#",
@@ -44,7 +45,7 @@ const teamMembers = [
     imageColor: "oklch(0.8 0.15 85)",
     social: {
       linkedin: "#",
-      dribbble: "#",
+      github: "#",
       email: "#",
     },
   },
@@ -61,13 +62,14 @@ export function TeamSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-2 rounded-full border mb-4"
+          <div
+            className="inline-block px-4 py-2 rounded-full border mb-4"
             style={{
               background: "oklch(0.8 0.2 70 / 0.1)",
-              borderColor: "oklch(0.8 0.2 70 / 0.2)"
+              borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >
-            <span className="text-sm font-medium" style={{ color: "oklch(0.8 0.2 70)" }}>
+            <span className="text-sm font-medium" style={{ color: "#eabe7b" }}>
               Meet The Team
             </span>
           </div>
@@ -75,7 +77,8 @@ export function TeamSection() {
             The Minds Behind <span className="gradient-text">Tourify</span>
           </h2>
           <p className="text-xl opacity-80 max-w-3xl mx-auto">
-            A diverse team united by a shared passion for creating exceptional user experiences
+            A diverse team united by a shared passion for creating exceptional
+            user experiences
           </p>
         </motion.div>
 
@@ -99,12 +102,11 @@ export function TeamSection() {
                   whileHover={{ opacity: 0.2 }}
                   transition={{ duration: 0.3 }}
                 />
-                
+
                 <div className="relative glass-effect p-8 rounded-2xl">
                   {/* Avatar placeholder with animation */}
                   <motion.div
                     className="w-24 h-24 rounded-full mx-auto mb-6 relative overflow-hidden border bg-white/10"
-                    
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
@@ -131,10 +133,11 @@ export function TeamSection() {
                   {/* Content */}
                   <div className="text-center">
                     <h3 className="text-2xl font-bold mb-2">{member.name}</h3>
-                    <div className="inline-block px-3 py-1 rounded-full text-sm font-medium mb-4"
+                    <div
+                      className="inline-block px-3 py-1 rounded-full text-sm font-medium mb-4"
                       style={{
                         background: `${member.imageColor}20`,
-                        color: member.imageColor,
+                        color: "#eabe7b",
                       }}
                     >
                       {member.role}
@@ -152,7 +155,7 @@ export function TeamSection() {
                           href={member.social.linkedin}
                           whileHover={{ scale: 1.2, y: -2 }}
                           className="p-2 rounded-lg hover:bg-white/10"
-                          style={{ color: member.imageColor }}
+                          style={{ color: "#eabe7b" }}
                         >
                           <Linkedin className="h-5 w-5" />
                         </motion.a>

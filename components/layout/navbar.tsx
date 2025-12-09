@@ -43,8 +43,8 @@ export function Navbar() {
             >
               <Link href="/" className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-amber-500 rounded-lg blur-xl opacity-50" />
-                  <Sparkles className="relative h-8 w-8 text-amber-500" />
+                  <div className="absolute inset-0 accent-bg rounded-lg blur-xl opacity-50" />
+                  <Sparkles className="relative h-8 w-8 accent-text" />
                 </div>
                 <span className="text-2xl font-bold gradient-text">
                   Tourify
@@ -62,10 +62,10 @@ export function Navbar() {
                 >
                   <Link
                     href={item.href}
-                    className="text-ivory/80 hover:text-amber-500 transition-colors font-medium relative group"
+                    className="text-ivory/80 hover:accent-text transition-colors font-medium relative group"
                   >
                     {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-500 group-hover:w-full transition-all duration-300" />
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 accent-bg group-hover:w-full transition-all duration-300" />
                   </Link>
                 </motion.div>
               ))}
@@ -75,7 +75,7 @@ export function Navbar() {
             <div className="hidden md:flex items-center space-x-4">
               <Button
                 variant="ghost"
-                className="text-ivory hover:text-amber-500 hover:bg-transparent font-semibold transition-all ease-in-out duration-600"
+                className="text-ivory hover:accent-text hover:bg-transparent font-semibold transition-all ease-in-out duration-600"
                 asChild
               >
                 <Link href="/login">Sign In</Link>
@@ -84,7 +84,10 @@ export function Navbar() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-semibold transition-all ease-in-out duration-600" asChild>
+                <Button
+                  className="bg-linear-to-r from-amber-300 to-amber-400 hover:from-amber-600 hover:to-amber-700 text-black font-semibold transition-all ease-in-out duration-600"
+                  asChild
+                >
                   <Link href="/signup">Get Started Free</Link>
                 </Button>
               </motion.div>
@@ -116,7 +119,7 @@ export function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-ivory hover:text-amber-500 transition-colors py-2"
+                className="text-ivory hover:accent-text transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
@@ -125,13 +128,13 @@ export function Navbar() {
             <div className="pt-4 space-y-4">
               <Button
                 variant="outline"
-                className="w-full border-amber-500 text-amber-500"
+                className="w-full border-amber-300 accent-text"
                 asChild
               >
                 <Link href="/login">Sign In</Link>
               </Button>
               <Button
-                className="w-full bg-linear-to-r from-amber-500 to-amber-600 text-black"
+                className="w-full bg-linear-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black"
                 asChild
               >
                 <Link href="/signup">Get Started Free</Link>

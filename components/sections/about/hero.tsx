@@ -21,7 +21,7 @@ export function HeroSection() {
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden py-10">
       <div className="absolute inset-0 bg-linear-to-br from-amber-900/10 via-black to-amber-900/5" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -37,11 +37,11 @@ export function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-8"
             style={{
               background: "oklch(0.8 0.2 70 / 0.1)",
-              borderColor: "oklch(0.8 0.2 70 / 0.2)"
+              borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >
-            <Users className="h-4 w-4" style={{ color: "oklch(0.8 0.2 70)" }} />
-            <span className="text-sm font-medium" style={{ color: "oklch(0.8 0.2 70)" }}>
+            <Users className="h-4 w-4" style={{ color: "#eabe7b" }} />
+            <span className="text-sm font-medium" style={{ color: "#eabe7b" }}>
               Our Story
             </span>
           </motion.div>
@@ -65,7 +65,9 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl opacity-80 mb-12 max-w-3xl mx-auto"
           >
-            We believe every user deserves a magical first experience. Tourify was born from a simple idea: make onboarding delightful, effective, and accessible to everyone.
+            We believe every user deserves a magical first experience. Tourify
+            was born from a simple idea: make onboarding delightful, effective,
+            and accessible to everyone.
           </motion.p>
 
           {/* Stats */}
@@ -88,14 +90,19 @@ export function HeroSection() {
                 className="glass-effect p-6 rounded-2xl backdrop-blur-md border border-white/5"
               >
                 <div className="flex items-center justify-center mb-4">
-                  <div 
+                  <div
                     className="p-3 rounded-full"
                     style={{ background: "oklch(0.8 0.2 70 / 0.1)" }}
                   >
-                    <stat.icon className="h-6 w-6" style={{ color: "oklch(0.8 0.2 70)" }} />
+                    <stat.icon
+                      className="h-6 w-6"
+                      style={{ color: "#eabe7b" }}
+                    />
                   </div>
                 </div>
-                <div className="text-4xl font-bold text-gray-300 mb-2">{stat.value}</div>
+                <div className="text-4xl font-bold text-gray-300 mb-2">
+                  {stat.value}
+                </div>
                 <div className="opacity-70">{stat.label}</div>
               </motion.div>
             ))}
@@ -111,8 +118,9 @@ export function HeroSection() {
               size="lg"
               className="group text-lg px-8 py-6 font-medium hover:scale-105 transition-transform"
               style={{
-                background: "linear-gradient(to right, oklch(0.8 0.2 70), oklch(0.85 0.18 75))",
-                boxShadow: "0 10px 30px -10px oklch(0.8 0.2 70 / 0.4)"
+                background:
+                  "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
+                boxShadow: "0 10px 30px -10px oklch(0.8 0.2 70 / 0.4)",
               }}
             >
               Join Our Journey
