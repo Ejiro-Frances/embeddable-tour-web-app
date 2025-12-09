@@ -186,7 +186,7 @@ export function DocumentationSection() {
                     onClick={() =>
                       copyToClipboard(codeSnippets[activeTab].code)
                     }
-                    className="accent-text hover:text-amber-400 hover:accent-bg/10"
+                    className="accent-text hover:bg-accent/20"
                   >
                     {copied ? (
                       <Check className="h-4 w-4" />

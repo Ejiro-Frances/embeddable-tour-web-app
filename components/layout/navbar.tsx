@@ -134,8 +134,8 @@ export function Navbar() {
                 <Link href="/login">Sign In</Link>
               </Button>
               <Button
-                className="w-full bg-linear-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black"
-                asChild
+                className="w-full bg-gradient-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black"
+                variant="default"
               >
                 <Link href="/signup">Get Started Free</Link>
               </Button>
