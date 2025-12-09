@@ -31,7 +31,11 @@ export default function LoginPageContent() {
       const { data, error } = await signIn(email, password)
 
       if (error) {
+        if (error.message.toLowerCase().includes("invalid login credentials")){
+          setError("Incorrect email address and/or password")
+        } else {
         setError(error.message)
+        }
         setLoading(false)
         return
       }
