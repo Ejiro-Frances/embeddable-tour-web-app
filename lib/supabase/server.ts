@@ -21,9 +21,9 @@ export async function createServerSupabaseClient() {
             console.error('Failed to set cookie:', error)
           }
         },
-        remove(name: string, options: CookieOptions) {
+        remove(name: string) {
           try {
-            cookieStore.set({ name, value: '', ...options })
+            cookieStore.delete(name)
           } catch (error) {
             console.error('Failed to remove cookie:', error)
           }
@@ -37,17 +37,17 @@ export async function createServerSupabaseClient() {
 
 // Server-side auth functions
 export async function getSSUser() {
-    const supabase = await createServerSupabaseClient()
-    
-    const { data: { user }, error } = await supabase.auth.getUser()
-    
-    return { user, error }
-  }
-  
-  export async function getSession() {
-    const supabase = await createServerSupabaseClient()
-    
-    const { data: { session }, error } = await supabase.auth.getSession()
-    
-    return { session, error }
-  }
+  const supabase = await createServerSupabaseClient()
+
+  const { data: { user }, error } = await supabase.auth.getUser()
+
+  return { user, error }
+}
+
+export async function getSession() {
+  const supabase = await createServerSupabaseClient()
+
+  const { data: { session }, error } = await supabase.auth.getSession()
+
+  return { session, error }
+}
