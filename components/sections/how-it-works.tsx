@@ -42,7 +42,7 @@ const steps = [
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="py-24 relative">
+    <section id="how-it-works" className="py-10 relative">
       <div className="container mx-auto px-8 py-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -85,7 +85,7 @@ export function HowItWorksSection() {
                     {/* Number Badge */}
                     <div className="relative mb-6">
                       {/* <div className="absolute inset-0 bg-gradient-to-r from-amber-500 to-amber-600 rounded-full blur-lg opacity-50" /> */}
-                      <div className="relative h-16 w-16 rounded-full bg-gradient-to-br from-black to-gray-900 border-2 border-amber-500/30 flex items-center justify-center">
+                      <div className="relative h-16 w-16 rounded-full bg-linear-to-br from-black to-gray-900 border-2 border-amber-500/30 flex items-center justify-center">
                         <span className="text-2xl font-bold gradient-text">
                           {step.number}
                         </span>
@@ -126,7 +126,7 @@ export function HowItWorksSection() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <button className="group px-8 py-4 rounded-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/30">
+          <button className="group px-8 py-4 rounded-full bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/30">
             Start Building Your Tour
             <ChevronRight className="inline ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </button>

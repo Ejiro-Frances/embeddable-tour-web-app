@@ -116,7 +116,7 @@ export function TimelineSection() {
                   <div className="flex items-start gap-4 mb-4">
                     <motion.div
                       whileHover={{ rotate: 15 }}
-                      className="flex-shrink-0 p-3 rounded-lg"
+                      className="shrink-0 p-3 rounded-lg"
                       style={{ background: `${event.color}20` }}
                     >
                       <div style={{ color: event.color }}>

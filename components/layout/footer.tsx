@@ -55,7 +55,7 @@ export function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-ivory">Company</h3>
             <ul className="space-y-3">
-              {["About", "Contact", "Privacy", "Terms"].map(
+              {["Docs","About", "Contact", "Privacy", "Terms"].map(
                 (item) => (
                   <li key={item}>
                     <Link

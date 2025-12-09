@@ -4,67 +4,10 @@ import { motion } from "framer-motion";
 import { ArrowRight, Users, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-// ✅ PURE deterministic pseudo-random generator
-function seededRandom(seed: number) {
-  const x = Math.sin(seed) * 10000;
-  return x - Math.floor(x);
-}
-
-type Bubble = {
-  width: number;
-  height: number;
-  left: number;
-  top: number;
-  x: number;
-  y: number;
-  duration: number;
-};
-
-// ✅ Generated with PURE math (no Math.random)
-const bubbles: Bubble[] = Array.from({ length: 20 }).map((_, i) => {
-  const base = i + 1;
-
-  return {
-    width: seededRandom(base * 2) * 200 + 50,
-    height: seededRandom(base * 3) * 200 + 50,
-    left: seededRandom(base * 4) * 100,
-    top: seededRandom(base * 5) * 100,
-    x: seededRandom(base * 6) * 100 - 50,
-    y: seededRandom(base * 7) * 100 - 50,
-    duration: seededRandom(base * 8) * 20 + 20,
-  };
-});
-
 export function CTA() {
   return (
     <section className="py-24 relative overflow-hidden">
-      {/* Animated background */}
-      {/* <div className="absolute inset-0 pointer-events-none z-0">
-        {bubbles.map((bubble, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              width: `${bubble.width}px`,
-              height: `${bubble.height}px`,
-              background:
-                "radial-gradient(circle, rgba(255, 200, 80, 0.12), transparent 70%)",
-              left: `${bubble.left}%`,
-              top: `${bubble.top}%`,
-            }}
-            animate={{
-              x: [0, bubble.x, 0],
-              y: [0, bubble.y, 0],
-            }}
-            transition={{
-              duration: bubble.duration,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-      </div> */}
-
+       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

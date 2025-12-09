@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { 
   Code2, 
   Palette, 
@@ -67,7 +66,7 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-24 relative overflow-hidden bg-black">
+    <section id="features" className="py-10 relative overflow-hidden bg-black">
       <div className="container mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -80,7 +79,7 @@ export function FeaturesSection() {
           <div className="inline-block px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 mb-4">
             <span className="text-sm font-medium text-amber-500">Features</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-amber-200">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-white to-amber-200">
             Everything You Need For <br />
             <span className="text-amber-400">Perfect Onboarding</span>
           </h2>
@@ -101,7 +100,7 @@ export function FeaturesSection() {
           >
             <GlowingCard className="h-full p-8 flex flex-col justify-between">
               <div>
-                <div className="p-5 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/10 w-fit mb-6 border border-amber-500/20">
+                <div className="p-5 rounded-2xl bg-linear-to-br from-amber-500/20 to-orange-600/10 w-fit mb-6 border border-amber-500/20">
                   {features[0].icon}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">{features[0].title}</h3>
@@ -154,7 +153,7 @@ export function FeaturesSection() {
           >
             <GlowingCard className="h-full p-8 flex flex-col justify-between">
               <div>
-                <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-600/10 w-fit mb-6 border border-emerald-500/20">
+                <div className="p-5 rounded-2xl bg-linear-to-br from-emerald-500/20 to-teal-600/10 w-fit mb-6 border border-emerald-500/20">
                   {features[3].icon}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">{features[3].title}</h3>
@@ -225,10 +224,10 @@ export function FeaturesSection() {
             viewport={{ once: true }}
             className="col-span-2 md:col-span-4 lg:col-span-12"
           >
-            <GlowingCard className="h-full p-10 bg-gradient-to-r from-amber-500/5 via-orange-500/5 to-transparent border border-amber-500/20">
+            <GlowingCard className="h-full p-10 border border-amber-500/20">
               <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="flex-1 text-center lg:text-left">
-                  <div className="p-5 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/10 w-fit mb-6 border border-amber-500/20">
+                  <div className="p-5 rounded-2xl bg-linear-to-br from-amber-500/20 to-orange-600/10 w-fit mb-6 border border-amber-500/20">
                     {features[7].icon}
                   </div>
                   <h3 className="text-xl lg:text-2xl font-bold text-white mb-4">{features[7].title}</h3>

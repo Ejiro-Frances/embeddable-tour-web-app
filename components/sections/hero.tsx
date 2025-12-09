@@ -6,6 +6,7 @@ import { ArrowRight, Sparkles, Zap, TrendingUp } from "lucide-react";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { ParticleBackground } from "@/components/ui/particle-background";
 import { FloatingElements } from "@/components/ui/floating-elements";
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -20,7 +21,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/10 to-amber-600/10 border border-amber-500/20 mb-8"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-500/10 to-amber-600/10 border border-amber-500/20 mb-8"
           >
             <Sparkles className="h-4 w-4 text-amber-500" />
             <span className="text-sm font-medium text-amber-500">
@@ -42,7 +43,7 @@ export function HeroSection() {
             <span className="relative">
               <span className="gradient-text">Smart Tours</span>
               <motion.div
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600"
+                className="absolute -bottom-2 left-0 right-0 h-1 bg-linear-to-r from-amber-500 via-amber-400 to-amber-600"
                 initial={{ scaleX: 0 }}
                 animate={{ scaleX: 1 }}
                 transition={{ duration: 1, delay: 1 }}
@@ -70,10 +71,12 @@ export function HeroSection() {
           >
             <Button
               size="lg"
-              className="group bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-bold text-lg px-8 py-6"
+              className="group bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-bold text-lg px-8 py-6"
             >
+              <Link href="/signup" className="flex items-center">
               Start Free Trial
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </Button>
             <Button
               size="lg"

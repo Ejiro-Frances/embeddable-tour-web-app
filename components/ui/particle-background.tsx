@@ -1,44 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 
-interface Particle {
-  id: number;
-  x: number;
-  xAnimation: number;
-  y: number;
-  size: number;
-  duration: number;
-  delay: number;
+interface ParticleBackgroundProps {
+  count?: number;
+  className?: string;
 }
 
-export function ParticleBackground() {
-  // Generate particles once during initial render
-  const [particles] = useState<Particle[]>(() => 
-    Array.from({ length: 30 }).map((_, i) => ({
+export function ParticleBackground({ count = 30, className = "" }: ParticleBackgroundProps) {
+  // Generate particles using useMemo to avoid hydration issues
+  const particles = useMemo(() => 
+    Array.from({ length: count }).map((_, i) => ({
       id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2 + 0.5,
-      duration: Math.random() * 15 + 15,
-      delay: Math.random() * 5,
-      xAnimation: Math.random() * 15 - 7.5,
+      x: (i * 37) % 100, // Deterministic positioning
+      y: (i * 23) % 100,
+      size: (i % 3) + 1,
+      duration: 15 + (i % 10),
+      delay: i % 5,
+      xAnimation: (i % 5) - 2,
     }))
-  );
+  , [count]);
 
   return (
-    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+    <div className={`fixed inset-0 z-0 overflow-hidden pointer-events-none ${className}`}>
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full"
+          className="absolute rounded-full bg-gradient-to-br from-amber-400/20 to-amber-600/10"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
             width: `${particle.size}px`,
             height: `${particle.size}px`,
-            background: `radial-gradient(circle, oklch(0.8 0.2 70 / 0.3), oklch(0.85 0.18 75 / 0.1))`,
           }}
           animate={{
             y: [0, -50, 0],
@@ -54,18 +48,6 @@ export function ParticleBackground() {
           }}
         />
       ))}
-      {/* Gradient overlay */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: `linear-gradient(to top, 
-            oklch(0 0 0) 0%,
-            oklch(0 0 0 / 0) 30%,
-            oklch(0 0 0 / 0) 70%,
-            oklch(0 0 0) 100%
-          )`,
-        }}
-      />
     </div>
   );
 }

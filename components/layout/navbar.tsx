@@ -9,11 +9,10 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Features", href: "#features" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Documentation", href: "#docs" },
+  { label: "About", href: "about" },
+  { label: "Docs", href: "docs" },
   // { label: "Pricing", href: "#pricing" },
-  // { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "contact" },
 ];
 
 export function Navbar() {
@@ -42,11 +41,15 @@ export function Navbar() {
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-2"
             >
-              <div className="relative">
-                <div className="absolute inset-0 bg-amber-500 rounded-lg blur-xl opacity-50" />
-                <Sparkles className="relative h-8 w-8 text-amber-500" />
-              </div>
-              <span className="text-2xl font-bold gradient-text">Tourify</span>
+              <Link href="/" className="flex items-center gap-3">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-amber-500 rounded-lg blur-xl opacity-50" />
+                  <Sparkles className="relative h-8 w-8 text-amber-500" />
+                </div>
+                <span className="text-2xl font-bold gradient-text">
+                  Tourify
+                </span>
+              </Link>
             </motion.div>
 
             {/* Desktop Navigation */}
@@ -81,8 +84,8 @@ export function Navbar() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-semibold">
-                  Get Started Free
+                <Button className="bg-linear-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-black font-semibold transition-all ease-in-out duration-600" asChild>
+                  <Link href="/signup">Get Started Free</Link>
                 </Button>
               </motion.div>
             </div>
@@ -128,7 +131,7 @@ export function Navbar() {
                 <Link href="/login">Sign In</Link>
               </Button>
               <Button
-                className="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-black"
+                className="w-full bg-linear-to-r from-amber-500 to-amber-600 text-black"
                 asChild
               >
                 <Link href="/signup">Get Started Free</Link>

@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
-import React from "react";
+import { Footer } from "@/components/layout/footer";
+import { SmoothScrollProvider } from "@/app/providers";
 
 const layout = ({
   children,
@@ -7,10 +8,13 @@ const layout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div>
-      <Navbar />
-      <div>{children}</div>
-    </div>
+    <SmoothScrollProvider>
+      <div className="min-h-screen bg-black">
+        <Navbar />
+        <div>{children}</div>
+        <Footer />
+      </div>
+    </SmoothScrollProvider>
   );
 };
 

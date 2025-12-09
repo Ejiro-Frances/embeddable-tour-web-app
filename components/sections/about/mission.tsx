@@ -27,7 +27,7 @@ export function MissionSection() {
 
   return (
     <section className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
+      <div className="absolute inset-0 bg-linear-to-b from-black via-transparent to-black" />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -51,7 +51,7 @@ export function MissionSection() {
             More Than Just <span className="gradient-text">Software</span>
           </h2>
           <p className="text-xl opacity-80 max-w-3xl mx-auto">
-            We're on a mission to transform how users experience products for the first time.
+            We&#39;re on a mission to transform how users experience products for the first time.
           </p>
         </motion.div>
 

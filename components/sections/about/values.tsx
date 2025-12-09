@@ -80,7 +80,7 @@ export function ValuesSection() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
-              className="relative group"
+              className="relative "
             >
               {/* Floating background */}
               <motion.div

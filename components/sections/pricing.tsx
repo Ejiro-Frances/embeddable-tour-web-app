@@ -1,5 +1,7 @@
 export function PricingSection() {
     return (
-        <div></div>
+        <div>
+            
+        </div>
     );
 }

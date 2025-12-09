@@ -9,23 +9,23 @@
   --color-foreground: oklch(0.96 0.01 90);
   --color-card: oklch(0.02 0 0);
   --color-card-foreground: oklch(0.96 0.01 90);
-  --color-primary: oklch(0.8 0.2 70);
+  --color-primary:  #eabe7b;
   --color-primary-foreground: oklch(0 0 0);
   --color-secondary: oklch(0.15 0 0);
   --color-secondary-foreground: oklch(0.96 0.01 90);
   --color-muted: oklch(0.15 0 0);
   --color-muted-foreground: oklch(0.5 0 0);
-  --color-accent: oklch(0.8 0.2 70);
+  --color-accent:  #eabe7b;
   --color-accent-foreground: oklch(0 0 0);
   --color-border: oklch(0.2 0 0);
   --color-input: oklch(0.2 0 0);
-  --color-ring: oklch(0.8 0.2 70);
+  --color-ring:  #eabe7b;
 
   /* Border radius */
   --radius: 0.5rem;
 
   /* Fonts */
-  --font-sans: ui-sans-serif, system-ui, sans-serif, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Custom animations */
@@ -33,7 +33,6 @@
   --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-gradient: gradient 8s ease infinite;
   --animate-shimmer: shimmer 2s infinite;
-  --animate-border-beam: border-beam calc(var(--duration)*1s) infinite linear;
   --animate-spin-slow: spin 3s linear infinite;
 
   @keyframes float {
@@ -62,15 +61,6 @@
       transform: translateX(100%);
     }
   }
-
-  @keyframes border-beam {
-    0% {
-      offset-distance: 0%;
-    }
-    100% {
-      offset-distance: 100%;
-    }
-  }
 }
 
 /* Base styles */
@@ -84,12 +74,15 @@
     background: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
-    background-image: 
-      radial-gradient(circle at 50% 0%, oklch(0.8 0.2 70 / 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, oklch(0.8 0.2 70 / 0.05) 0%, transparent 50%);
     min-height: 100vh;
     width: 100vw;
     overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  
+  /* Smooth scroll for whole site */
+  html {
+    scroll-behavior: smooth;
   }
 }
 
@@ -99,44 +92,38 @@
     text-wrap: balance;
   }
 
-  .text-ivory {
-    color: oklch(0.96 0.01 90);
-  }
-
   .gradient-text {
-    background-image: linear-gradient(to right, oklch(0.8 0.2 70), oklch(0.85 0.18 75), oklch(0.8 0.2 70));
+    background-image: linear-gradient(to right, #eabe7b, #f5c98e, #eabe7b);
     background-clip: text;
     color: transparent;
     background-size: 200% 200%;
   }
 
-  .gradient-border {
-    position: relative;
-    border: double 2px transparent;
-    background-image: 
-      linear-gradient(var(--color-background), var(--color-background)),
-      linear-gradient(90deg, oklch(0.8 0.2 70), oklch(0.75 0.15 65), oklch(0.9 0.18 80));
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
+  .accent-text {
+    color: var(--color-accent);
   }
-
+  
   .glass-effect {
     backdrop-filter: blur(12px);
-    background-color: oklch(0 0 0 / 0.5);
+    background-color: oklch(0 0 0 / 0.7);
     border: 1px solid oklch(1 0 0 / 0.1);
   }
 
-  .grid-pattern {
+  .bg-grid-pattern {
     background-image: 
-      linear-gradient(to right, oklch(0.8 0.2 70 / 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, oklch(0.8 0.2 70 / 0.1) 1px, transparent 1px);
+      linear-gradient(to right, oklch(0.8 0.2 70 / 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.8 0.2 70 / 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
+  }
+  
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle at center, var(--tw-gradient-stops));
   }
 }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -144,12 +131,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.8 0.2 70);
-  border-radius: 9999px;
+  background: linear-gradient(180deg, #eabe7b, #d4a35e);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.85 0.18 75);
+  background: linear-gradient(180deg, #f5c98e, #e0b068);
 }
 
 /* Animation keyframes for fade-in-up */
@@ -166,23 +153,6 @@
 
 .animate-fade-in-up {
   animation: fade-in-up 0.6s ease-out;
-}
-
-/* Fix for Tailwind v4 gradient animation */
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-.animate-gradient-rotate {
-  animation: gradient-rotate 3s linear infinite;
-}
-
-@keyframes gradient-rotate {
-  to {
-    --gradient-angle: 360deg;
-  }
 }
 
 :root {

@@ -5,7 +5,6 @@ import { ArrowRight, Users, Globe, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useMemo } from "react";
 
-// Generate random orbs **outside** React render — pure & stable
 function generateFloatingOrbs(count = 8) {
   return Array.from({ length: count }, (_, i) => ({
     id: i,
@@ -17,13 +16,11 @@ function generateFloatingOrbs(count = 8) {
 }
 
 export function HeroSection() {
-  // Generate once and memoize — no effect needed!
   const orbs = useMemo(() => generateFloatingOrbs(8), []);
 
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden py-10">
-      {/* Fixed Tailwind class */}
-      <div className="absolute inset-0 bg-gradient-to-br from-amber-900/10 via-black to-amber-900/5" />
+      <div className="absolute inset-0 bg-linear-to-br from-amber-900/10 via-black to-amber-900/5" />
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div

@@ -10,7 +10,18 @@ export function DemoSection() {
           easy it is to create and customize onboarding tours that captivate
           your users.
         </p>
-        <div className="flex justify-center"></div>{" "}
+        <div className="flex justify-center">
+          <iframe
+            src="https://www.youtube.com/embed/ 
+dQw4w9WgXcQ"
+            title="Tourify Demo"
+            width="800"
+            height="450"
+            className="rounded-2xl shadow-lg border border-amber-500/20"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
       </div>
     </section>
   );
