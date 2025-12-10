@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface ImageSliderProps {
   images: string[];
@@ -18,12 +19,14 @@ export function ImageSlider({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    if (!images.length) return;
+
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
     }, interval);
 
     return () => clearInterval(timer);
-  }, [images.length, interval]);
+  }, [images, interval]);
 
   return (
     <div
@@ -35,33 +38,34 @@ export function ImageSlider({
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
+          exit={{ opacity: 0, scale: 0.97 }}
           transition={{ duration: 0.7, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          {/* Placeholder for images - replace with actual images */}
-          <div className="w-full h-full bg-gradient-to-br from-gray-900 to-black border border-white/10 rounded-2xl flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-4xl mb-4 text-gray-400">🎯</div>
-              <p className="text-gray-500">Product Demo {currentIndex + 1}</p>
-            </div>
-          </div>
+          {/* ✅ REAL IMAGE NOW */}
+          <Image
+            src={images[currentIndex]}
+            alt={`Product demo ${currentIndex + 1}`}
+            fill
+            priority
+            className="object-cover rounded-2xl"
+          />
         </motion.div>
       </AnimatePresence>
 
-      {/* Dots indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+      {/* ✅ DOTS */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={cn(
-              "w-2 h-2 rounded-full transition-all",
+              "h-2 rounded-full transition-all",
               currentIndex === index
-                ? "accent-bg w-8"
-                : "bg-white/30 hover:bg-white/50"
+                ? "w-8 bg-amber-500"
+                : "w-2 bg-white/40 hover:bg-white/60"
             )}
           />
         ))}

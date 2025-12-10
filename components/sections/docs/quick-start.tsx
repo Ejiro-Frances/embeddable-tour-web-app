@@ -6,6 +6,7 @@ import { Copy, Check, Terminal, Package, Settings, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import Link from "next/link";
 
 const steps = [
   {
@@ -97,7 +98,7 @@ export function QuickStartSection() {
               Quick Start
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-4xl font-bold mb-6">
             Get Started in <span className="gradient-text">3 Minutes</span>
           </h2>
           <p className="text-xl opacity-80 max-w-3xl mx-auto">
@@ -214,7 +215,7 @@ export function QuickStartSection() {
                       "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
                   }}
                 >
-                  Join Discord Community
+                  <Link href="https://discord.gg/tourify">Join Discord Community</Link>
                 </Button>
                 <Button
                   variant="outline"
@@ -224,7 +225,8 @@ export function QuickStartSection() {
                     color: "#eabe7b",
                   }}
                 >
-                  Contact Support
+                  <Link href="/contact">Contact Support</Link>
+                
                 </Button>
               </div>
             </div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Users, Globe, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useMemo } from "react";
+import Link from "next/link";
 
 function generateFloatingOrbs(count = 8) {
   return Array.from({ length: count }, (_, i) => ({
@@ -51,7 +52,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+            className="text-4xl md:text-7xl lg:text-8xl font-bold mb-6"
           >
             <span className="gradient-text">Redefining</span>
             <br />
@@ -123,8 +124,11 @@ export function HeroSection() {
                 boxShadow: "0 10px 30px -10px oklch(0.8 0.2 70 / 0.4)",
               }}
             >
+              <Link href="/signup" className="flex items-center">
+              
               Join Our Journey
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-2 transition-transform duration-300" />
+              </Link>
             </Button>
           </motion.div>
         </motion.div>

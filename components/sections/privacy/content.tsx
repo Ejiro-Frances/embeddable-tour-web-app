@@ -259,14 +259,7 @@ export function PrivacyContent() {
                     >
                       <div
                         className="prose prose-invert max-w-none"
-                        style={
-                          {
-                            "--tw-prose-body": "oklch(0.9 0.01 100)",
-                            "--tw-prose-headings": "oklch(1 0 0)",
-                            "--tw-prose-links": "#eabe7b",
-                            "--tw-prose-bold": "oklch(1 0 0)",
-                          } as any
-                        }
+                       
                       >
                         <div className="whitespace-pre-line text-opacity-90">
                           {section.content.split("\n").map((paragraph, i) => {

@@ -107,7 +107,7 @@ export function ContactForm() {
             <Send className="h-3 w-3 mr-2" />
             Get in Touch
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+          <h2 className="text-4xl md:text-4xl font-bold mb-6 text-white">
             Send Us a <span className="gradient-text">Message</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-2xl mx-auto">

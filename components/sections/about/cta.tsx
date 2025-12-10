@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export function CTA() {
   return (
@@ -39,7 +40,7 @@ export function CTA() {
               </span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-4xl md:text-4xl font-bold mb-6 leading-tight">
               Ready to Create <span className="gradient-text">Magical</span>{" "}
               Experiences?
             </h2>
@@ -58,8 +59,10 @@ export function CTA() {
                     "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
                 }}
               >
-                Start Free Trial
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <Link href="/signup" className="flex items-center">
+                  Start Free Trial
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
 
               <Button
@@ -70,8 +73,10 @@ export function CTA() {
                   borderColor: "oklch(0.8 0.2 70 / 0.3)",
                 }}
               >
-                <Rocket className="mr-2 h-5 w-5" />
-                Schedule Demo
+                <Link href="/contact" className="flex items-center">
+                  <Rocket className="mr-2 h-5 w-5" />
+                  Schedule Demo
+                </Link>
               </Button>
             </div>
 

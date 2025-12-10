@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { HelpCircle, Zap, Shield, CreditCard, Code, Users } from "lucide-react";
-import Link from "next/link";
 
 const faqCategories = [
   {
@@ -273,7 +272,7 @@ export function FAQSection() {
                     color: "oklch(0 0 0)",
                   }}
                 >
-                  <Link href="/contact">Contact Support</Link>
+                  Contact Support
                 </button>
                 <button
                   className="px-6 py-3 rounded-lg font-medium border transition-all hover:bg-white/5"
@@ -282,7 +281,7 @@ export function FAQSection() {
                     color: "#eabe7b",
                   }}
                 >
-                  <Link href="https://discord.gg/tourify">Join Community</Link>
+                  Join Community
                 </button>
               </div>
             </div>

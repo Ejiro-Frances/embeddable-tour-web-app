@@ -51,7 +51,7 @@ export function MissionSection() {
               Why We Exist
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-4xl font-bold mb-6">
             More Than Just <span className="gradient-text">Software</span>
           </h2>
           <p className="text-xl opacity-80 max-w-3xl mx-auto">

@@ -14,7 +14,7 @@ export default async function AuthPagesLayout({
 
     // If user is already logged in, redirect to dashboard
     if (user) {
-        redirect('/dashboard?loggedIn=true')
+        redirect(`/dashboard?loggedIn=${user.email}`)
     }
 
     return <div className="min-h-screen w-screen flex bg-background p-5 md:p-20">

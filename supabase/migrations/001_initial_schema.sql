@@ -49,9 +49,9 @@ ALTER TABLE steps ENABLE ROW LEVEL SECURITY;
 ALTER TABLE tour_analytics ENABLE ROW LEVEL SECURITY;
 
 -- RLS Policies for tours
-CREATE POLICY "Users can view their own tours"
+CREATE POLICY "Public can view tours"
   ON tours FOR SELECT
-  USING (auth.uid() = user_id);
+  USING (true);
 
 CREATE POLICY "Users can create their own tours"
   ON tours FOR INSERT
@@ -66,11 +66,10 @@ CREATE POLICY "Users can delete their own tours"
   USING (auth.uid() = user_id);
 
 -- RLS Policies for steps
-CREATE POLICY "Users can view steps of their tours"
+CREATE POLICY "Public can view steps"
   ON steps FOR SELECT
-  USING (EXISTS (
-    SELECT 1 FROM tours WHERE tours.id = steps.tour_id AND tours.user_id = auth.uid()
-  ));
+  USING (true);
+
 
 CREATE POLICY "Users can create steps for their tours"
   ON steps FOR INSERT

@@ -13,7 +13,7 @@ export default function TourStatsCard({ tourId }: TourStatsCardProps) {
   const [stats, setStats] = useState<TourStats | null>(null);
   const [, setTrend] = useState<CompletionTrend[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +45,7 @@ export default function TourStatsCard({ tourId }: TourStatsCardProps) {
 
     fetchData();
   }, [tourId]);
+
 
   if (loading) {
     return (

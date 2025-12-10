@@ -87,7 +87,7 @@ export function FeaturesSection() {
           <div className="inline-block px-4 py-2 rounded-full accent-bg/10 border border-amber-300/20 mb-4">
             <span className="text-sm font-medium accent-text">Features</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-white to-amber-200">
+          <h2 className="text-4xl md:text-4xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-white to-amber-200">
             Everything You Need For <br />
                         <AnimatedGradientText text="Perfect Onboarding" />
             

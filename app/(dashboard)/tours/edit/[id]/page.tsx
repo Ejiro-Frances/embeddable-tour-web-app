@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import CreateTourForm from "../../../_components/create-tour-form";
 import { TourFormValues, StepFormValues } from "../../../_schemas/tour-schema";
 import { toast } from "sonner";
+import Loader from "@/components/loader";
 
 interface SupabaseStep {
   id: string;
@@ -84,9 +85,7 @@ const EditTourPage: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <p className="text-lg">Loading tour...</p>
-      </div>
+      <Loader itemName="tour details" />
     );
   }
 

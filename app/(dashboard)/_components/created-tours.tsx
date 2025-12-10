@@ -27,6 +27,8 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { toast } from "sonner";
+import { getEmbedScript } from "@/lib/utils";
+import Loader from "@/components/loader";
 
 const CreatedTours: React.FC = () => {
   const router = useRouter();
@@ -54,13 +56,13 @@ const CreatedTours: React.FC = () => {
   const handleViewDetails = (tourId: string) => router.push(`/tours/${tourId}`);
   const handleEdit = (tourId: string) => router.push(`/tours/edit/${tourId}`);
   const handleCopyEmbed = (tourId: string) => {
-    navigator.clipboard.writeText(
-      `<script src="https://your-app.com/embed/${tourId}.js"></script>`
-    );
+    const embedCode = getEmbedScript(tourId);
+    navigator.clipboard.writeText(embedCode);
     toast.success("Embed code copied to clipboard!");
   };
 
-  if (loading) return <p>Loading tours...</p>;
+  if (loading) return <Loader itemName="your tours" />
+
   if (!tours.length) return <EmptyState />;
 
   return (

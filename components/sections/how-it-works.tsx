@@ -8,6 +8,7 @@ import {
   Rocket,
   ChevronRight,
 } from "lucide-react";
+import Link from "next/link";
 
 const steps = [
   {
@@ -22,7 +23,7 @@ const steps = [
     number: "02",
     icon: <Settings className="h-8 w-8" />,
     title: "Customize Steps",
-    description: "Add 5+ steps, set triggers, and customize the appearance.",
+    description: "Add 5+ steps, set triggers, and track your steps.",
     color: "from-yellow-500 to-orange-500",
   },
   {
@@ -57,7 +58,7 @@ export function HowItWorksSection() {
               How It Works
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-4xl font-bold mb-6">
             Get Started in <span className="gradient-text">4 Easy Steps</span>
           </h2>
           <p className="text-xl text-ivory/80 max-w-3xl mx-auto">
@@ -125,8 +126,11 @@ export function HowItWorksSection() {
           className="text-center mt-16"
         >
           <button className="group px-8 py-4 rounded-full bg-linear-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/30">
+          <Link href="/login">
+          
             Start Building Your Tour
             <ChevronRight className="inline ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
           </button>
         </motion.div>
       </div>

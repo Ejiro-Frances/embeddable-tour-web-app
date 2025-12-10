@@ -6,19 +6,21 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "about" },
-  { label: "Docs", href: "docs" },
-  // { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "contact" },
+  { label: "Documentation", href: "/docs" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
+
+  const pathname = usePathname();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
@@ -54,31 +56,54 @@ export function Navbar() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <motion.div
-                  key={item.label}
-                  whileHover={{ y: -2 }}
-                  whileTap={{ y: 0 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="text-ivory/80 hover:accent-text transition-colors font-medium relative group"
+              {navItems.map((item) => {
+                const isActive =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(item.href);
+
+                return (
+                  <motion.div
+                    key={item.label}
+                    whileHover={{ y: -2 }}
+                    whileTap={{ y: 0 }}
                   >
-                    {item.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 accent-bg group-hover:w-full transition-all duration-300" />
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "font-medium relative group transition-colors",
+                        isActive
+                          ? "text-[#eabe7b]"
+                          : "text-ivory/80 hover:accent-text"
+                      )}
+                    >
+                      {item.label}
+
+                      <span
+                        className={cn(
+                          "absolute -bottom-1 left-0 h-0.5 accent-bg transition-all duration-300",
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
+                        )}
+                      />
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center space-x-4">
               <Button
-                variant="ghost"
-                className="text-ivory hover:accent-text hover:bg-transparent font-semibold transition-all ease-in-out duration-600"
+                variant="outline"
+                className="text-ivory hover:text-accent-text hover:bg-accent/20 font-semibold transition-all ease-in-out duration-600"
                 asChild
               >
-                <Link href="/login">Sign In</Link>
+                <Link
+                  href="/login"
+                  className="text-ivory/80 hover:accent-text transition-colors font-medium relative group"
+                >
+                  Sign In
+                </Link>
               </Button>
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -115,16 +140,29 @@ export function Navbar() {
       >
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col space-y-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="text-ivory hover:accent-text transition-colors py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive =
+                item.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(item.href);
+
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={cn(
+                    "py-2 transition-colors font-medium",
+                    isActive
+                      ? "accent-text border-l-4 border-amber-400 pl-4"
+                      : "text-ivory hover:accent-text"
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+
             <div className="pt-4 space-y-4">
               <Button
                 variant="outline"

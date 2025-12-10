@@ -15,6 +15,7 @@ import { FocusPointerWrapper } from "@/components/ui/focus-pointer-wrapper";
 export default function SignupPageContent() {
   const router = useRouter();
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -32,6 +33,11 @@ export default function SignupPageContent() {
       return;
     }
 
+    if (username.length < 3) {
+      setError("Username must be at least 3 characters");
+      return;
+    }
+
     if (password.length < 6) {
       setError("Password must be at least 6 characters");
       return;
@@ -40,7 +46,11 @@ export default function SignupPageContent() {
     setLoading(true);
 
     try {
-      const { data, error } = await signUp(email, password);
+      const { data, error } = await signUp(
+        email, 
+        password,
+        username
+      );
 
       if (error) {
         setError(error.message);
@@ -85,6 +95,23 @@ export default function SignupPageContent() {
 
       {/* Signup Form */}
       <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="username">Username</Label>
+          <FocusPointerWrapper>
+            <Input
+              autoFocus
+              id="username"
+              type="text"
+              placeholder="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              disabled={loading || success}
+              className="h-11"
+            />
+          </FocusPointerWrapper>
+        </div>
+
         <div className="space-y-2">
           <Label htmlFor="email">Email Address</Label>
           <FocusPointerWrapper>
@@ -157,7 +184,7 @@ export default function SignupPageContent() {
               Creating account...
             </>
           ) : (
-            "Submit"
+            "Sign up"
           )}
         </Button>
       </form>
