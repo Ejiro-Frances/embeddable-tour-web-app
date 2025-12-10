@@ -6,36 +6,40 @@ import { github } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 
 const teamMembers = [
   {
-    name: "Frances Ejiro",
-    role: "Frontend Engineer",
-    bio: "Former UX lead at Google with 10+ years in product design",
-    imageColor: "oklch(0.75 0.18 80)",
-    social: {
-      linkedin: "#",
-      twitter: "#",
-      email: "#",
-    },
-  },
-  {
     name: "Chief Leo",
     role: "Head of Engineering",
     bio: "Ex-Facebook engineer specializing in frontend architecture",
     imageColor: "oklch(0.85 0.18 75)",
     social: {
-      linkedin: "#",
-      github: "#",
-      email: "#",
+      linkedin: "https://www.linkedin.com/in/primocrypt",
+      twitter: "https://x.com/leothatguy",
+      github: "https://github.com/leothatguy",
+      email: "yhungdew@gmail.com",
     },
   },
+  {
+    name: "Frances Ejiro",
+    role: "Frontend Engineer",
+    bio: "Former UX lead at Google with 10+ years in product design",
+    imageColor: "oklch(0.75 0.18 80)",
+    social: {
+      linkedin: "https://www.linkedin.com/in/ejiro-francess-ejoh/",
+      twitter: "https://x.com/france_ssa",
+      email: "francesejiro@yahoo.com",
+      github: "https://github.com/Ejiro-Frances",
+    },
+  },
+
   {
     name: "David Uwagbale",
     role: "Fullstack Developer",
     bio: "Product manager with 8+ years at top SaaS companies",
     imageColor: "oklch(0.9 0.18 80)",
     social: {
-      linkedin: "#",
-      twitter: "#",
-      email: "#",
+      linkedin: "https://linkedin/in/daviduwagbale",
+      twitter: "https://x.com/DavidTimi_1",
+      email: "duwagbale07@gmail.com",
+      github: "https://github.com/davdavidtimi1",
     },
   },
   {
@@ -44,9 +48,10 @@ const teamMembers = [
     bio: "Award-winning designer focused on creating delightful experiences",
     imageColor: "oklch(0.8 0.15 85)",
     social: {
-      linkedin: "#",
-      github: "#",
-      email: "#",
+      linkedin: "https://www.linkedin.com/in/tolulope-ilesanmi",
+      github: "https://github.com/tolulope-i",
+      email: "marvellousilesanmi25@gmail.com",
+      twitter: "https://x.com/dev__tolu",
     },
   },
 ];
@@ -63,9 +68,9 @@ export function TeamSection() {
           className="text-center mb-16"
         >
           <div
-            className="inline-block px-4 py-2 rounded-full border mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8"
             style={{
-              background: "oklch(0.8 0.2 70 / 0.1)",
+              // background: "oklch(0.8 0.2 70 / 0.1)",
               borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >

@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Scale, FileText, HelpCircle, Mail } from "lucide-react";
+import Link from "next/link";
+import { downloadTermsPDF } from "@/lib/downloadTermsPdf";
 
 export function TermsCTA() {
   return (
@@ -17,7 +19,6 @@ export function TermsCTA() {
             backgroundSize: "50px 50px",
           }}
         />
-        
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -92,8 +93,10 @@ export function TermsCTA() {
                     "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
                 }}
               >
-                <Mail className="h-4 w-4" />
-                Contact Legal Team
+                <Link href="/contact" className="flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
+                  Contact Legal Team
+                </Link>
               </Button>
 
               <Button
@@ -103,6 +106,7 @@ export function TermsCTA() {
                   borderColor: "oklch(0.8 0.2 70 / 0.3)",
                   color: "#eabe7b",
                 }}
+                onClick={downloadTermsPDF}
               >
                 <FileText className="h-4 w-4" />
                 Download Terms PDF

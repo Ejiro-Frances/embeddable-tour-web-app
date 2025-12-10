@@ -68,7 +68,7 @@ const tour = new Tourify({
     title: "SaaS Product Tour",
     description: "Onboard users to complex SaaS applications",
     icon: <Zap className="h-5 w-5" />,
-    color: "oklch(0.85 0.18 75)",
+    color: "#eabe7b",
     code: `// SaaS application onboarding
 const saasTour = {
   steps: [
@@ -114,7 +114,7 @@ const saasTour = {
     title: "Mobile App Tour",
     description: "Native-like onboarding for mobile web apps",
     icon: <Smartphone className="h-5 w-5" />,
-    color: "oklch(0.9 0.18 80)",
+    color: "#eabe7b",
     code: `// Mobile-optimized tour
 const mobileTour = {
   steps: [
@@ -248,9 +248,9 @@ export function ExamplesSection() {
         >
           <Badge
             variant="outline"
-            className="mb-4 px-4 py-1.5 text-sm font-medium"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8"
             style={{
-              background: "oklch(0.8 0.2 70 / 0.1)",
+              // background: "oklch(0.8 0.2 70 / 0.1)",
               borderColor: "oklch(0.8 0.2 70 / 0.2)",
               color: "#eabe7b",
             }}

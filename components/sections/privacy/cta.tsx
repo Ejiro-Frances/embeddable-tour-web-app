@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Mail, Shield, HelpCircle } from "lucide-react";
+import Link from "next/link";
 
 export function PrivacyCTA() {
   return (
     <section className="py-24 relative">
-      
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -78,20 +78,23 @@ export function PrivacyCTA() {
                     "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
                 }}
               >
-                <Mail className="h-4 w-4" />
-                Contact Privacy Team
+                <Link href="/contact" className="flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
+                  Contact Privacy Team
+                </Link>
               </Button>
 
               <Button
                 variant="outline"
-                className="gap-2"
+                className="gap-2 text-accent hover:text-accent-foreground"
                 style={{
                   borderColor: "oklch(0.8 0.2 70 / 0.3)",
-                  color: "#eabe7b",
                 }}
               >
-                <Shield className="h-4 w-4" />
-                View Security Overview
+                <Link href="/about" className="flex items-center gap-2">
+                  <Shield className="h-4 w-4" />
+                  Know more
+                </Link>
               </Button>
             </div>
 

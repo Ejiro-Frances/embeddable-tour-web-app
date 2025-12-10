@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import jsPDF from "jspdf";
 
 const sections = [
   {
@@ -152,6 +153,75 @@ export function PrivacyContent() {
     );
   };
 
+  const downloadPDF = () => {
+    const doc = new jsPDF({ unit: "pt", format: "a4" });
+
+    const x = 40;
+    let y = 40;
+
+    doc.setFont("Helvetica", "normal");
+    doc.setFontSize(18);
+    doc.text("Tourify Privacy Policy", x, y);
+
+    y += 30;
+
+    doc.setFontSize(12);
+
+    sections.forEach((section) => {
+      doc.setFont("Helvetica", "bold");
+      doc.text(section.title, x, y);
+      y += 20;
+
+      doc.setFont("Helvetica", "normal");
+
+      const lines = doc.splitTextToSize(section.content, 520);
+      lines.forEach((line: string) => {
+        if (y > 780) {
+          doc.addPage();
+          y = 40;
+        }
+        doc.text(line, x, y);
+        y += 16;
+      });
+
+      y += 10;
+    });
+
+    doc.save("privacy-policy.pdf");
+  };
+
+  const printVersion = () => {
+    const printContent = sections
+      .map(
+        (section) =>
+          `<h2>${section.title}</h2><p>${section.content.replace(
+            /\n/g,
+            "<br/>"
+          )}</p>`
+      )
+      .join("<hr/>");
+
+    const printWindow = window.open("", "", "width=900,height=700");
+
+    printWindow!.document.write(`
+    <html>
+      <head>
+        <title>Privacy Policy</title>
+        <style>
+          body { font-family: Arial; padding: 20px; line-height: 1.6; }
+          h2 { margin-top: 24px; color: #444; }
+          hr { margin: 32px 0; opacity: 0.3; }
+        </style>
+      </head>
+      <body>${printContent}</body>
+    </html>
+  `);
+
+    printWindow!.document.close();
+    printWindow!.focus();
+    printWindow!.print();
+  };
+
   return (
     <section className="py-24 relative">
       <div className="container mx-auto px-4">
@@ -191,10 +261,9 @@ export function PrivacyContent() {
                         behavior: "smooth",
                       });
                     }}
-                    className="rounded-full text-xs"
+                    className="rounded-full text-xs text-accent hover:text-black"
                     style={{
                       borderColor: "oklch(0.8 0.2 70 / 0.3)",
-                      color: "#eabe7b",
                     }}
                   >
                     {section.title.split(" ")[0]}
@@ -257,10 +326,7 @@ export function PrivacyContent() {
                       transition={{ duration: 0.3 }}
                       className="p-6 pt-4"
                     >
-                      <div
-                        className="prose prose-invert max-w-none"
-                       
-                      >
+                      <div className="prose prose-invert max-w-none">
                         <div className="whitespace-pre-line text-opacity-90">
                           {section.content.split("\n").map((paragraph, i) => {
                             if (paragraph.startsWith("### ")) {
@@ -325,6 +391,7 @@ export function PrivacyContent() {
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Button
                   className="gap-2"
+                  onClick={downloadPDF}
                   style={{
                     background:
                       "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
@@ -347,10 +414,10 @@ export function PrivacyContent() {
                 </Button>
                 <Button
                   variant="outline"
-                  className="gap-2"
+                  className="gap-2 text-accent hover:text-black"
+                  onClick={printVersion}
                   style={{
                     borderColor: "oklch(0.8 0.2 70 / 0.3)",
-                    color: "#eabe7b",
                   }}
                 >
                   <svg

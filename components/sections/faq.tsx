@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { HelpCircle, Zap, Shield, CreditCard, Code, Users } from "lucide-react";
+import Link from "next/link";
 
 const faqCategories = [
   {
@@ -123,9 +124,9 @@ export function FAQSection() {
         >
           <Badge
             variant="outline"
-            className="mb-4 px-4 py-1.5 text-sm font-medium"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8"
             style={{
-              background: "oklch(0.8 0.2 70 / 0.1)",
+              // background: "oklch(0.8 0.2 70 / 0.1)",
               borderColor: "oklch(0.8 0.2 70 / 0.2)",
               color: "#eabe7b",
             }}
@@ -272,7 +273,7 @@ export function FAQSection() {
                     color: "oklch(0 0 0)",
                   }}
                 >
-                  Contact Support
+                  <Link href="/contact">Contact Support</Link>
                 </button>
                 <button
                   className="px-6 py-3 rounded-lg font-medium border transition-all hover:bg-white/5"
@@ -281,7 +282,7 @@ export function FAQSection() {
                     color: "#eabe7b",
                   }}
                 >
-                  Join Community
+                  <Link href="/https://discord.gg/tourify">Join Community</Link>
                 </button>
               </div>
             </div>
