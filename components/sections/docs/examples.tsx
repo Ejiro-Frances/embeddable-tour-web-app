@@ -258,7 +258,7 @@ export function ExamplesSection() {
             <Play className="h-3 w-3 mr-2" />
             Live Examples
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-4xl font-bold mb-6">
             Real-World <span className="gradient-text">Implementations</span>
           </h2>
           <p className="text-xl opacity-80 max-w-3xl mx-auto">

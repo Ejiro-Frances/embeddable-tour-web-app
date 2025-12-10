@@ -39,6 +39,12 @@ Tourify is a modern SaaS platform that empowers product teams to create beautifu
 - **99.9%** Uptime SLA
 - **50+** Integrations Available
 
+
+## Team
+- Leo   -       @ChiefInternLeo
+- Ejiro Frances - @Ejiro Frances_Borjigin Bekii
+- David Uwagbale - @Dev_id - git push new bug
+- Tolulope Ilesanmi - @Tolu-I
 ---
 
 ## 🚀 Quick Start

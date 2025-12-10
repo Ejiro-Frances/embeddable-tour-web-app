@@ -34,7 +34,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+            className="text-4xl md:text-7xl lg:text-8xl font-bold mb-6"
           >
             <span className="text-ivory">Transform User </span>
             <AnimatedGradientText text="Experience" />
@@ -78,14 +78,14 @@ export function HeroSection() {
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button
+            {/* <Button
               size="lg"
               variant="outline"
               className="cursor-pointer border-amber-300 accent-text hover:accent-bg/10 hover:text-amber-600 font-bold text-lg px-8 py-6"
             >
               <Zap className="mr-2 h-5 w-5" />
               Watch Demo
-            </Button>
+            </Button> */}
           </motion.div>
 
           {/* Stats */}

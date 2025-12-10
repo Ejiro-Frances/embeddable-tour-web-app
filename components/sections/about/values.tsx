@@ -65,7 +65,7 @@ export function ValuesSection() {
               Our Values
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-4xl font-bold mb-6">
             The Principles That <span className="gradient-text">Guide Us</span>
           </h2>
           <p className="text-xl opacity-80 max-w-3xl mx-auto">

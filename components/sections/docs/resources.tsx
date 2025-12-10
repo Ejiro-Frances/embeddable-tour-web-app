@@ -12,6 +12,7 @@ import {
   Users,
   TrendingUp,
 } from "lucide-react";
+import Link from "next/link";
 
 const resources = [
   {
@@ -151,7 +152,7 @@ export function ResourcesSection() {
             <Globe className="h-3 w-3 mr-2" />
             Resources & Tools
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-4xl font-bold mb-6">
             Everything You Need to{" "}
             <span className="gradient-text">Succeed</span>
           </h2>
@@ -161,7 +162,7 @@ export function ResourcesSection() {
           </p>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto" id="resources">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {resources.map((category, categoryIndex) => (
               <motion.div
@@ -324,8 +325,13 @@ export function ResourcesSection() {
                     color: "oklch(0 0 0)",
                   }}
                 >
-                  <Github className="h-5 w-5" />
-                  View GitHub
+                  <Link
+                    href="https://github.com/leothatguy/embeddable-tour-web-app"
+                    className="flex gap-2 items-center"
+                  >
+                    <Github className="h-5 w-5" />
+                    View GitHub
+                  </Link>
                 </button>
                 <button
                   className="px-6 py-3 rounded-lg font-medium border flex items-center justify-center gap-2 transition-all hover:bg-white/5"
@@ -334,8 +340,10 @@ export function ResourcesSection() {
                     color: "#eabe7b",
                   }}
                 >
-                  <TrendingUp className="h-5 w-5" />
-                  View Roadmap
+                  <Link href="/contact" className="flex gap-2 items-center">
+                    <TrendingUp className="h-5 w-5" />
+                    Contact Us
+                  </Link>
                 </button>
               </div>
             </div>

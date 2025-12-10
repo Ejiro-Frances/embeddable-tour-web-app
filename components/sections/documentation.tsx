@@ -127,7 +127,7 @@ export function DocumentationSection() {
               Documentation
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-4xl font-bold mb-6">
             Easy Integration,{" "}
             <span className="gradient-text">Powerful Results</span>
           </h2>

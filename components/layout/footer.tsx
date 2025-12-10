@@ -35,14 +35,15 @@ export function Footer() {
               {[
                 "Features",
                 "How It Works",
-                "Pricing",
+                // "Pricing",
+                // "API",
                 "Documentation",
-                "API",
+                "FAQ",
               ].map((item) => (
                 <li key={item}>
                   <Link
                     href={`#${item.toLowerCase()}`}
-                    className="text-ivory/70 hover:accent-text transition-colors"
+                    className="text-ivory/70 hover:text-amber-300 transition-colors"
                   >
                     {item}
                   </Link>
@@ -59,7 +60,7 @@ export function Footer() {
                 <li key={item}>
                   <Link
                     href={`/${item.toLowerCase()}`}
-                    className="text-ivory/70 hover:accent-text transition-colors"
+                    className="text-ivory/70 hover:text-amber-300 transition-colors"
                   >
                     {item}
                   </Link>
@@ -82,21 +83,21 @@ export function Footer() {
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
               href="https://twitter.com"
-              className="text-ivory/70 hover:[#eabe7b] transition-colors"
+              className="text-ivory/70 hover:text-amber-300 transition-colors"
             >
               <Twitter className="h-5 w-5" />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
               href="https://github.com"
-              className="text-ivory/70 hover:[#eabe7b] transition-colors"
+              className="text-ivory/70 hover:text-amber-300 transition-colors"
             >
               <Github className="h-5 w-5" />
             </motion.a>
             <motion.a
               whileHover={{ scale: 1.1, y: -2 }}
               href="https://linkedin.com"
-              className="text-ivory/70 hover:[#eabe7b] transition-colors"
+              className="text-ivory/70 hover:text-amber-300 transition-colors"
             >
               <Linkedin className="h-5 w-5" />
             </motion.a>

@@ -78,7 +78,7 @@ export function LocationsSection() {
             <Globe className="h-3 w-3 mr-2" />
             Our Locations
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-4xl md:text-4xl font-bold mb-6">
             Global <span className="gradient-text">Presence</span>
           </h2>
           <p className="text-xl opacity-80 max-w-2xl mx-auto">
