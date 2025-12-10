@@ -37,13 +37,13 @@ export default function DashboardPage() {
 
     fetchTours();
   }, []);
-
-  // show already loggedin toast
-  useEffect(() => {
-    if (loggedIn) {
-      toast.info(`You are already logged in as ${loggedIn}. Logout first to login to another account`)
-    }
-  }, [loggedIn])
+  
+    // show already loggedin toast
+    useEffect(() => {
+      if (loggedIn) {
+        toast.info(`You are already logged in as ${loggedIn}. Please log out first to log in to another account.`)
+      }
+    }, [loggedIn])
 
   if (loading) return <Loader itemName="dashboard" />
 
