@@ -39,12 +39,13 @@ Tourify is a modern SaaS platform that empowers product teams to create beautifu
 - **99.9%** Uptime SLA
 - **50+** Integrations Available
 
-
 ## Team
-- Leo   -       @ChiefInternLeo
+
+- Leo - @ChiefInternLeo
 - Ejiro Frances - @Ejiro Frances_Borjigin Bekii
 - David Uwagbale - @Dev_id - git push new bug
 - Tolulope Ilesanmi - @Tolu-I
+
 ---
 
 ## 🚀 Quick Start
@@ -421,5 +422,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Made with ❤️ by the Tourify Team**
 
 [🌟 Star us on GitHub](https://github.com/your-org/tourify) • [📧 Newsletter](https://tourify.app/newsletter) • [🐦 Twitter](https://twitter.com/tourify)
-
-
