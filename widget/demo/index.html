@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Tourify Widget Demo</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+				color: #ffffff;
+				min-height: 100vh;
+			}
+
+			.demo-container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 40px 20px;
+			}
+
+			.demo-header {
+				text-align: center;
+				margin-bottom: 60px;
+				padding: 60px 20px;
+				background: linear-gradient(135deg, rgba(234, 190, 123, 0.1) 0%, rgba(234, 190, 123, 0.05) 100%);
+				border-radius: 20px;
+				border: 1px solid rgba(234, 190, 123, 0.2);
+			}
+
+			.demo-logo {
+				font-size: 48px;
+				font-weight: 800;
+				background: linear-gradient(to right, #eabe7b, #f5c98e);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				margin-bottom: 20px;
+			}
+
+			.demo-subtitle {
+				font-size: 20px;
+				color: rgba(255, 255, 255, 0.7);
+				margin-bottom: 30px;
+			}
+
+			.demo-button {
+				background: linear-gradient(135deg, #eabe7b 0%, #dd9222 100%);
+				color: #000;
+				border: none;
+				padding: 16px 40px;
+				font-size: 16px;
+				font-weight: 600;
+				border-radius: 12px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 20px rgba(234, 190, 123, 0.3);
+			}
+
+			.demo-button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 30px rgba(234, 190, 123, 0.4);
+			}
+
+			.demo-content {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 30px;
+				margin-bottom: 60px;
+			}
+
+			.demo-card {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(12px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 16px;
+				padding: 30px;
+				transition: all 0.3s ease;
+			}
+
+			.demo-card:hover {
+				background: rgba(255, 255, 255, 0.05);
+				border-color: rgba(234, 190, 123, 0.3);
+				transform: translateY(-4px);
+			}
+
+			.demo-card-icon {
+				width: 60px;
+				height: 60px;
+				background: rgba(234, 190, 123, 0.15);
+				border-radius: 12px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 28px;
+				margin-bottom: 20px;
+			}
+
+			.demo-card-title {
+				font-size: 20px;
+				font-weight: 700;
+				color: #eabe7b;
+				margin-bottom: 12px;
+			}
+
+			.demo-card-description {
+				color: rgba(255, 255, 255, 0.7);
+				line-height: 1.6;
+			}
+
+			.demo-footer {
+				text-align: center;
+				padding: 40px 20px;
+				border-top: 1px solid rgba(255, 255, 255, 0.1);
+				color: rgba(255, 255, 255, 0.5);
+			}
+
+			.highlight-element {
+				display: inline-block;
+				padding: 4px 12px;
+				background: rgba(234, 190, 123, 0.2);
+				border: 1px solid rgba(234, 190, 123, 0.4);
+				border-radius: 6px;
+				color: #eabe7b;
+				font-weight: 600;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="demo-container">
+			<div class="demo-header">
+				<div class="demo-logo">✨ Tourify Widget Demo</div>
+				<p class="demo-subtitle">Experience the premium black and gold embeddable tour widget</p>
+				<button class="demo-button" id="start-tour">Start Interactive Tour</button>
+			</div>
+
+			<div class="demo-content">
+				<div class="demo-card" id="card-1">
+					<div class="demo-card-icon">🚀</div>
+					<h3 class="demo-card-title">Easy to Integrate</h3>
+					<p class="demo-card-description">
+						Add the widget to any website with just a few lines of code.
+						<span class="highlight-element">Simple setup</span>
+					</p>
+				</div>
+
+				<div class="demo-card" id="card-2">
+					<div class="demo-card-icon">🎨</div>
+					<h3 class="demo-card-title">Premium Design</h3>
+					<p class="demo-card-description">
+						Beautiful black and gold theme with glassmorphism effects and smooth animations.
+						<span class="highlight-element">Stunning visuals</span>
+					</p>
+				</div>
+
+				<div class="demo-card" id="card-3">
+					<div class="demo-card-icon">📱</div>
+					<h3 class="demo-card-title">Fully Responsive</h3>
+					<p class="demo-card-description">
+						Works perfectly on all devices - desktop, tablet, and mobile.
+						<span class="highlight-element">Mobile-friendly</span>
+					</p>
+				</div>
+
+				<div class="demo-card" id="card-4">
+					<div class="demo-card-icon">🎯</div>
+					<h3 class="demo-card-title">Step Targeting</h3>
+					<p class="demo-card-description">
+						Highlight specific elements on your page to guide users effectively.
+						<span class="highlight-element">Smart spotlight</span>
+					</p>
+				</div>
+
+				<div class="demo-card" id="card-5">
+					<div class="demo-card-icon">📊</div>
+					<h3 class="demo-card-title">Analytics Tracking</h3>
+					<p class="demo-card-description">
+						Track user engagement with detailed analytics and insights.
+						<span class="highlight-element">Data-driven</span>
+					</p>
+				</div>
+
+				<div class="demo-card" id="card-6">
+					<div class="demo-card-icon">⚡</div>
+					<h3 class="demo-card-title">Lightning Fast</h3>
+					<p class="demo-card-description">
+						Optimized bundle size ensures fast loading times for your users.
+						<span class="highlight-element">Performance</span>
+					</p>
+				</div>
+			</div>
+
+			<div class="demo-footer">
+				<p>Built with ❤️ using Vite, TypeScript, and Three.js</p>
+				<p style="margin-top: 10px; font-size: 14px">Press the button above to experience the tour</p>
+			</div>
+		</div>
+
+		<!-- Widget Script -->
+		<script type="module">
+			import { tourify, Tourify } from '../dist/tourify.es.js';
+
+			// Functional approach (recommended - like intro.js)
+			document.getElementById('start-tour').addEventListener('click', () => {
+				// Create and start tour with functional API
+				tourify({
+					tourId: 'demo-tour',
+					autoStart: true,
+					showAvatar: true,
+					onStart: () => console.log('🚀 Tour started!'),
+					onComplete: () => {
+						alert('🎉 Tour completed! Thanks for trying Tourify!');
+					},
+					onSkip: () => console.log('⏭️ Tour skipped'),
+					onStepChange: (step) => console.log('📍 Step:', step.title),
+				});
+			});
+
+			// Class approach also supported (backwards compatibility)
+			// const tour = new Tourify({ tourId: 'demo-tour' });
+			// tour.start();
+		</script>
+	</body>
+</html>
