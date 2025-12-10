@@ -4,113 +4,104 @@ import React, { useEffect, useState } from "react";
 import { useRouter, useParams } from "next/navigation";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import DeleteTourModal from "../../_components/delete-tour-modal";
+import DeleteTourModal from "../../_components/modals/delete-tour-modal";
 import { StepFormValues, TourFormValues } from "../../_schemas/tour-schema";
 import { ArrowLeft, CopyIcon, PencilIcon, TrashIcon } from "lucide-react";
+import { toast } from "sonner";
+
+// Type for API response
+interface TourApiResponse {
+  tour: {
+    id: string;
+    name: string;
+    description: string | null;
+    steps: {
+      id: string;
+      order_number: number;
+      title: string;
+      description: string;
+    }[];
+  };
+}
 
 const ViewTourPage: React.FC = () => {
   const params = useParams();
   const router = useRouter();
+  const tourId = Array.isArray(params.id)
+    ? params.id[0]
+    : (params.id as string);
 
-  const id = Array.isArray(params.id) ? params.id[0] : (params.id as string);
-
-  const [tour, setTour] = useState<TourFormValues | null>(() => {
-    // Initialize state with the tour data on mount
-    if (typeof window === "undefined" || !id) return null;
-
-    try {
-      const storedTours = localStorage.getItem("tours");
-      if (!storedTours) return null;
-
-      const tours: TourFormValues[] = JSON.parse(storedTours);
-      return tours.find((t) => t.id === id) ?? null;
-    } catch (error) {
-      console.error("Failed to parse tours from localStorage:", error);
-      return null;
-    }
-  });
-
+  const [tour, setTour] = useState<TourFormValues | null>(null);
+  const [loading, setLoading] = useState(true);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
+  // Fetch tour via API route
   useEffect(() => {
-    // Only run when ID changes (for navigation between different tours)
-    if (typeof window === "undefined" || !id) return;
+    if (!tourId) return;
 
-    const loadTour = () => {
+    const fetchTour = async () => {
+      setLoading(true);
       try {
-        const storedTours = localStorage.getItem("tours");
-        if (!storedTours) {
-          setTour(null);
-          return;
-        }
+        const res = await fetch(`/api/tours/${tourId}`);
+        if (!res.ok) throw new Error("Failed to fetch tour");
 
-        const tours: TourFormValues[] = JSON.parse(storedTours);
-        const foundTour = tours.find((t) => t.id === id) ?? null;
-        setTour(foundTour);
-      } catch (error) {
-        console.error("Failed to parse tours from localStorage:", error);
+        const data: TourApiResponse = await res.json();
+        const fetchedTour = data.tour;
+
+        // Map API response to your TourFormValues type
+        const mappedTour: TourFormValues = {
+          id: fetchedTour.id,
+          name: fetchedTour.name,
+          description: fetchedTour.description || "",
+          steps: fetchedTour.steps.map<StepFormValues>((s) => ({
+            id: s.id,
+            order: s.order_number,
+            title: s.title,
+            description: s.description,
+          })),
+        };
+
+        setTour(mappedTour);
+      } catch (err) {
+        console.error("Error fetching tour:", err);
+        toast.error("Failed to load tour");
         setTour(null);
+      } finally {
+        setLoading(false);
       }
     };
 
-    loadTour();
-
-    // Optional: Listen for storage changes (if updating from another tab)
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === "tours") {
-        loadTour();
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-
-    return () => {
-      window.removeEventListener("storage", handleStorageChange);
-    };
-  }, [id]);
-
-  const handleDelete = () => {
-    if (!tour) return;
-
-    try {
-      const storedTours = localStorage.getItem("tours");
-      if (!storedTours) return;
-
-      const tours: TourFormValues[] = JSON.parse(storedTours);
-      const updatedTours = tours.filter((t) => t.id !== tour.id);
-      localStorage.setItem("tours", JSON.stringify(updatedTours));
-
-      setIsDeleteModalOpen(false);
-      router.push("/tours");
-    } catch (error) {
-      console.error("Failed to delete tour:", error);
-    }
-  };
+    fetchTour();
+  }, [tourId]);
 
   const handleCopyEmbed = () => {
-    if (!tour) return;
-    const embedCode = `<script src="https://your-app.com/embed/${tour.id}.js"></script>`;
-    navigator.clipboard.writeText(embedCode);
-    alert("Embed code copied to clipboard!");
+    if (!tour?.id) return;
+    navigator.clipboard.writeText(
+      `<script src="https://your-app.com/embed/${tour.id}.js"></script>`
+    );
+    toast.success("Embed code copied to clipboard!");
   };
 
   const handleEdit = () => {
-    if (!tour) return;
+    if (!tour?.id) return;
     router.push(`/tours/edit/${tour.id}`);
   };
 
-  if (!tour) return <p className="text-center mt-10">Tour not found</p>;
+  if (loading) return <p className="text-center mt-10">Loading tour...</p>;
+  if (!tour)
+    return <p className="text-center mt-10 text-red-500">Tour not found</p>;
 
   return (
     <div className="max-w-4xl mx-auto mt-6 space-y-6">
       <Button
         variant="outline"
         size="sm"
-        onClick={() => router.push("/tours")}
+        onClick={() => router.back()}
         className="mb-4"
       >
-        <ArrowLeft />
+        <ArrowLeft className="mr-2" /> Back
       </Button>
+
       <header className="flex flex-col md:flex-row justify-between gap-5 md:items-center pb-4 border-b">
         <h1 className="text-3xl font-bold">{tour.name}</h1>
 
@@ -157,12 +148,15 @@ const ViewTourPage: React.FC = () => {
         ))}
       </div>
 
-      <DeleteTourModal
-        tourName={tour.name}
-        onConfirm={handleDelete}
-        open={isDeleteModalOpen}
-        onOpenChange={setIsDeleteModalOpen}
-      />
+      {tour.id && (
+        <DeleteTourModal
+          tourId={tour.id}
+          tourName={tour.name}
+          open={isDeleteModalOpen}
+          onOpenChange={setIsDeleteModalOpen}
+          onDeleted={() => router.push("/tours")}
+        />
+      )}
     </div>
   );
 };

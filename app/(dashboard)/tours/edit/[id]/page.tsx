@@ -3,7 +3,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import CreateTourForm from "../../../_components/create-tour-form";
-import { TourFormValues } from "../../../_schemas/tour-schema";
+import { TourFormValues, StepFormValues } from "../../../_schemas/tour-schema";
+import { toast } from "sonner";
+
+interface SupabaseStep {
+  id: string;
+  title: string;
+  description: string | null;
+  order_number: number;
+}
+
+interface SupabaseTour {
+  id: string;
+  name: string;
+  description: string | null;
+  steps: SupabaseStep[];
+}
 
 const EditTourPage: React.FC = () => {
   const params = useParams();
@@ -14,30 +29,58 @@ const EditTourPage: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (typeof window === "undefined" || !id) return;
+    if (!id) return;
 
-    try {
-      const storedTours = localStorage.getItem("tours");
-      if (!storedTours) {
+    const fetchTour = async () => {
+      try {
+        const res = await fetch(`/api/tours/${id}`);
+        const data: { tour?: SupabaseTour; error?: string } = await res.json();
+
+        if (!res.ok || !data.tour) {
+          router.push("/tours");
+          return;
+        }
+
+        const tourData: TourFormValues = {
+          id: data.tour.id,
+          name: data.tour.name,
+          description: data.tour.description ?? "",
+          steps: data.tour.steps.map((s: SupabaseStep) => ({
+            order: s.order_number,
+            title: s.title,
+            description: s.description ?? "",
+          })) as StepFormValues[],
+        };
+
+        setTour(tourData);
+      } catch (error) {
+        console.error("Failed to load tour:", error);
         router.push("/tours");
-        return;
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const tours: TourFormValues[] = JSON.parse(storedTours);
-      const foundTour = tours.find((t) => t.id === id);
-
-      if (foundTour) {
-        setTour(foundTour);
-      } else {
-        router.push("/tours");
-      }
-    } catch (error) {
-      console.error("Failed to load tour:", error);
-      router.push("/tours");
-    } finally {
-      setLoading(false);
-    }
+    fetchTour();
   }, [id, router]);
+
+  const handleTourUpdated = async (updatedTour: TourFormValues) => {
+    try {
+      const res = await fetch(`/api/tours/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updatedTour),
+      });
+
+      if (!res.ok) throw new Error("Failed to update tour");
+
+      toast.success("Tour updated successfully!");
+      router.push("/tours");
+    } catch (error) {
+      console.error("Error updating tour:", error);
+      toast.error("Failed to update tour");
+    }
+  };
 
   if (loading) {
     return (
@@ -51,7 +94,13 @@ const EditTourPage: React.FC = () => {
     return null;
   }
 
-  return <CreateTourForm existingTour={tour} mode="edit" />;
+  return (
+    <CreateTourForm
+      existingTour={tour}
+      mode="edit"
+      onTourCreated={handleTourUpdated}
+    />
+  );
 };
 
 export default EditTourPage;
