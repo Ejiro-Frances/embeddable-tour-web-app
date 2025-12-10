@@ -55,9 +55,9 @@ export function ValuesSection() {
           className="text-center mb-16"
         >
           <div
-            className="inline-block px-4 py-2 rounded-full border mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8"
             style={{
-              background: "oklch(0.8 0.2 70 / 0.1)",
+              // background: "oklch(0.8 0.2 70 / 0.1)",
               borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >

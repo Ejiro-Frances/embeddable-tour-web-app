@@ -84,13 +84,12 @@ export function FeaturesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-2 rounded-full accent-bg/10 border border-amber-300/20 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8">
             <span className="text-sm font-medium accent-text">Features</span>
           </div>
           <h2 className="text-4xl md:text-4xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-linear-to-r from-white to-amber-200">
             Everything You Need For <br />
-                        <AnimatedGradientText text="Perfect Onboarding" />
-            
+            <AnimatedGradientText text="Perfect Onboarding" />
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto mt-6">
             Packed with powerful features to create, manage, and optimize your

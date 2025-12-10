@@ -87,9 +87,9 @@ export function QuickStartSection() {
           className="text-center mb-16"
         >
           <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8"
             style={{
-              background: "oklch(0.8 0.2 70 / 0.1)",
+              // background: "oklch(0.8 0.2 70 / 0.1)",
               borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >
@@ -215,7 +215,9 @@ export function QuickStartSection() {
                       "linear-gradient(to right, #eabe7b, oklch(0.85 0.18 75))",
                   }}
                 >
-                  <Link href="https://discord.gg/tourify">Join Discord Community</Link>
+                  <Link href="https://discord.gg/tourify">
+                    Join Discord Community
+                  </Link>
                 </Button>
                 <Button
                   variant="outline"
@@ -226,7 +228,6 @@ export function QuickStartSection() {
                   }}
                 >
                   <Link href="/contact">Contact Support</Link>
-                
                 </Button>
               </div>
             </div>

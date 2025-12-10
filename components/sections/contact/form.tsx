@@ -102,7 +102,7 @@ export function ContactForm() {
         >
           <Badge
             variant="outline"
-            className="mb-4 px-4 py-1.5 text-sm font-medium border-amber-300/20 accent-bg/10 accent-text"
+            className="inline-flex items-center text-accent gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8"
           >
             <Send className="h-3 w-3 mr-2" />
             Get in Touch

@@ -17,7 +17,7 @@ const timelineEvents = [
     description:
       "Released MVP to 100 early adopters with overwhelming positive feedback",
     icon: <Rocket className="h-6 w-6" />,
-    color: "oklch(0.85 0.18 75)",
+    color: "#eabe7b",
   },
   {
     year: "2024",
@@ -25,14 +25,14 @@ const timelineEvents = [
     description:
       "Reached 1,000+ customers and expanded team to 15 amazing people",
     icon: <Users className="h-6 w-6" />,
-    color: "oklch(0.9 0.18 80)",
+    color: "#eabe7b",
   },
   {
     year: "2025",
     title: "Recognition",
     description: "Awarded 'Best UX Tool' by Design Awards 2025",
     icon: <Award className="h-6 w-6" />,
-    color: "oklch(0.8 0.15 85)",
+    color: "#eabe7b",
   },
   {
     year: "2025",
@@ -40,7 +40,7 @@ const timelineEvents = [
     description:
       "Serving customers in 50+ countries with localized experiences",
     icon: <Globe className="h-6 w-6" />,
-    color: "oklch(0.85 0.15 90)",
+    color: "#eabe7b",
   },
 ];
 
@@ -56,9 +56,9 @@ export function TimelineSection() {
           className="text-center mb-16"
         >
           <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8"
             style={{
-              background: "oklch(0.8 0.2 70 / 0.1)",
+              // background: "oklch(0.8 0.2 70 / 0.1)",
               borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >

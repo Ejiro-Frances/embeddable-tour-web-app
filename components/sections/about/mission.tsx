@@ -17,14 +17,14 @@ export function MissionSection() {
       title: "Our Vision",
       description:
         "A world where no user ever feels lost in a new product, where onboarding is not a chore but a delightful discovery.",
-      color: "oklch(0.85 0.18 75)",
+      color: "#eabe7b",
     },
     {
       icon: <Heart className="h-8 w-8" />,
       title: "Our Passion",
       description:
         "We're obsessed with creating moments of joy in user journeys, turning confusion into confidence through beautiful experiences.",
-      color: "oklch(0.9 0.18 80)",
+      color: "#eabe7b",
     },
   ];
 
@@ -41,9 +41,9 @@ export function MissionSection() {
           className="text-center mb-16"
         >
           <div
-            className="inline-block px-4 py-2 rounded-full border mb-4"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8"
             style={{
-              background: "oklch(0.8 0.2 70 / 0.1)",
+              // background: "oklch(0.8 0.2 70 / 0.1)",
               borderColor: "oklch(0.8 0.2 70 / 0.2)",
             }}
           >

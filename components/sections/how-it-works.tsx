@@ -53,7 +53,7 @@ export function HowItWorksSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <div className="inline-block px-4 py-2 rounded-full accent-bg/10 border border-amber-300/20 mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-linear-to-r from-amber-300/10 to-amber-400/10 border border-amber-300/20 mb-8">
             <span className="text-sm font-medium accent-text">
               How It Works
             </span>
@@ -126,11 +126,10 @@ export function HowItWorksSection() {
           className="text-center mt-16"
         >
           <button className="group px-8 py-4 rounded-full bg-linear-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:shadow-amber-500/30">
-          <Link href="/login">
-          
-            Start Building Your Tour
-            <ChevronRight className="inline ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
+            <Link href="/login">
+              Start Building Your Tour
+              <ChevronRight className="inline ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </button>
         </motion.div>
       </div>
