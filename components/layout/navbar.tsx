@@ -7,12 +7,15 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { useUser } from "@/hooks/use-user";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Documentation", href: "/docs" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  // { label: "Dahboard", href: "/dashboard" },
 ];
 
 export function Navbar() {
@@ -22,6 +25,7 @@ export function Navbar() {
 
   const pathname = usePathname();
 
+  const { user } = useUser();
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
   });
@@ -93,29 +97,53 @@ export function Navbar() {
 
             {/* CTA Buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <Button
-                variant="outline"
-                className="text-ivory hover:text-accent-text hover:bg-accent/20 font-semibold transition-all ease-in-out duration-600"
-                asChild
-              >
-                <Link
-                  href="/login"
-                  className="text-ivory/80 hover:accent-text transition-colors font-medium relative group"
-                >
-                  Sign In
-                </Link>
-              </Button>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Button
-                  className="bg-linear-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black font-semibold transition-all ease-in-out duration-600"
-                  asChild
-                >
-                  <Link href="/signup">Get Started Free</Link>
-                </Button>
-              </motion.div>
+              {user ? (
+                <>
+                  <Link
+                    href="/dashboard"
+                    className={cn(
+                      "text-ivory/80 hover:accent-text font-medium relative group transition-colors"
+                    )}
+                  >
+                    Dashboard
+                  </Link>
+                  <Avatar className="h-8 w-8 bg-accent/50 rounded-full">
+                    <AvatarImage
+                      src={user.user_metadata?.avatar_url}
+                      alt={user.email || ""}
+                    />
+                    <AvatarFallback>
+                      {user.email?.charAt(0).toUpperCase() || "U"}
+                    </AvatarFallback>
+                  </Avatar>
+                </>
+              ) : (
+                <>
+                  <Button
+                    variant="outline"
+                    className="text-ivory hover:text-accent-text hover:bg-accent/20 font-semibold transition-all ease-in-out duration-600"
+                    asChild
+                  >
+                    <Link
+                      href="/login"
+                      className="text-ivory/80 hover:accent-text transition-colors font-medium relative group"
+                    >
+                      Sign In
+                    </Link>
+                  </Button>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      className="bg-linear-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black font-semibold transition-all ease-in-out duration-600"
+                      asChild
+                    >
+                      <Link href="/signup">Get Started Free</Link>
+                    </Button>
+                  </motion.div>
+                </>
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -164,19 +192,41 @@ export function Navbar() {
             })}
 
             <div className="pt-4 space-y-4">
-              <Button
-                variant="outline"
-                className="w-full border-amber-300 accent-text"
-                asChild
-              >
-                <Link href="/login">Sign In</Link>
-              </Button>
-              <Button
-                className="w-full bg-gradient-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black"
-                variant="default"
-              >
-                <Link href="/signup">Get Started Free</Link>
-              </Button>
+              {user ? (
+                <div className="flex items-center space-x-4">
+                  <Link
+                    href="/dashboard"
+                    className="text-ivory hover:accent-text transition-colors font-medium"
+                  >
+                    Dashboard
+                  </Link>
+                  <Avatar className="h-8 w-8">
+                    <AvatarImage
+                      src={user.user_metadata?.avatar_url}
+                      alt={user.email || ""}
+                    />
+                    <AvatarFallback>
+                      {user.email?.charAt(0).toUpperCase() || "U"}
+                    </AvatarFallback>
+                  </Avatar>
+                </div>
+              ) : (
+                <>
+                  <Button
+                    variant="outline"
+                    className="w-full border-amber-300 accent-text"
+                    asChild
+                  >
+                    <Link href="/login">Sign In</Link>
+                  </Button>
+                  <Button
+                    className="w-full bg-gradient-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black"
+                    variant="default"
+                  >
+                    <Link href="/signup">Get Started Free</Link>
+                  </Button>
+                </>
+              )}
             </div>
           </div>
         </div>
