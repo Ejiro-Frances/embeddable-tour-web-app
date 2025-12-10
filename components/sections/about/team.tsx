@@ -8,7 +8,7 @@ const teamMembers = [
   {
     name: "Chief Leo",
     role: "Head of Engineering",
-    bio: "Ex-Facebook engineer specializing in frontend architecture",
+    bio: "Senior Software Engineer with 10+ years of experience specializing in frontend architecture",
     imageColor: "oklch(0.85 0.18 75)",
     social: {
       linkedin: "https://www.linkedin.com/in/primocrypt",
@@ -20,7 +20,7 @@ const teamMembers = [
   {
     name: "Frances Ejiro",
     role: "Frontend Engineer",
-    bio: "Former UX lead at Google with 10+ years in product design",
+    bio: "Former Frontend Engineer lead at Google with 3+ years in frontend development",
     imageColor: "oklch(0.75 0.18 80)",
     social: {
       linkedin: "https://www.linkedin.com/in/ejiro-francess-ejoh/",
@@ -33,7 +33,7 @@ const teamMembers = [
   {
     name: "David Uwagbale",
     role: "Fullstack Developer",
-    bio: "Product manager with 8+ years at top SaaS companies",
+    bio: "Fullstack developer with 4+ years of experience at top SaaS companies",
     imageColor: "oklch(0.9 0.18 80)",
     social: {
       linkedin: "https://linkedin/in/daviduwagbale",
@@ -45,7 +45,7 @@ const teamMembers = [
   {
     name: "Tolulope Ilesanmi",
     role: "Frontend Engineer",
-    bio: "Award-winning designer focused on creating delightful experiences",
+    bio: "Award-winning developer focused on creating delightful experiences",
     imageColor: "oklch(0.8 0.15 85)",
     social: {
       linkedin: "https://www.linkedin.com/in/tolulope-ilesanmi",
@@ -152,7 +152,7 @@ export function TeamSection() {
                     {/* Social links */}
                     <motion.div
                       className="flex justify-center gap-3"
-                      initial={{ opacity: 0 }}
+                      initial={{ opacity: 0.2 }}
                       whileHover={{ opacity: 1 }}
                     >
                       {member.social.linkedin && (

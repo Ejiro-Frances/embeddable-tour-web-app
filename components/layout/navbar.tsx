@@ -110,7 +110,7 @@ export function Navbar() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
-                  className="bg-linear-to-r from-amber-300 to-amber-400 hover:from-amber-600 hover:to-amber-700 text-black font-semibold transition-all ease-in-out duration-600"
+                  className="bg-linear-to-r from-[#eabe7b] to-[#dd9222] hover:from-[#e3a84f] hover:to-[#c7841f] text-black font-semibold transition-all ease-in-out duration-600"
                   asChild
                 >
                   <Link href="/signup">Get Started Free</Link>
