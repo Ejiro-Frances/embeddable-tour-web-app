@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>External Widget Test</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+				color: #ffffff;
+				min-height: 100vh;
+				padding: 40px 20px;
+			}
+
+			.container {
+				max-width: 1000px;
+				margin: 0 auto;
+			}
+
+			header {
+				text-align: center;
+				margin-bottom: 60px;
+			}
+
+			h1 {
+				font-size: 42px;
+				margin-bottom: 16px;
+				background: linear-gradient(to right, #eabe7b, #f5c98e);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+
+			.subtitle {
+				font-size: 18px;
+				color: rgba(255, 255, 255, 0.7);
+			}
+
+			.section {
+				background: rgba(255, 255, 255, 0.03);
+				backdrop-filter: blur(12px);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 16px;
+				padding: 40px;
+				margin-bottom: 30px;
+			}
+
+			.section h2 {
+				color: #eabe7b;
+				margin-bottom: 20px;
+				font-size: 24px;
+			}
+
+			.section p {
+				color: rgba(255, 255, 255, 0.8);
+				line-height: 1.6;
+				margin-bottom: 20px;
+			}
+
+			.button {
+				background: linear-gradient(135deg, #eabe7b 0%, #dd9222 100%);
+				color: #000;
+				border: none;
+				padding: 16px 32px;
+				font-size: 16px;
+				font-weight: 600;
+				border-radius: 12px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 20px rgba(234, 190, 123, 0.3);
+			}
+
+			.button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 30px rgba(234, 190, 123, 0.4);
+			}
+
+			.button:active {
+				transform: translateY(0);
+			}
+
+			.feature-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 20px;
+				margin-top: 30px;
+			}
+
+			.feature {
+				background: rgba(234, 190, 123, 0.05);
+				border: 1px solid rgba(234, 190, 123, 0.2);
+				border-radius: 12px;
+				padding: 24px;
+			}
+
+			.feature-icon {
+				font-size: 32px;
+				margin-bottom: 12px;
+			}
+
+			.feature h3 {
+				color: #eabe7b;
+				font-size: 18px;
+				margin-bottom: 8px;
+			}
+
+			.feature p {
+				color: rgba(255, 255, 255, 0.7);
+				font-size: 14px;
+				margin: 0;
+			}
+
+			.highlight {
+				background: rgba(234, 190, 123, 0.15);
+				border: 1px solid rgba(234, 190, 123, 0.3);
+				border-radius: 8px;
+				padding: 20px;
+				margin: 20px 0;
+			}
+
+			.highlight strong {
+				color: #eabe7b;
+			}
+
+			code {
+				background: rgba(0, 0, 0, 0.5);
+				padding: 2px 8px;
+				border-radius: 4px;
+				font-family: 'Monaco', 'Courier New', monospace;
+				color: #eabe7b;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>🎯 Widget External Test</h1>
+				<p class="subtitle">Testing the Tourify widget embedded in an external HTML file</p>
+			</header>
+
+			<div class="section">
+				<h2>Welcome to the Test Page</h2>
+				<p>
+					This is a simple HTML page that imports the Tourify widget to verify it works correctly when embedded on any
+					website.
+				</p>
+
+				<div class="highlight">
+					<strong>📝 Test Instructions:</strong>
+					<ol style="margin-left: 20px; margin-top: 12px; color: rgba(255, 255, 255, 0.8)">
+						<li>Click the button below to start the tour</li>
+						<li>Navigate through all 5 steps using Next/Back buttons</li>
+						<li>Check that the progress bar updates correctly</li>
+						<li>Verify the Three.js avatar animates smoothly</li>
+						<li>Open DevTools console to see analytics events</li>
+						<li>Try the Skip button</li>
+						<li>Start again to test resume functionality</li>
+					</ol>
+				</div>
+
+				<button class="button" onclick="startTour()">🚀 Start Interactive Tour</button>
+			</div>
+
+			<div class="section">
+				<h2>Sample Content Sections</h2>
+				<p>These sections demonstrate how the widget works with your existing content.</p>
+
+				<div class="feature-grid">
+					<div class="feature" id="feature-1">
+						<div class="feature-icon">⚡</div>
+						<h3>Fast Setup</h3>
+						<p>Get started in under 5 minutes with our simple integration.</p>
+					</div>
+
+					<div class="feature" id="feature-2">
+						<div class="feature-icon">🎨</div>
+						<h3>Beautiful Design</h3>
+						<p>Premium black and gold aesthetics that match your brand.</p>
+					</div>
+
+					<div class="feature" id="feature-3">
+						<div class="feature-icon">📊</div>
+						<h3>Analytics</h3>
+						<p>Track every user interaction with detailed analytics.</p>
+					</div>
+
+					<div class="feature" id="feature-4">
+						<div class="feature-icon">📱</div>
+						<h3>Responsive</h3>
+						<p>Works perfectly on desktop, tablet, and mobile devices.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="section">
+				<h2>Integration Details</h2>
+				<p>The widget is loaded from: <code>http://localhost:5174/dist/tourify.umd.js</code></p>
+				<p>In production, you would use your CDN URL instead.</p>
+				<div class="highlight">
+					<strong>💡 Tip:</strong> Open the browser console to see analytics events being logged as you interact with
+					the tour. Each step generates tracking data.
+				</div>
+			</div>
+		</div>
+
+		<!-- Load the Tourify Widget -->
+		<script src="http://localhost:5174/dist/tourify.umd.js"></script>
+
+		<!-- Initialize the widget -->
+		<script>
+			function startTour() {
+				// Create new tour instance
+				const tour = new window.Tourify({
+					tourId: 'demo',
+					autoStart: true,
+					showAvatar: true,
+
+					// Callbacks
+					onStart: () => {
+						console.log('🚀 Tour started!');
+					},
+
+					onComplete: () => {
+						console.log('✅ Tour completed!');
+						alert(
+							'🎉 Congratulations! You completed the tour!\n\nThe widget tracked all your interactions and sent analytics to the server.',
+						);
+					},
+
+					onSkip: () => {
+						console.log('⏭️ Tour skipped by user');
+					},
+
+					onStepChange: (step) => {
+						console.log('📍 Current step:', step.title);
+						console.log('   Step data:', step);
+					},
+				});
+
+				console.log('Widget initialized:', tour);
+			}
+
+			// Log page load
+			console.log('✅ External test page loaded');
+			console.log('📦 Tourify available:', typeof window.Tourify !== 'undefined');
+			console.log('🎯 Click the "Start Interactive Tour" button to begin testing');
+		</script>
+	</body>
+</html>

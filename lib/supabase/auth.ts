@@ -2,12 +2,17 @@
 import { createClient } from './client'
 
 // Client-side auth functions
-export async function signUp(email: string, password: string) {
+export async function signUp(email: string, password: string, username: string) {
   const supabase = createClient()
   
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
+    options: {
+      data: {
+        username,
+      },
+    },
   })
 
   return { data, error }

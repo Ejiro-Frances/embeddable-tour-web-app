@@ -13,17 +13,17 @@ import Loader from "@/components/loader";
 
 // Type for API response
 interface TourApiResponse {
-  tour: {
-    id: string;
-    name: string;
-    description: string | null;
-    steps: {
-      id: string;
-      order_number: number;
-      title: string;
-      description: string;
-    }[];
-  };
+	tour: {
+		id: string;
+		name: string;
+		description: string | null;
+		steps: {
+			id: string;
+			order_number: number;
+			title: string;
+			description: string;
+		}[];
+	};
 }
 
 const ViewTourPage: React.FC = () => {

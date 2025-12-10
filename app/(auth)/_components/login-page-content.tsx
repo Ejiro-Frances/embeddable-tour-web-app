@@ -118,7 +118,7 @@ export default function LoginPageContent() {
               Logging in...
             </>
           ) : (
-            "Submit"
+            "Log In"
           )}
         </Button>
       </form>

@@ -6,6 +6,11 @@ import { TourWithSteps, TourInsert, StepInsert } from '@/types/database'
  */
 export async function getUserTours(): Promise<TourWithSteps[]> {
     const supabase = await createClient()
+    // select by that user's id
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+        throw new Error('User not authenticated')
+    }
 
     const { data: tours, error } = await supabase
         .from('tours')
@@ -13,6 +18,7 @@ export async function getUserTours(): Promise<TourWithSteps[]> {
       *,
       steps (*)
     `)
+        .eq('user_id', user.id)
         .order('created_at', { ascending: false })
 
     if (error) {
