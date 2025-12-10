@@ -3,102 +3,111 @@
 import { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
-import {
-  MapIcon,
-  CheckCircle2Icon,
-  PercentIcon,
-  ForwardIcon,
-  TimerIcon,
-  FlagIcon,
-  CircleSlash2Icon,
-} from "lucide-react";
-import { LucideIcon } from "lucide-react";
+import { TourStats, CompletionTrend } from "@/types/database";
 
-interface Stat {
-  title: string;
-  value: string | number;
-  icon: LucideIcon;
+interface TourStatsCardProps {
+  tourId: string;
 }
-const TourStatsCard = () => {
+
+export default function TourStatsCard({ tourId }: TourStatsCardProps) {
+  const [stats, setStats] = useState<TourStats | null>(null);
+  const [, setTrend] = useState<CompletionTrend[]>([]);
   const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState<Stat[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Simulate API call delay
-    const timeout = setTimeout(() => {
-      setStats([
-        {
-          title: "Total Tours Created",
-          value: 128,
-          icon: MapIcon,
-        },
-        {
-          title: "Total Tours Completed",
-          value: 102,
-          icon: CheckCircle2Icon,
-        },
-        {
-          title: "Completion Rate",
-          value: "79%",
-          icon: PercentIcon,
-        },
-        {
-          title: "Steps Skipped",
-          value: 34,
-          icon: ForwardIcon,
-        },
-        {
-          title: "Average Tour Duration",
-          value: "12 mins",
-          icon: TimerIcon,
-        },
-        {
-          title: "Active Tours Today",
-          value: 14,
-          icon: FlagIcon,
-        },
-        {
-          title: "Abandon Rate",
-          value: "21%",
-          icon: CircleSlash2Icon,
-        },
-      ]);
+    const fetchData = async () => {
+      setLoading(true);
+      setError(null);
 
-      setLoading(false);
-    }, 2000);
+      try {
+        const [statsRes, trendRes] = await Promise.all([
+          fetch(`/api/analytics/stats?tourId=${tourId}`),
+          fetch(`/api/analytics/completion-trend?tourId=${tourId}`),
+        ]);
 
-    return () => clearTimeout(timeout);
-  }, []);
+        if (!statsRes.ok || !trendRes.ok) {
+          throw new Error("Failed to fetch analytics data");
+        }
+
+        const statsData: { stats: TourStats } = await statsRes.json();
+        const trendData: { trend: CompletionTrend[] } = await trendRes.json();
+
+        setStats(statsData.stats);
+        setTrend(trendData.trend);
+      } catch (err) {
+        console.error(err);
+        setError("Unable to load tour stats.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [tourId]);
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {[...Array(4)].map((_, i) => (
+          <Card key={i}>
+            <CardHeader>
+              <Skeleton className="h-4 w-24 mb-2" />
+            </CardHeader>
+            <CardContent>
+              <Skeleton className="h-8 w-16" />
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    );
+  }
+
+  if (error || !stats) {
+    return (
+      <p className="text-center text-red-500">
+        {error || "No stats available"}
+      </p>
+    );
+  }
 
   return (
-    <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {loading
-        ? [...Array(7)].map((_, i) => (
-            <Card key={i} className="p-4">
-              <Skeleton className="h-6 w-24 mb-4" />
-              <Skeleton className="h-8 w-16" />
-            </Card>
-          ))
-        : stats.map((stat, index) => {
-            const Icon = stat.icon;
-            return (
-              <Card key={index} className="rounded-2xl shadow-sm">
-                <CardHeader className="flex flex-row items-center justify-between pb-2">
-                  <CardTitle className="text-sm font-medium">
-                    {stat.title}
-                  </CardTitle>
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <Card>
+        <CardHeader>
+          <CardTitle>Total Tours</CardTitle>
+        </CardHeader>
+        <CardContent className="text-3xl font-bold">
+          {stats.totalToursCreated}
+        </CardContent>
+      </Card>
 
-                  <Icon className="h-5 w-5 text-primary" />
-                </CardHeader>
+      <Card>
+        <CardHeader>
+          <CardTitle>Total Tours Completed</CardTitle>
+        </CardHeader>
+        <CardContent className="text-3xl font-bold">
+          {stats.totalToursCompleted}
+        </CardContent>
+      </Card>
 
-                <CardContent>
-                  <p className="text-2xl font-bold">{stat.value}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
+      <Card>
+        <CardHeader>
+          <CardTitle>Completion Rate</CardTitle>
+        </CardHeader>
+        <CardContent className="text-3xl font-bold">
+          {stats.completionRate}%
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Steps Skipped</CardTitle>
+        </CardHeader>
+        <CardContent className="text-3xl font-bold">
+          {stats.stepsSkipped}
+        </CardContent>
+      </Card>
     </div>
   );
-};
-
-export default TourStatsCard;
+}

@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { PanelLeftIcon } from "lucide-react";
+import { SquareMenu } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -273,7 +273,7 @@ function SidebarTrigger({
       }}
       {...props}
     >
-      <PanelLeftIcon />
+      <SquareMenu className="size-7" />
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
@@ -608,7 +608,7 @@ function SidebarMenuSkeleton({
 }) {
   // Random width between 50 to 90%.
   const [width, setWidth] = React.useState("50%");
-  
+
   React.useEffect(() => {
     const actualWidth = `${Math.floor(Math.random() * 40) + 50}%`;
     setWidth(actualWidth);

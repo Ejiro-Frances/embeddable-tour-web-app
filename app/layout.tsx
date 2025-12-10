@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +24,8 @@ export const metadata: Metadata = {
     default: "Tourify - Embeddable Product Tours",
     template: "%s | Tourify",
   },
-  description: "Create beautiful, embeddable product tours and onboarding flows for your web app in minutes. Easy to integrate, highly customizable, and designed for modern SaaS.",
+  description:
+    "Create beautiful, embeddable product tours and onboarding flows for your web app in minutes. Easy to integrate, highly customizable, and designed for modern SaaS.",
   keywords: [
     "product tour",
     "onboarding",
@@ -32,7 +34,7 @@ export const metadata: Metadata = {
     "saas",
     "onboarding tool",
     "react component",
-    "embeddable tour"
+    "embeddable tour",
   ],
   authors: [{ name: "Tourify Team" }],
   creator: "Tourify",
@@ -43,7 +45,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://tourify.app",
     title: "Tourify - Embeddable Product Tours",
-    description: "Boost user adoption with interactive, embeddable product tours. No coding required to build, easy to integrate.",
+    description:
+      "Boost user adoption with interactive, embeddable product tours. No coding required to build, easy to integrate.",
     siteName: "Tourify",
     images: [
       {
@@ -57,7 +60,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Tourify - Embeddable Product Tours",
-    description: "Boost user adoption with interactive, embeddable product tours. No coding required to build, easy to integrate.",
+    description:
+      "Boost user adoption with interactive, embeddable product tours. No coding required to build, easy to integrate.",
     images: ["/twitter-image.jpg"],
     creator: "@tourify",
   },
@@ -77,6 +81,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
