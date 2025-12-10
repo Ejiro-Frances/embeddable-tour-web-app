@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 interface LoaderProps {
     size?: "sm" | "md" | "lg";
     className?: string;
-    itemName?: string
+    itemName?: string;
 }
 
 export const Loader: React.FC<LoaderProps> = ({
@@ -29,7 +29,7 @@ export const Loader: React.FC<LoaderProps> = ({
     const dotSize = dotSizes[size];
 
     // Animation for the circular path that dots follow
-    const pathVariants = {
+    const pathVariants: Variants = {
         animate: {
             rotate: 360,
             transition: {
@@ -41,7 +41,7 @@ export const Loader: React.FC<LoaderProps> = ({
     };
 
     // Staggered dot animations to create a "walking through steps" effect
-    const dotVariants = {
+    const dotVariants: Variants = {
         initial: { scale: 0, opacity: 0 },
         animate: (i: number) => ({
             scale: [0, 1.2, 1, 1.2, 1],
@@ -57,25 +57,12 @@ export const Loader: React.FC<LoaderProps> = ({
     };
 
     // Pulsing center indicator
-    const centerVariants = {
+    const centerVariants: Variants = {
         animate: {
             scale: [1, 1.3, 1],
             opacity: [0.5, 1, 0.5],
             transition: {
                 duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-            },
-        },
-    };
-
-    // Arrow/pointer animation
-    const arrowVariants = {
-        animate: {
-            x: [0, 5, 0],
-            opacity: [0.6, 1, 0.6],
-            transition: {
-                duration: 1.5,
                 repeat: Infinity,
                 ease: "easeInOut",
             },
