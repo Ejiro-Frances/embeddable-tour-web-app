@@ -37,19 +37,6 @@ export async function POST(request: NextRequest) {
 			);
 		}
 
-		// confirm both are uuids
-		if (!isUUID(tourId) || !isUUID(stepId)) {
-			return NextResponse.json(
-				{ error: 'Invalid tourId or stepId, must be a UUID' },
-				{
-					status: 400,
-					headers: {
-						'Access-Control-Allow-Origin': '*',
-					},
-				},
-			);
-		}
-
 		const validEventTypes = ['started', 'completed', 'abandoned', 'step_completed', 'step_skipped'];
 		if (!validEventTypes.includes(eventType)) {
 			return NextResponse.json(
